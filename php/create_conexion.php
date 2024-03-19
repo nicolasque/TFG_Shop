@@ -16,14 +16,12 @@ function createConexon() {
         echo "Fallo conectando a la MySQL:  )" . $connexion->connect_errno . ") ". $connexion->connect_error;
     }
     mysqli_select_db($connexion, 'web_compraventa') or die('No se puede seleccionar la base de datos web_compraventa');
-    echo "Conexion exitosa";
+    // echo "Conexion exitosa";
     return $connexion;
 }
 
 function cerrarConexion($connexion) {
     $connexion->close();
 }
-
-
 
 ?>
