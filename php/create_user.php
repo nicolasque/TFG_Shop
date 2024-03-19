@@ -4,33 +4,14 @@
 <html>
 <head>
     <title>Create User</title>
-
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="js/add"></script>
 </head>
 <body>
     <?php
         include 'navbar.php';
         include 'ajax/create_conexion.php';
         include 'functions/db_functions.php';
-
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // Retrieve form data
-            $username = $_POST['username'];
-            $surname = $_POST['surname'];
-            $email = $_POST['email'];
-            $password = $_POST['password'];
-
-            // TODO: Validate and sanitize the form data
-
-            // Insert the data into the database
-            $query = "INSERT INTO users (username, surname, email, password) VALUES ('$username', '$surname', '$email', '$password')";
-            $result = mysqli_query($connection, $query);
-
-            if ($result) {
-                echo "User created successfully!";
-            } else {
-                echo "Error creating user: " . mysqli_error($connection);
-            }
-        }
     ?>
         
         <h1>Create User</h1>
@@ -47,7 +28,10 @@
         <label for="password">Password:</label>
         <input type="password" name="password" id="password" required><br>
     
-        <input type="submit" value="Create User">
+        <label for="password">Confirm Password:</label>
+        <input type="password" name="confirm_password" id="confirm_password" required><br>
+    
+        <input type="submit" value="Create User" al>
     </form>
 </body>
 </html>
