@@ -31,6 +31,7 @@
     echo "<li>Email: $email</li>";
     echo "<li>Password: $password</li>";
     echo "<br>";
+    echo "<br>";
 
     $connexion->close();
 
