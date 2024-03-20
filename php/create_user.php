@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,8 +8,7 @@
 <body>
     <?php
         include 'navbar.php';
-        include 'ajax/create_conexion.php';
-        include 'functions/db_functions.php';
+        include 'create_conexion.php';
     ?>
         
         <h1>Create User</h1>

@@ -1,7 +1,6 @@
 <script src="../../js/jquery.js"></script>
 <?php
 
-
     include '../create_conexion.php';
 
     $connexion = ft_create_conexion();
@@ -12,10 +11,10 @@
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    $sql = "INSERT INTO `user` (`username`, `name`, `surname`, `email`, `password`) VALUES ('$username', '$name', '$surname', '$email', '$password')";
+    $sql = "INSERT INTO `user` (`username`, `name`, `surname`, `email`, `password`) VALUES (?, ?, ?, ?, ?)";
     $stmt = $connexion->prepare($sql);
     $stmt->bind_param("sssss", $username, $name, $surname, $email, $password);
-    // $result = $stmt->execute();
+    $result = $stmt->execute();
     if($result)
     {
         echo "OK";
