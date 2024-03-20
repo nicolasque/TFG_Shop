@@ -52,12 +52,12 @@ function ft_add_user(event)
         "surname": document.getElementById('surname').value,
         "email": document.getElementById('email').value,
         "password": document.getElementById('password').value,
-        "confirm_password": document.getElementById('confirm_password').value,
     };
-    if (check_password(user_info.password, user_info.confirm_password) == false)
-    {
-        return;
-    }
+    // "confirm_password": document.getElementById('confirm_password').value,
+    // if (check_password(user_info.password, user_info.confirm_password) == false)
+    // {
+    //     return;
+    // }
         
     $.ajax({
         type: "POST",
