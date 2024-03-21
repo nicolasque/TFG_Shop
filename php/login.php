@@ -1,5 +1,5 @@
 <script src="../js/jquery.js"></script>
-  <script src="js/login.js"></script>
+<script src="js/login.js"></script>
 
 <!-- HTML code for the login form -->
 <form method="POST" action="">
@@ -10,6 +10,9 @@
     <input type="password" name="password" id="password" required><br>
 
     <input type="submit" value="Login">
+    <!-- TODO:
+                añadir la funcionalidad de que si el usuario no existe o la contraseña es incorrecta, muestre un mensaje de error
+             -->
 </form>
 
 <?php
