@@ -39,12 +39,12 @@ $password = $_POST['password'];
 
 if(check_new_user_email($email, $connexion))
 {
-    echo "Email already in use";
+    echo "<span style='color:red;'>Email already in use</span>";
     return;
 }
 if(check_new_user_username($username, $connexion))
 {
-    echo "Username already in use";
+    echo "<span style='color:red;'>Username already in use</span>";
     return;
 }
 
