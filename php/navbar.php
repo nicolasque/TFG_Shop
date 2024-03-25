@@ -9,6 +9,9 @@
 		echo "<a class='nav-link' href='/tfg_shop/php/account.php'>Account</a>";
 		echo "</li>";
 		echo "<li class='nav-item'>";
+		echo "<a class='nav-link' href='/tfg_shop/php/add_product.php'>Add product</a>";
+		echo "</li>";
+		echo "<li class='nav-item'>";
 		echo "<a class='nav-link' href='/tfg_shop/php/functions/logout.php'>Logout</a>";
 		echo "</li>";
 		if(ft_is_admin() == true)
@@ -59,8 +62,9 @@
 			<a class="nav-link" href="/tfg_shop/php/products.php">Products</a>
 		  </li>
 		  <li class="nav-item">
-			<a class="nav-link" href="#">Contact</a>
+			<a class="nav-link" href="/tfg_shop/php/products.php">Products</a>
 		  </li>
+
 
 		  <?php
 			if(ft_if_user_is_logged() == true)

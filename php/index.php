@@ -26,6 +26,23 @@
       <h2>Contact Us</h2>
       <p>Provide contact information for users to reach out to you.</p>
     </section>
+
+    <?php
+    if(isset($_COOKIE["user_id"]) && isset($_COOKIE["username"]) && isset($_COOKIE["name"]) && isset($_COOKIE["surname"]) && isset($_COOKIE["email"]))
+    {
+        echo "Cookies are set!<br>";
+        echo "user_id: " . $_COOKIE["user_id"] . "<br>";
+        echo "username: " . $_COOKIE["username"] . "<br>";
+        echo "name: " . $_COOKIE["name"] . "<br>";
+        echo "surname: " . $_COOKIE["surname"] . "<br>";
+        echo "email: " . $_COOKIE["email"] . "<br>";
+    }
+    else
+    {
+        echo "Cookies are not set!";
+
+    } ?>
+
   </main>
 
   <footer>
