@@ -49,14 +49,14 @@
 
 <nav class="navbar">
 	<div class="navbar-container">
-	  <a class="navbar-brand" href="#">In shop</a>
+	  <a class="navbar-brand" href="/tfg_shop/php/index.php">In shop</a>
 	  <div class="navbar-collapse" id="navbarSupportedContent">
 		<ul class="navbar-nav">
 		  <li class="nav-item">
-			<a class="nav-link" href="#">Home</a>
+			<a class="nav-link" href="/tfg_shop/php/index.php">Home</a>
 		  </li>
 		  <li class="nav-item">
-			<a class="nav-link" href="/tfg_shop/php/index.php">Products</a>
+			<a class="nav-link" href="/tfg_shop/php/products.php">Products</a>
 		  </li>
 		  <li class="nav-item">
 			<a class="nav-link" href="#">Contact</a>
