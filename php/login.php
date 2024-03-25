@@ -3,9 +3,9 @@
 <html>
 <head>
     <title>Login</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
     <script src="../js/jquery.js"></script>
-    <script src="js/login.js"></script>
+    <script src="../js/login.js"></script>
 </head>
 <body>
     <?php 
@@ -14,7 +14,7 @@
     ?>
 
     <!-- HTML code for the login form -->
-    <form method="POST" action="">
+    <form method="POST" id="login_form" action="">
         <label for="username">Username:</label>
         <input type="text" name="username" id="username" required><br>
 
@@ -25,17 +25,8 @@
 
     </form>
 
-    <?php
-    // Display the error message if there is any
-    ft_login()
-    {
-        
-    }
+    <div id="error"></div>
 
 
-    if (isset($error)) {
-        echo '<p>' . $error . '</p>';
-    }
-    ?>
 </body>
 </html>

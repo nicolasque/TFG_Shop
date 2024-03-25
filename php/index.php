@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Your Website Name - Products</title>
   <script src="../js/jquery.js"></script>
-  <script src="js/script.js"></script>
+  <!-- <script src="../js/script.js"></script> -->
 
 </head>
 <body>
@@ -46,6 +46,23 @@
         </div>
       </div>
       </div>
+
+      <?php
+    if(isset($_COOKIE["user_id"]) && isset($_COOKIE["username"]) && isset($_COOKIE["name"]) && isset($_COOKIE["surname"]) && isset($_COOKIE["email"]))
+    {
+        echo "Cookies are set!<br>";
+        echo "user_id: " . $_COOKIE["user_id"] . "<br>";
+        echo "username: " . $_COOKIE["username"] . "<br>";
+        echo "name: " . $_COOKIE["name"] . "<br>";
+        echo "surname: " . $_COOKIE["surname"] . "<br>";
+        echo "email: " . $_COOKIE["email"] . "<br>";
+    }
+    else
+    {
+        echo "Cookies are not set!";
+
+    }
+    ?>
   </main>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVFQWjxhNqjvETaGhwjtC0zI9IjtgBsVlhRPVmIk0sF81tZNyWuh" crossorigin="anonymous"></script>
