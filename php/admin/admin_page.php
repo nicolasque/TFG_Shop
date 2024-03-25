@@ -2,7 +2,14 @@
 <html>
 <head>
     <title>Admin Page</title>
-    <?php include '../navbar.php'; ?>
+    <?php include '../navbar.php'; 
+    if (!isset($user_id) && !ft_is_admin())
+    {
+        header('Location: /tfg_shop/php/index.php');
+        exit;
+    }
+    ?>
+
 </head>
 <body>
     <h1>Welcome, Admin!</h1>

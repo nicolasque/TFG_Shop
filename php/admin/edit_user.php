@@ -5,6 +5,13 @@ include '../navbar.php';
 // Get user_id from URL
 $user_id = $_GET['user_id'];
 
+// If the user is not loged in go to index.php
+if (!isset($user_id) && !ft_is_admin())
+{
+    header('Location: /tfg_shop/index.php');
+    exit;
+}
+
 function ft_get_user_info($user_id)
 {
     $connexion = ft_create_conexion();

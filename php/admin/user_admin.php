@@ -7,10 +7,10 @@ include '../navbar.php';
 include '../create_conexion.php';
 
 
-if (ft_is_admin() == false)
+if (!isset($user_id) && !ft_is_admin())
 {
-    header('Location: ../index.php');
-    exit();
+    header('Location: /tfg_shop/php/index.php');
+    exit;
 }
 
 function ft_fetch_users($connexion)
