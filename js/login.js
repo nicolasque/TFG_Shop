@@ -22,7 +22,8 @@ function ft_check_login(event)
     }
 
  
-    $.ajax({
+    $.ajax(
+    {
         type: "POST",
         url: "../php/ajax/ajax_login.php",
         data: login_information,
@@ -31,9 +32,6 @@ function ft_check_login(event)
             console.log(response);
             if (response == "true")
             {
-                alert("Usuario correcto");
-                // que hace esta linea?
-                //
                 window.location.href = "index.php";
             }
             else

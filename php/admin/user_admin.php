@@ -1,0 +1,76 @@
+
+<link rel="stylesheet" href="../../css/navbar.css">
+
+<?php
+// Include your database connection code here
+include '../navbar.php';
+include '../create_conexion.php';
+
+
+if (ft_is_admin() == false)
+{
+    header('Location: ../index.php');
+    exit();
+}
+
+function ft_fetch_users($connexion)
+{
+    $sql = "SELECT * FROM user";
+    $result = $connexion->query($sql);
+    $users = [];
+    if ($result->num_rows > 0)
+    {
+        while ($row = $result->fetch_assoc())
+        {
+            $users[] = $row;
+        }
+    }
+    $connexion->close();
+    return $users;
+}
+
+// Fetch all users from the database
+$users = ft_fetch_users(ft_create_conexion()); // Replace this with your actual code to fetch users
+
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Admin</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>User Admin</h1>
+    <table>
+        <tr>
+            <th>Username</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Is Admin</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+        <?php foreach ($users as $user): ?>
+            <tr>
+                <td><?php echo $user['username']; ?></td>
+                <td><?php echo $user['name']; ?></td>
+                <td><?php echo $user['surname']; ?></td>
+                <td><?php echo $user['admin'] ? 'Yes' : 'No'; ?></td>
+                <td><?php echo $user['email']; ?></td>
+                <td><a href="edit_user.php?user_id=<?php echo $user['user_id']; ?>">Edit</a></td>
+            </tr>
+        <?php endforeach; ?>
+    </table>
+</body>
+</html>
