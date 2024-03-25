@@ -1,5 +1,5 @@
 
-$(document).ready(function () {
+document.addEventListener("DOMContentLoaded", function() {
 
     //Funcion aqui TENGO QUE AÑADIR LAS FUNCINALIDAD DEL ENVIAR
     document.getElementById('add_user_form').addEventListener('submit', function(event) {
@@ -7,7 +7,6 @@ $(document).ready(function () {
         ft_add_user(event);
 
     }, false);
-
 
 });
 
