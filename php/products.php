@@ -37,6 +37,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Your Website Name - Products</title>
   <script src="../js/jquery.js"></script>
+  <script src="../js/js_product_page.js"></script>
+  
   <!-- <script src="../js/script.js"></script> -->
 
 
@@ -62,10 +64,9 @@
     <table>
         <thead>
             <tr>
-                <th>Product ID</th>
                 <th>Product Name</th>
                 <th>Price</th>
-                <th>User ID</th>
+                <th>Upload date</th>
                 <th>Description</th>
                 <th>Photo</th>
             </tr>
@@ -73,19 +74,30 @@
         <tbody>
             <?php while ($row = $products->fetch_assoc()) { ?>
                 <tr>
-                    <td><?php echo $row['product_id']; ?></td>
                     <td><?php echo $row['product_name']; ?></td>
                     <td><?php echo $row['price']; ?></td>
-                    <td><?php echo $row['user_id']; ?></td>
+                    <td><?php echo $row['upload_date']; ?></td>
                     <td><?php echo $row['description']; ?></td>
-                    <td><?php 
+                    <td>
+                    <?php 
                         $photos = ft_get_photos($row['photo']);
-                        foreach ($photos as $photo)
+                        if (count($photos) > 1)
                         {
-                            echo "<img src='/tfg_shop/images/products/{$row['photo']}/{$photo}' width='100px'>";
+                            echo "<div class='image-gallery' id='product-{$row['product_id']}'>";
+                            foreach ($photos as $index => $photo) {
+                                $display = $index == 0 ? 'block' : 'none';
+                                echo "<img style='display: {$display};' src='/tfg_shop/images/products/{$row['photo']}/{$photo}' width='100px'>";
+                            }
+                            echo "<button class='prev'>Prev</button>";
+                            echo "<button class='next'>Next</button>";
+                            echo "</div>";
                         }
-                    
-                    ?></td>
+                        else
+                        {
+                            echo "<img src='/tfg_shop/images/products/{$row['photo']}/{$photos[0]}' width='100px'>";
+                        }
+                    ?>
+                    </td>
                 </tr>
             <?php } ?>
         </tbody>
