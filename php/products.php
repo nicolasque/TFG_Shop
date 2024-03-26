@@ -75,7 +75,7 @@
             <?php while ($row = $products->fetch_assoc()) { ?>
                 <tr>
                     <td><?php echo $row['product_name']; ?></td>
-                    <td><?php echo $row['price']; ?></td>
+                    <td><?php echo $row['price']; ?>€</td>
                     <td><?php echo $row['upload_date']; ?></td>
                     <td><?php echo $row['description']; ?></td>
                     <td>
