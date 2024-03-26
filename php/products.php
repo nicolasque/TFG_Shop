@@ -9,7 +9,25 @@
         $connexion->close();
         return $result;
     }
+
+    function ft_get_photos($photo_folder)
+    {
+        $photos = [];
+        $folder_path = $_SERVER['DOCUMENT_ROOT'] . "/tfg_shop/images/products/" . $photo_folder;
+        if (file_exists($folder_path)) {
+            $files = scandir($folder_path);
+            foreach ($files as $file)
+            {
+                if ($file != '.' && $file != '..')
+                {
+                    $photos[] = $file;
+                }
+            }
+        }
+        return $photos;
+    }
 ?>
+
 
 
 <!DOCTYPE html>
@@ -48,8 +66,8 @@
                 <th>Product Name</th>
                 <th>Price</th>
                 <th>User ID</th>
-                <th>Photo</th>
                 <th>Description</th>
+                <th>Photo</th>
             </tr>
         </thead>
         <tbody>
@@ -59,8 +77,15 @@
                     <td><?php echo $row['product_name']; ?></td>
                     <td><?php echo $row['price']; ?></td>
                     <td><?php echo $row['user_id']; ?></td>
-                    <td><?php echo $row['photo']; ?></td>
-                    <td><?php echo $row['descripcion']; ?></td>
+                    <td><?php echo $row['description']; ?></td>
+                    <td><?php 
+                        $photos = ft_get_photos($row['photo']);
+                        foreach ($photos as $photo)
+                        {
+                            echo "<img src='/tfg_shop/images/products/{$row['photo']}/{$photo}' width='100px'>";
+                        }
+                    
+                    ?></td>
                 </tr>
             <?php } ?>
         </tbody>
