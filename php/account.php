@@ -12,6 +12,28 @@ if (!isset($user_id))
     exit;
 }
 
+function ft_get_user_products($user_id)
+{
+    $connexion = ft_create_conexion();
+    $sql = "SELECT * FROM product WHERE user_id = ?";
+    $stmt = $connexion->prepare($sql);
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $products = [];
+    if ($result->num_rows > 0)
+    {
+        while ($row = $result->fetch_assoc())
+        {
+            $products[] = $row;
+        }
+    }
+    $connexion->close();
+    return $products;
+}
+
+
+
 function ft_get_user_info($user_id)
 {
     $connexion = ft_create_conexion();
@@ -34,6 +56,23 @@ function ft_get_user_info($user_id)
     }
 }
 
+function ft_get_photos($photo_folder)
+{
+    $photos = [];
+    $folder_path = $_SERVER['DOCUMENT_ROOT'] . "/tfg_shop/images/products/" . $photo_folder;
+    if (file_exists($folder_path)) {
+        $files = scandir($folder_path);
+        foreach ($files as $file)
+        {
+            if ($file != '.' && $file != '..')
+            {
+                $photos[] = $file;
+            }
+        }
+    }
+    return $photos;
+}
+
  $user_info = ft_get_user_info($user_id);
 ?>
 <!DOCTYPE html>
@@ -49,9 +88,11 @@ function ft_get_user_info($user_id)
 <h1>Welcome, <?php echo $user_info['username']?>!</h1>
     
     <ul>
-        <li><a href="/tfg_shop/php/user_acount/my_profile.php">User Administration</a></li>
-        <li><a href="/tfg_shop/php/user_acount/my_products.php">Product Administration</a></li>
-        <li><a href="message_admin.php">Message Administration</a></li>
+        <li><a href="/tfg_shop/php/user_acount/my_profile.php">Actualizar datos de perfil</a></li>
+        <br>
+        <li><a href="/tfg_shop/php/user_acount/my_products.php">Actualizar mis productos</a></li>
+        <br>
+        <li><a href="message_admin.php">Administrar mensajes</a></li>
         <!-- Add more buttons for other admin functionalities -->
     </ul>
 
