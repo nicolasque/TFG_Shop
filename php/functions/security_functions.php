@@ -4,6 +4,10 @@ include 'get_user_info.php';
 include 'get_product_info.php';
 
 
+//TODO ADD PASSWORD HASHING
+// Check if the user is an admin
+
+
 function ft_veryfy_user($user_id)
 {
     $connexion = ft_create_conexion();
@@ -103,5 +107,31 @@ function chek_admin_db($user_id)
 }
 
 
+
+function ft_verify_admin($user_id)
+{
+    $connexion = ft_create_conexion();
+    $sql = "SELECT admin FROM user WHERE user_id = ?";
+    $stmt = $connexion->prepare($sql);
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+    $connexion->close();
+    if ($row['admin'])
+        return (true);
+    else
+        return (false);
+}
+
+function hash_password($password)
+{
+    return (password_hash($password, PASSWORD_DEFAULT));
+}
+
+function verify_password($password, $hash)
+{
+    return (password_verify($password, $hash));
+}
 
 ?>

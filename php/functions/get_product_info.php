@@ -62,3 +62,6 @@ function ft_get_product_user_id($product_id)
         return false;
     }
 }
+
+
+?>
