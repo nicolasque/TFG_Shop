@@ -73,6 +73,8 @@ function ft_get_photos($photo_folder)
     return $photos;
 }
 
+
+
  $user_info = ft_get_user_info($user_id);
 ?>
 <!DOCTYPE html>
@@ -88,7 +90,7 @@ function ft_get_photos($photo_folder)
 <h1>Welcome, <?php echo $user_info['username']?>!</h1>
     
     <ul>
-        <li><a href="/tfg_shop/php/user_acount/my_profile.php">Actualizar datos de perfil</a></li>
+        <li><a href="/tfg_shop/php/user_acount/edit_my_profile.php">Actualizar datos de perfil</a></li>
         <br>
         <li><a href="/tfg_shop/php/user_acount/my_products.php">Actualizar mis productos</a></li>
         <br>

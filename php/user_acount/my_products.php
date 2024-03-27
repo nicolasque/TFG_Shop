@@ -1,7 +1,7 @@
 <?php
 // Include your database connection code here
 // include '../navbar.php';
-include '../account.php';
+include '../my_account.php';
 
 function ft_delete_product($product_id)
 {
@@ -42,6 +42,8 @@ function ft_print_products()
     }
     echo "</table>";
 }
+
+
 
 $user_products = ft_get_user_products($user_id);
 

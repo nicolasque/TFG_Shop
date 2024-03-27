@@ -6,7 +6,7 @@
 	function ft_display_loged()
 	{
 		echo "<li class='nav-item'>";
-		echo "<a class='nav-link' href='/tfg_shop/php/account.php'>Account</a>";
+		echo "<a class='nav-link' href='/tfg_shop/php/my_account.php'>My Account</a>";
 		echo "</li>";
 		echo "<li class='nav-item'>";
 		echo "<a class='nav-link' href='/tfg_shop/php/add_product.php'>Add product</a>";
@@ -59,7 +59,7 @@
 			<a class="nav-link" href="/tfg_shop/php/index.php">Home</a>
 		  </li>
 		  <li class="nav-item">
-			<a class="nav-link" href="/tfg_shop/php/products.php">Products</a>
+			<a class="nav-link" href="/tfg_shop/php/all_products_page.php">Products</a>
 		  </li>
 
 		  <?php

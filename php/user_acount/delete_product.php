@@ -1,8 +1,8 @@
 <?php
-    include '../account.php';
+    include '../my_account.php';
     
 
-    function ft_daw_product($product_id)
+    function ft_daw_product_delete($product_id)
     {
         echo "<table id='col'>";
         echo "<tr>";
@@ -61,7 +61,7 @@
     </style>
 </head>
 <body>
-    <?php ft_daw_product($_GET['product_id']); ?>
+    <?php ft_daw_product_delete($_GET['product_id']); ?>
     <br>
     <h2 style="color: red;"  >Are you sure you want to delete this product?</h2>
     

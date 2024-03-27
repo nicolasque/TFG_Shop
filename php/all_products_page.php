@@ -65,7 +65,7 @@
     <table>
         <thead>
             <tr>
-                <th>Product Name</th>
+                <th>Product</th>
                 <th>Price</th>
                 <th>Upload date</th>
                 <th>Description</th>
@@ -75,7 +75,8 @@
         <tbody>
             <?php while ($row = $products->fetch_assoc()) { ?>
                 <tr>
-                    <td><?php echo $row['product_name']; ?></td>
+                    <!-- <td><?php echo $row['product_name']; ?></td> -->
+                    <td><a href="product.php?product_id=<?php echo $row['product_id']; ?>"><?php echo $row['product_name']; ?></a></td>
                     <td><?php echo $row['price']; ?>€</td>
                     <td><?php echo $row['upload_date']; ?></td>
                     <td><?php echo $row['description']; ?></td>
@@ -107,4 +108,4 @@
 
 
 </body>
-</
+</html>

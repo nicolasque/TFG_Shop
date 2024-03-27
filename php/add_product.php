@@ -113,7 +113,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <label for="photos">Photos:</label>
     <input type="file" name="photos[]" multiple required><br>
     <label for="description">Description:</label>
-    <input type="text" name="description" required><br>
+    <textarea name="description" rows="4" cols="50" required></textarea><br>
 
     <input type="submit" value="Add Product">
   </form>

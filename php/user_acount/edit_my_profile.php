@@ -1,7 +1,7 @@
 <?php
 // Include your database connection code here
 // include '../navbar.php';
-include '../account.php';
+include '../my_account.php';
 
 function ft_update_user_info($user_id, $username, $password, $email)
 {
