@@ -100,6 +100,11 @@ function ft_is_not_my_product($product_id)
     if ($result->num_rows > 0)
     {
         $row = $result->fetch_assoc();
+        if (!isset($_COOKIE['user_id']))
+        {
+            echo "<a href='/tfg_shop/php/login.php'>LogIn to start chating</a>";
+            return true;
+        }
         if ($row['user_id'] != $_COOKIE['user_id'])
         {
             echo "<a href='/tfg_shop/php/chat/chat_product.php?product_id=" . $_GET['product_id'] . "'>Chat</a>";
