@@ -1,15 +1,6 @@
 <?php
     include '../account.php';
     
-    function ft_delete_product($product_id)
-    {
-        $connexion = ft_create_conexion();
-        $sql = "DELETE FROM product WHERE product_id = ?";
-        $stmt = $connexion->prepare($sql);
-        $stmt->bind_param("i", $product_id);
-        $stmt->execute();
-        $connexion->close();
-    }
 
     function ft_daw_product($product_id)
     {
@@ -47,6 +38,7 @@
                 echo "</td>";
                 echo "</tr>";
             }
+
         }
     }
 ?>
@@ -72,6 +64,7 @@
     <?php ft_daw_product($_GET['product_id']); ?>
     <br>
     <h2 style="color: red;"  >Are you sure you want to delete this product?</h2>
+    
 
 </body>
 </html>

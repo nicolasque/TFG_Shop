@@ -3,6 +3,15 @@
 // include '../navbar.php';
 include '../account.php';
 
+function ft_delete_product($product_id)
+{
+    $connexion = ft_create_conexion();
+    $sql = "DELETE FROM product WHERE product_id = ?";
+    $stmt = $connexion->prepare($sql);
+    $stmt->bind_param("i", $product_id);
+    $stmt->execute();
+    $connexion->close();
+}
 
 function ft_print_products()
 {
@@ -53,6 +62,13 @@ $user_products = ft_get_user_products($user_id);
             text-align: left;
         }
     </style>
+    <?php
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['product_id']) && is_numeric($_POST['product_id']))
+        {
+            ft_delete_product($_POST['product_id']);
+            header('Location: /tfg_shop/php/user_acount/my_products.php');
+        }
+?>
 </head>
 <body>
     <h1>My Products</h1>

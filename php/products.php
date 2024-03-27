@@ -1,5 +1,6 @@
 <?php
     include 'create_conexion.php';
+    include 'navbar.php'; 
 
     function ft_get_products()
     {
@@ -55,7 +56,7 @@
     </style>
 </head>
 <body>
-<?php include 'navbar.php'; 
+<?php
     $products = ft_get_products();
 ?>
 
