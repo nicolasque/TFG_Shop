@@ -3,8 +3,8 @@
 
 <?php
 // Include your database connection code here
-include '../navbar.php';
-include '../create_conexion.php';
+// include '../navbar.php';
+include 'admin_header.php';
 
 
 if (!isset($user_id) && !ft_is_admin())

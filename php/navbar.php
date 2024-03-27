@@ -17,7 +17,7 @@
 		if(ft_is_admin() == true)
 		{
 			echo "<li class='nav-item'>";
-			echo "<a class='nav-link' href='/tfg_shop/php/admin/admin_page.php'>Admin Page</a>";
+			echo "<a class='nav-link' href='/tfg_shop/php/admin/admin_header.php'>Admin Page</a>";
 			echo "</li>";
 		}
 	}
@@ -61,10 +61,6 @@
 		  <li class="nav-item">
 			<a class="nav-link" href="/tfg_shop/php/products.php">Products</a>
 		  </li>
-		  <li class="nav-item">
-			<a class="nav-link" href="/tfg_shop/php/products.php">Products</a>
-		  </li>
-
 
 		  <?php
 			if(ft_if_user_is_logged() == true)

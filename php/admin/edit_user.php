@@ -1,6 +1,5 @@
 <?php
-include '../create_conexion.php';
-include '../navbar.php';
+include 'admin_header.php';
 
 // Get user_id from URL
 $user_id = $_GET['user_id'];
@@ -41,6 +40,14 @@ function ft_update_user_info($user_id, $username, $password, $email, $admin)
     $stmt = $connexion->prepare($sql);
     $stmt->bind_param("ssssi", $username, $password, $email, $admin , $user_id);
     $stmt->execute();
+    if ($stmt->affected_rows > 0)
+    {
+        return (true);
+    }
+    else
+    {
+        return (false);
+    }
     $connexion->close();
 }
 
@@ -56,9 +63,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     $email = $_POST['email'];
     $admin = isset($_POST['admin']) ? 1 : 0;
     // Update user info
-    ft_update_user_info($user_id, $username, $password, $email, $admin);
-    // Refresh the page to show updated info
-    header("Refresh:0");
+    if (ft_update_user_info($user_id, $username, $password, $email, $admin))
+    {
+
+        //TODO : Add alert
+        echo "
+        <script type='text/javascript'>
+        alert('User updated');
+
+        </script>";
+        header("Location: user_admin.php");
+        // exit();
+    }
+    else
+    {
+        echo "Error updating user";
+    }
+    
 }
 else
 {
@@ -67,7 +88,7 @@ else
 }
 ?>
 
-<form method="post" action="edit_user.php?user_id=<?php echo $user_id; ?>">
+<form method="post">
     <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
     Username: <input type="text" name="username" value="<?php echo $user_info['username']; ?>"><br>
     Password: <input type="password" name="password" value="<?php echo $user_info['password']; ?>"><br>
