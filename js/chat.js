@@ -4,8 +4,8 @@ window.onload = function() {
     
     // var message = {
     //     "chat_id": document.getElementById('chat_id').textContent,
-    //     "user_id_1": document.getElementById('user_id_1').textContent,
-    //     "user_id_2": document.getElementById('user_id_2').textContent,
+    //     "user_id_buyer": document.getElementById('user_id_buyer').textContent,
+    //     "user_id_seller": document.getElementById('user_id_seller').textContent,
     //     // "message": messageText
     // };
     // console.log(message);
@@ -28,8 +28,8 @@ function ft_send_message()
 
         var message = {
             "chat_id": document.getElementById('chat_id').textContent,
-            "user_id_1": document.getElementById('user_id_1').textContent,
-            "user_id_2": document.getElementById('user_id_2').textContent,
+            "user_id_buyer": document.getElementById('user_id_buyer').textContent,
+            "user_id_seller": document.getElementById('user_id_seller').textContent,
             "message": messageText
         };
         if (messageText == "")

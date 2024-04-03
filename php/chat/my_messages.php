@@ -5,7 +5,7 @@ include '../create_conexion.php';
 function ft_get_my_chats($user_id)
 {
     $connexion = ft_create_conexion();
-    $sql = "SELECT * FROM chat WHERE user_id_1 = ? OR user_id_2 = ?";
+    $sql = "SELECT * FROM chat WHERE user_id_buyer = ? OR user_id_seller = ?";
     $stmt = $connexion->prepare($sql);
     $stmt->bind_param("ii", $user_id, $user_id);
     $stmt->execute();
@@ -21,6 +21,20 @@ function ft_get_my_chats($user_id)
     $connexion->close();
     return $chats;
 }
+
+function ft_get_other_perosn_name($user_id_buyer)
+{
+    $connexion = ft_create_conexion();
+    $sql = "SELECT * FROM user WHERE user_id = ?";
+    $stmt = $connexion->prepare($sql);
+    $stmt->bind_param("i", $user_id_buyer);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $user = $result->fetch_assoc();
+    $connexion->close();
+    return $user['username'];
+}
+
 
 function ft_get_produc_info($product_id)
 {
@@ -73,8 +87,8 @@ function ft_print_chats($chats)
         $product_name = ft_get_produc_info($chat['product_id']);
         echo "<h3>" . $product_name['product_name'] . "</h3>";
         echo "<br>";
-
         echo "</a>";
+        echo "<h3>" . ft_get_other_perosn_name($chat['user_id_buyer']) . "</h3>";
         ft_print_photo($chat['product_id']);
         echo "</div>";
     }

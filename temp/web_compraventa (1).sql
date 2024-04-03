@@ -29,8 +29,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `chat` (
   `chat_id` int(11) NOT NULL,
-  `user_id_1` int(11) NOT NULL,
-  `user_id_2` int(11) NOT NULL,
+  `user_id_buyer` int(11) NOT NULL,
+  `user_id_seller` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `message` text NOT NULL,
   `date` date NOT NULL DEFAULT current_timestamp(),
@@ -41,7 +41,7 @@ CREATE TABLE `chat` (
 -- Dumping data for table `chat`
 --
 
-INSERT INTO `chat` (`chat_id`, `user_id_1`, `user_id_2`, `product_id`, `message`, `date`, `seen`) VALUES
+INSERT INTO `chat` (`chat_id`, `user_id_buyer`, `user_id_seller`, `product_id`, `message`, `date`, `seen`) VALUES
 (2, 1, 3, 24, '', '2024-04-02', 127),
 (3, 3, 9, 15, '', '2024-04-02', 127),
 (4, 3, 5, 18, '', '2024-04-03', 127);
@@ -54,17 +54,17 @@ INSERT INTO `chat` (`chat_id`, `user_id_1`, `user_id_2`, `product_id`, `message`
 
 CREATE TABLE `messages` (
   `chat_id` int(11) NOT NULL,
-  `user_id_1` int(11) NOT NULL,
+  `user_id_buyer` int(11) NOT NULL,
   `message` text NOT NULL,
   `mesage_date` date NOT NULL DEFAULT current_timestamp(),
-  `user_id_2` int(11) NOT NULL
+  `user_id_seller` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `messages`
 --
 
-INSERT INTO `messages` (`chat_id`, `user_id_1`, `message`, `mesage_date`, `user_id_2`) VALUES
+INSERT INTO `messages` (`chat_id`, `user_id_buyer`, `message`, `mesage_date`, `user_id_seller`) VALUES
 (3, 9, 'hola mundo', '2024-04-02', 3),
 (3, 9, 'que tal', '2024-04-02', 3),
 (3, 9, 'hola como estas ', '2024-04-02', 3),
