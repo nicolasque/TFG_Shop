@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+window.onload = function() {
 
     //Funcion aqui TENGO QUE AÑADIR LAS FUNCINALIDAD DEL ENVIAR
     document.getElementById('login_form').addEventListener('submit', function(event)
@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
         ft_check_login(event);
     }, false);
 
-});
+};
 
 function ft_check_login(event)
 {

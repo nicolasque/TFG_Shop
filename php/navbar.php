@@ -12,7 +12,7 @@
 		echo "<a class='nav-link' href='/tfg_shop/php/add_product.php'>Add product</a>";
 		echo "</li>";
 		echo "<li class='nav-item'>";
-		echo "<a class='nav-link' href='/tfg_shop/php/functions/logout.php'>Logout</a>";
+		echo "<a class='nav-link' href='/tfg_shop/php/chat/my_messages.php'>Messages</a>";
 		echo "</li>";
 		if(ft_is_admin() == true)
 		{
@@ -20,6 +20,9 @@
 			echo "<a class='nav-link' href='/tfg_shop/php/admin/admin_header.php'>Admin Page</a>";
 			echo "</li>";
 		}
+		echo "<li class='nav-item'>";
+		echo "<a class='nav-link' href='/tfg_shop/php/functions/logout.php'>Logout</a>";
+		echo "</li>";
 	}
 
 	function ft_display_not_loged()

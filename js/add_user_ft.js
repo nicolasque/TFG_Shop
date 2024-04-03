@@ -1,6 +1,6 @@
 
-document.addEventListener("DOMContentLoaded", function() {
-
+window.onload = function()
+{
     //Funcion aqui TENGO QUE AÑADIR LAS FUNCINALIDAD DEL ENVIAR
     document.getElementById('add_user_form').addEventListener('submit', function(event) {
         event.preventDefault();
@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     }, false);
 
-});
+};
 
 
 function check_password(password, confirm_password)
