@@ -2,6 +2,29 @@
 include '../navbar.php';
 include '../create_conexion.php';
 
+function ft_get_user_info($user_id)
+{
+    $connexion = ft_create_conexion();
+    $sql = "SELECT * FROM user WHERE user_id = ?";
+    $stmt = $connexion->prepare($sql);
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0)
+    {
+        $row = $result->fetch_assoc();
+        $connexion->close();
+        return $row;
+    }
+    else
+    {
+        $connexion->close();
+        return false;
+    }
+}
+
+
 function ft_get_my_chats($user_id)
 {
     $connexion = ft_create_conexion();
@@ -22,17 +45,16 @@ function ft_get_my_chats($user_id)
     return $chats;
 }
 
-function ft_get_other_perosn_name($user_id_buyer)
+function ft_get_other_perosn_name($user_id_buyer, $user_id_seller)
 {
-    $connexion = ft_create_conexion();
-    $sql = "SELECT * FROM user WHERE user_id = ?";
-    $stmt = $connexion->prepare($sql);
-    $stmt->bind_param("i", $user_id_buyer);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $user = $result->fetch_assoc();
-    $connexion->close();
-    return $user['username'];
+    if ($user_id_buyer == $_COOKIE['user_id'])
+    {
+        return ft_get_user_info($user_id_seller)['username'];
+    }
+    else
+    {
+        return ft_get_user_info($user_id_buyer)['username'];
+    }
 }
 
 
@@ -88,7 +110,7 @@ function ft_print_chats($chats)
         echo "<h3>" . $product_name['product_name'] . "</h3>";
         echo "<br>";
         echo "</a>";
-        echo "<h3>" . ft_get_other_perosn_name($chat['user_id_buyer']) . "</h3>";
+        echo "<h3>" . ft_get_other_perosn_name($chat['user_id_buyer'], $chat['user_id_seller']) . "</h3>";
         ft_print_photo($chat['product_id']);
         echo "</div>";
     }
