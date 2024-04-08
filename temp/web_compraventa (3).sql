@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 03, 2024 at 08:20 PM
+-- Generation Time: Apr 08, 2024 at 08:42 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -42,26 +42,13 @@ CREATE TABLE `chat` (
 --
 
 INSERT INTO `chat` (`chat_id`, `user_id_buyer`, `user_id_seller`, `product_id`, `message`, `date`, `seen`) VALUES
-(2, 1, 3, 24, '', '2024-04-02', 127),
-(7, 10, 8, 30, '', '2024-04-03', 127),
-(8, 3, 8, 20, '', '2024-04-03', 127),
-(9, 3, 8, 19, '', '2024-04-03', 127),
-(10, 3, 8, 23, '', '2024-04-03', 127),
-(11, 10, 3, 31, '', '2024-04-03', 127),
-(12, 8, 3, 33, '', '2024-04-03', 127),
-(14, 5, 3, 19, '', '2024-04-03', 127),
-(15, 5, 9, 29, '', '2024-04-03', 127),
-(16, 5, 10, 30, '', '2024-04-03', 127),
-(17, 10, 3, 19, '', '2024-04-03', 127),
-(18, 3, 9, 29, '', '2024-04-03', 127),
-(19, 3, 8, 33, '', '2024-04-03', 127),
-(20, 3, 10, 31, '', '2024-04-03', 127),
-(21, 3, 1, 24, '', '2024-04-03', 127),
-(22, 1, 10, 31, '', '2024-04-03', 127),
-(23, 1, 3, 26, '', '2024-04-03', 127),
-(24, 6, 9, 29, '', '2024-04-03', 127),
-(25, 6, 3, 19, '', '2024-04-03', 127),
-(26, 5, 10, 31, '', '2024-04-03', 127);
+(31, 3, 8, 33, '', '2024-04-08', 127),
+(32, 3, 8, 32, '', '2024-04-08', 127),
+(33, 3, 10, 31, '', '2024-04-08', 127),
+(34, 3, 1, 24, '', '2024-04-08', 127),
+(35, 8, 3, 19, '', '2024-04-08', 127),
+(36, 8, 9, 29, '', '2024-04-08', 127),
+(37, 3, 9, 29, '', '2024-04-08', 127);
 
 -- --------------------------------------------------------
 
@@ -70,75 +57,26 @@ INSERT INTO `chat` (`chat_id`, `user_id_buyer`, `user_id_seller`, `product_id`, 
 --
 
 CREATE TABLE `messages` (
+  `mesage_id` int(11) NOT NULL,
   `chat_id` int(11) NOT NULL,
-  `user_id_buyer` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
   `message` text NOT NULL,
-  `mesage_date` date NOT NULL DEFAULT current_timestamp(),
-  `user_id_seller` int(11) NOT NULL
+  `mesage_date` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `messages`
 --
 
-INSERT INTO `messages` (`chat_id`, `user_id_buyer`, `message`, `mesage_date`, `user_id_seller`) VALUES
-(3, 9, 'hola mundo', '2024-04-02', 3),
-(3, 9, 'que tal', '2024-04-02', 3),
-(3, 9, 'hola como estas ', '2024-04-02', 3),
-(3, 9, 'mi amigo', '2024-04-02', 3),
-(3, 9, '', '2024-04-02', 3),
-(3, 9, 'reinici ael sistema', '2024-04-02', 3),
-(3, 9, '', '2024-04-02', 3),
-(3, 9, '', '2024-04-02', 3),
-(3, 9, '', '2024-04-02', 3),
-(3, 9, '', '2024-04-02', 3),
-(3, 9, '', '2024-04-02', 3),
-(3, 9, '', '2024-04-02', 3),
-(3, 9, 'ey tu loquillo', '2024-04-02', 3),
-(3, 9, 'que haces ahi', '2024-04-02', 3),
-(3, 9, 'no se , y tu ?', '2024-04-02', 3),
-(3, 9, 'pues buscar caracoles no te jode', '2024-04-02', 3),
-(3, 9, 'hola que tal', '2024-04-03', 3),
-(3, 9, 'y tu ?', '2024-04-03', 3),
-(3, 9, 'hola', '2024-04-03', 3),
-(2, 3, 'hola\n', '2024-04-03', 1),
-(2, 3, 'tu eres de murcia ?', '2024-04-03', 1),
-(2, 3, 'si claro ', '2024-04-03', 1),
-(2, 3, 'que quieres de comrt', '2024-04-03', 1),
-(2, 3, 'algo de pollo', '2024-04-03', 1),
-(2, 3, 'dadsda', '2024-04-03', 1),
-(2, 3, 'hola\n', '2024-04-03', 1),
-(2, 3, 'eyyy\n', '2024-04-03', 1),
-(4, 5, 'ey qu etal', '2024-04-03', 3),
-(4, 5, 'bueno mira te comento', '2024-04-03', 3),
-(5, 3, 'holaaa\n', '2024-04-03', 5),
-(5, 3, 'esto es lo mas', '2024-04-03', 5),
-(6, 9, 'hola user 54\n', '2024-04-03', 10),
-(6, 9, ', me interesa este producto', '2024-04-03', 10),
-(7, 8, 'eatro es el cha de user y nico', '2024-04-03', 10),
-(7, 8, 'y no se qu evoy a hacer con el', '2024-04-03', 10),
-(8, 8, 'ey que onda cuate', '2024-04-03', 3),
-(9, 8, 'hola munodo, ?\n', '2024-04-03', 3),
-(10, 8, 'qu tigruw increible', '2024-04-03', 3),
-(7, 3, 'bonito gato', '2024-04-03', 10),
-(11, 3, 'parce que nadie habla por aqui', '2024-04-03', 10),
-(13, 3, 'hola pachecoi', '2024-04-03', 9),
-(0, 5, 'hola', '2024-04-03', 3),
-(0, 5, 'hola', '2024-04-03', 3),
-(0, 5, '14:56', '2024-04-03', 3),
-(14, 5, 'hola\n', '2024-04-03', 3),
-(15, 5, 'hlaaa\n', '2024-04-03', 9),
-(16, 5, 'eyyy bonito gato', '2024-04-03', 10),
-(11, 10, 'holaa', '2024-04-03', 10),
-(7, 10, 'eyy', '2024-04-03', 10),
-(17, 10, 'eyy mikaela', '2024-04-03', 3),
-(21, 3, 'buenos dias', '2024-04-03', 1),
-(22, 1, 'SOY NICOLAsque1', '2024-04-03', 10),
-(23, 1, 'holsasa', '2024-04-03', 3),
-(19, 3, 'hola prueba con el buler cambiado', '2024-04-03', 8),
-(8, 3, 'como estmao amigo', '2024-04-03', 3),
-(20, 3, 'holaaa\n', '2024-04-03', 10),
-(26, 5, 'holsaa', '2024-04-03', 10);
+INSERT INTO `messages` (`mesage_id`, `chat_id`, `user_id`, `message`, `mesage_date`) VALUES
+(64, 31, 3, 'holaaa que tal ncolas', '2024-04-08'),
+(65, 32, 3, 'hola que tal , ncolas', '2024-04-08'),
+(66, 33, 3, 'que tal user 42', '2024-04-08'),
+(67, 34, 3, 'Bonito tren con perro', '2024-04-08'),
+(68, 31, 8, 'eyy tdo bien mamon', '2024-04-08'),
+(69, 35, 8, 'vaya cacharo que llevas', '2024-04-08'),
+(70, 36, 8, 'eyy pache buna figura', '2024-04-08'),
+(71, 37, 3, 'bua que bueno e pche ya me alegro que ya no se muestren los otros mensajes qui', '2024-04-08');
 
 -- --------------------------------------------------------
 
@@ -188,22 +126,23 @@ CREATE TABLE `user` (
   `surname` varchar(30) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(30) NOT NULL,
-  `admin` tinyint(1) NOT NULL DEFAULT 0
+  `admin` tinyint(1) NOT NULL DEFAULT 0,
+  `Register_date` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`user_id`, `username`, `name`, `surname`, `email`, `password`, `admin`) VALUES
-(1, 'nicolasque1', 'nico', 'quece', 'nicoquece@gmail.com', '12341', 0),
-(3, 'quequecedo@gmail.com', 'nicolas', 'quecedo', 'quequecedo@gmail.com', '12341', 1),
-(5, '954404', 'nicolas', 'quecedo gaminde', 'quequedo@gmail.com', 'Familia-12341', 0),
-(6, '9544040', 'nicolas', 'quecedo', 'quequecedo@ail.com', '42_Urduliz', 1),
-(7, 'quequeedo@gmail.com', 'nicolas', 'quecedo', 'queqcedo@gmail.com', 'Urduliz-42', 0),
-(8, 'ncolas', 'nquece', 'Famili', 'queque@es.commm', '42*Urduliz', 0),
-(9, 'pacheco', 'juan', 'Pacheco', '1234@gmail.com', 'Familia-12341', 0),
-(10, 'user42', 'nico', 'si', 'ertyhjgfde@kapsch.com', 'Familia-12341', 0);
+INSERT INTO `user` (`user_id`, `username`, `name`, `surname`, `email`, `password`, `admin`, `Register_date`) VALUES
+(1, 'nicolasque1', 'nico', 'quece', 'nicoquece@gmail.com', '12341', 0, '2024-04-08'),
+(3, 'quequecedo@gmail.com', 'nicolas', 'quecedo', 'quequecedo@gmail.com', '12341', 1, '2024-04-08'),
+(5, '954404', 'nicolas', 'quecedo gaminde', 'quequedo@gmail.com', 'Familia-12341', 0, '2024-04-08'),
+(6, '9544040', 'nicolas', 'quecedo', 'quequecedo@ail.com', '42_Urduliz', 1, '2024-04-08'),
+(7, 'quequeedo@gmail.com', 'nicolas', 'quecedo', 'queqcedo@gmail.com', 'Urduliz-42', 0, '2024-04-08'),
+(8, 'ncolas', 'nquece', 'Famili', 'queque@es.commm', '42*Urduliz', 0, '2024-04-08'),
+(9, 'pacheco', 'juan', 'Pacheco', '1234@gmail.com', 'Familia-12341', 0, '2024-04-08'),
+(10, 'user42', 'nico', 'si', 'ertyhjgfde@kapsch.com', 'Familia-12341', 0, '2024-04-08');
 
 --
 -- Indexes for dumped tables
@@ -214,6 +153,12 @@ INSERT INTO `user` (`user_id`, `username`, `name`, `surname`, `email`, `password
 --
 ALTER TABLE `chat`
   ADD PRIMARY KEY (`chat_id`);
+
+--
+-- Indexes for table `messages`
+--
+ALTER TABLE `messages`
+  ADD PRIMARY KEY (`mesage_id`);
 
 --
 -- Indexes for table `product`
@@ -238,7 +183,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `chat`
 --
 ALTER TABLE `chat`
-  MODIFY `chat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `chat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+
+--
+-- AUTO_INCREMENT for table `messages`
+--
+ALTER TABLE `messages`
+  MODIFY `mesage_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
 -- AUTO_INCREMENT for table `product`
