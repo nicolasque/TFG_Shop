@@ -65,8 +65,8 @@ function ft_print_photos($row)
             $display = $index == 0 ? 'block' : 'none';
             echo "<img class='gallery-image' style='display: {$display};' src='/tfg_shop/images/products/{$row['photo']}/{$photo}' width='100px'>";
         }
-        echo "<button class='prev'>Prev</button>";
-        echo "<button class='next'>Next</button>";
+        echo "<button class='prev button is-ghost'>Prev</button>";
+        echo "<button class='next button is-ghost'>Next</button>";
         echo "</div>";
     }
     else
@@ -121,7 +121,7 @@ function ft_is_not_my_product($product_id)
         }
         if ($row['user_id'] != $_COOKIE['user_id'])
         {
-            echo "<a href='/tfg_shop/php/chat/chat_product.php?product_id=" . $_GET['product_id'] . "'>Chat</a>";
+            echo "<a class='button is-primary' href='/tfg_shop/php/chat/chat_product.php?product_id=" . $_GET['product_id'] . "'>Chat</a>";
             return true;
         }
         else

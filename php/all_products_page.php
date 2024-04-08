@@ -106,8 +106,8 @@
                                 $display = $index == 0 ? 'block' : 'none';
                                 echo "<img class='gallery-image' style='display: {$display};' src='/tfg_shop/images/products/{$row['photo']}/{$photo}' width='100px'>";
                             }
-                            echo "<button class='prev'>Prev</button>";
-                            echo "<button class='next'>Next</button>";
+                            echo "<button class='prev button is-ghost'>Prev</button>";
+                            echo "<button class='next button is-ghost'>Next</button>";
                             echo "</div>";
                         }
                         else
