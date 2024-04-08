@@ -38,4 +38,6 @@
     <div id="message"></div> 
     <!-- Esto es para hacer comprobaciones  -->
 </body>
+<?php include 'footer.php'; ?> 
+
 </html>

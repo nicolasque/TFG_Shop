@@ -99,4 +99,5 @@ function ft_get_photos($photo_folder)
     </ul>
 
 </body>
+
 </html>

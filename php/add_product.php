@@ -118,4 +118,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <input type="submit" value="Add Product">
   </form>
 </body>
+<?php include 'footer.php'; ?> 
+
 </html>

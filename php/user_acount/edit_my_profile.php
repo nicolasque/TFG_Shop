@@ -36,3 +36,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     Email: <input type="text" name="email" value="<?php echo $user_info['email']; ?>"><br>
     <input type="submit" value="Update">
 </form>
+<?php include '../footer.php'; ?> 
+

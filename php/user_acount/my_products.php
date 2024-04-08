@@ -144,9 +144,12 @@ $user_products = ft_get_user_products($user_id);
                     ?>
                 </td>
                 <td>
-                    <a href="/tfg_shop/php/user_acount/edit_product.php?product_id=<?php echo $product['product_id']; ?>">Edit  |</a>
-                    <a href="/tfg_shop/php/user_acount/delete_product.php?product_id=<?php echo $product['product_id']; ?>">    Delete</a>
+                    <a  class="button is-primary" href="/tfg_shop/php/user_acount/edit_product.php?product_id=<?php echo $product['product_id']; ?>">Edit</a>
+                    <a class="button is-danger is-dark" href="/tfg_shop/php/user_acount/delete_product.php?product_id=<?php echo $product['product_id']; ?>">Delete</a>
                 </td>
             </tr>
         <?php endforeach; ?>
+
     </table>
+
+    <?php include '../footer.php'; ?> 
