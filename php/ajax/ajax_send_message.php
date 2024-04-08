@@ -1,12 +1,12 @@
 <?php 
 include '../create_conexion.php';
 
-function ft_send_message($chat_id ,$sender_id, $receiver_id, $message)
+function ft_send_message($chat_id ,$sender_id, $message)
 {
     $connexion = ft_create_conexion();
-    $sql = "INSERT INTO messages (chat_id, user_id_buyer, user_id_seller, message) VALUES (?, ?, ?, ?)";
+    $sql = "INSERT INTO messages (chat_id, user_id, message) VALUES (?, ?, ?)";
     $stmt = $connexion->prepare($sql);
-    $stmt->bind_param("iiis", $chat_id ,$sender_id, $receiver_id, $message);
+    $stmt->bind_param("iis", $chat_id ,$sender_id, $message);
     $stmt->execute();
     if ($stmt->error)
     {
@@ -22,9 +22,8 @@ function ft_send_message($chat_id ,$sender_id, $receiver_id, $message)
 
 $chat_id = $_POST['chat_id'];
 $sender_id = $_POST['user_id_buyer'];
-$receiver_id = $_POST['user_id_seller'];
 $message = $_POST['message'];
 
-ft_send_message($chat_id, $sender_id, $receiver_id, $message);
+ft_send_message($chat_id, $sender_id, $message);
 
 ?>

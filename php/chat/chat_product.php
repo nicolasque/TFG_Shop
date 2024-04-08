@@ -92,6 +92,18 @@ function ft_new_chat($product)
     $connexion->close();
 }
 
+function ft_is_user_product($product)
+{
+    if ($product['user_id'] == $_COOKIE['user_id'])
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
 function ft_verify_chat($product)
 {
     $product_id = $_GET['product_id'];
@@ -101,7 +113,7 @@ function ft_verify_chat($product)
     $stmt->bind_param("ii", $product_id, $_COOKIE['user_id']);
     $stmt->execute();
     $result = $stmt->get_result();
-    if ($result->num_rows == 0)
+    if ($result->num_rows == 0 && !ft_is_user_product($product))
     {
         ft_new_chat($product);
     }
@@ -113,9 +125,9 @@ function ft_get_chat_id($product)
 {
     $product_id = $_GET['product_id'];
     $connexion = ft_create_conexion();
-    $sql = "SELECT chat_id FROM chat WHERE product_id = ? && (user_id_buyer = ? )";
+    $sql = "SELECT chat_id FROM chat WHERE product_id = ? && (user_id_buyer = ? || user_id_seller = ?)";
     $stmt = $connexion->prepare($sql);
-    $stmt->bind_param("ii", $product_id,  $_COOKIE['user_id']);
+    $stmt->bind_param("iii", $product_id,  $_COOKIE['user_id'], $_COOKIE['user_id']);
     $stmt->execute();
     $result = $stmt->get_result();
     $row = $result->fetch_assoc();
@@ -182,7 +194,7 @@ function ft_print_chat_messages($messages)
                 echo $chat_id;
                 echo "<p style='display: none;' id='chat_id'>" . $chat_id . "</p>";
                 echo "<p style='display: none;' id='user_id_buyer'>" . $_COOKIE['user_id'] . "</p>";
-                echo "<p style='display: none;' id='user_id_seller'>" . $product['user_id'] . "</p>";
+                // echo "<p style='display: none;' id='user_id_seller'>" . $product['user_id'] . "</p>";
 
                 $messages = ft_get_chat_messages($chat_id);
                 ft_print_chat_messages($messages);

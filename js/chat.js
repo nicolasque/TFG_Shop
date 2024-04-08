@@ -29,7 +29,7 @@ function ft_send_message()
         var message = {
             "chat_id": document.getElementById('chat_id').textContent,
             "user_id_buyer": document.getElementById('user_id_buyer').textContent,
-            "user_id_seller": document.getElementById('user_id_seller').textContent,
+            // "user_id_seller": document.getElementById('user_id_seller').textContent,
             "message": messageText
         };
         if (messageText == "")
