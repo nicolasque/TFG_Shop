@@ -1,4 +1,8 @@
 <link rel="stylesheet" href="/tfg_shop/css/navbar.css">
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css"
+  >
 
 
 <?php
@@ -52,6 +56,9 @@
 	}
 
 ?>
+
+
+
 
 <nav class="navbar">
 	<div class="navbar-container">

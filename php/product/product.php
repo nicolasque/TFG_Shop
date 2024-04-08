@@ -25,6 +25,19 @@ function ft_get_product_info($product_id)
     }
 }
 
+function ft_get_seller_name($seller_id)
+{
+    $connexion = ft_create_conexion();
+    $sql = "SELECT * FROM user WHERE user_id = ?";
+    $stmt = $connexion->prepare($sql);
+    $stmt->bind_param("i", $seller_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+    $connexion->close();
+    return $row['username'];
+}
+
 function ft_get_photos($photo_folder)
 {
     $photos = [];
@@ -74,6 +87,7 @@ function ft_print_product()
         echo "<div class='product'>";
         echo "<div class='product_info'>";
         echo "<h1>" . $product_info['product_name'] . "</h1>";
+        echo "<h3>Seller: " . ft_get_seller_name($product_info['user_id']) . "</h3>";
         echo "<p>Precio" . $product_info['price'] . "€</p>";
         echo "<p><h2>Descripcion: </h2><br>" . $product_info['description'] . "</p>";
         echo "</div>";
@@ -157,7 +171,7 @@ function ft_is_not_my_product($product_id)
         ft_print_product(); 
         ft_is_not_my_product($_GET['product_id']);
     ?>
-    <!-- Add buton to go to the chat with the product sheller -->
+
     
 </body>
 </html>
