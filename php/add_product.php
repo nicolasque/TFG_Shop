@@ -47,7 +47,7 @@ function process_files($photos) {
     return $folder_id;
 }
 
-function ft_add_product($product_name, $price, $user_id, $photos, $description, $user_name, $upload_date)
+function ft_add_product($product_name, $price, $user_id, $photos, $description, $city , $user_name, $upload_date)
 {
     // Process the uploaded files and create a folder
     $folder_id = process_files($photos);
@@ -60,10 +60,10 @@ function ft_add_product($product_name, $price, $user_id, $photos, $description, 
   
     // Insert product data and folder name into the database
     $connexion = ft_create_conexion();
-    $sql = "INSERT INTO product (product_name, price, user_id, photo, description, user_name, upload_date) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO product (product_name, price, user_id, photo, description, city ,user_name, upload_date) VALUES (?, ?, ?, ?, ? , ?, ?, ?)";
     $stmt = $connexion->prepare($sql);
   
-    $stmt->bind_param("sdsssss", $product_name, $price, $user_id, $folder_id, $description, $user_name, $upload_date);
+    $stmt->bind_param("sdssssss", $product_name, $price, $user_id, $folder_id, $description, $city ,$user_name, $upload_date);
   
     $stmt->execute();
     $connexion->close();
@@ -77,11 +77,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $price = $_POST["price"];
   $photos = $_FILES["photos"];
   $description = $_POST["description"];
+  $city = $_POST["city"];
   $user_name = $_COOKIE["username"];
   $user_id = $_COOKIE["user_id"];
 
   if (isset($photos) && $photos['error'][0] === UPLOAD_ERR_OK) {
-    $success = ft_add_product($product_name, $price, $user_id, $photos, $description, $user_name, date("Y-m-d H:i:s"));
+    $success = ft_add_product($product_name, $price, $user_id, $photos, $description, $city , $user_name, date("Y-m-d H:i:s"));
     if ($success) {
       echo "Product added successfully!";
     } else {
@@ -114,6 +115,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <input type="file" name="photos[]" multiple required><br>
     <label for="description">Description:</label>
     <textarea name="description" rows="4" cols="50" required></textarea><br>
+    <label for="city">City:</label>
+    <input type="text" name="city" required><br>
 
     <input type="submit" value="Add Product">
   </form>

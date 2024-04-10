@@ -89,7 +89,12 @@ function ft_print_product()
         echo "<h1>" . $product_info['product_name'] . "</h1>";
         echo "<h3>Seller: " . ft_get_seller_name($product_info['user_id']) . "</h3>";
         echo "<p>Precio" . $product_info['price'] . "€</p>";
-        echo "<p><h2>Descripcion: </h2><br>" . $product_info['description'] . "</p>";
+        echo "<p><h2>Descripcion: </h2>" . $product_info['description'] . "</p>";
+        echo "<br>";
+        if ($product_info['city'] != "")
+        {
+            echo "<p><h2>Ciudad: </h2>" . $product_info['city'] . "</p>";
+        }
         echo "</div>";
         ft_print_photos($product_info);
         echo "</div>";
