@@ -88,6 +88,15 @@ function ft_print_products()
     echo "</table>";
 }
 
+function ft_print_photo($photo_folder)
+{
+    $photos = ft_get_photos($photo_folder);
+    echo "<div class='image-gallery' id='product-{$photo_folder}'>";
+    if (!empty($photos)) {
+        echo "<img src='/tfg_shop/images/products/{$photo_folder}/{$photos[0]}' width='100px'>";
+    }
+    echo "</div>";
+}
 
 
 $user_products = ft_get_user_products($user_id);
@@ -118,38 +127,33 @@ $user_products = ft_get_user_products($user_id);
 ?>
 </head>
 <body>
-    <h1>My Products</h1>
-    <table>
-        <tr>
-            <th>Product Name</th>
-            <th>Description</th>
-            <th>Price</th>
-            <th>Photos</th>
-            <th>Actions</th>
-        </tr>
-        <?php foreach ($user_products as $product): ?>
-            <tr>
-                <td><?php echo $product['product_name']; ?></td>
-                <td><?php echo $product['description']; ?></td>
-                <td><?php echo $product['price']; ?>€</td>
-                <td>
-                    <?php
-                    $photos = ft_get_photos($product['photo']);
-                    echo "<div class='image-gallery' id='product-{$product['product_id']}'>";
-                    foreach ($photos as $photo)
-                    {
-                        echo "<img src='/tfg_shop/images/products/{$product['photo']}/{$photo}' width='100px'>";
-                    }
-                    echo "</div>";
-                    ?>
-                </td>
-                <td>
-                    <a  class="button is-primary" href="/tfg_shop/php/user_acount/edit_product.php?product_id=<?php echo $product['product_id']; ?>">Edit</a>
-                    <a class="button is-danger is-dark" href="/tfg_shop/php/user_acount/delete_product.php?product_id=<?php echo $product['product_id']; ?>">Delete</a>
-                </td>
-            </tr>
-        <?php endforeach; ?>
-
-    </table>
-
+    <section class="section">
+        <div class="container">
+            <h1 class="title">My Products</h1>
+            <table class="table is-fullwidth is-striped">
+                <thead>
+                    <tr>
+                        <th>Product Image</th>
+                        <th>Product Name</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($user_products as $product): ?>
+                        <tr>
+                            <td><?php ft_print_photo(ft_get_photo_folder($product['product_id'])) ?></td>
+                            <td><?php echo $product['product_name']; ?></td>
+                            <td><?php echo $product['description']; ?></td>
+                            <td><?php echo $product['price']; ?></td>
+                            <td><a class="button is-small is-link" href="edit_product.php?product_id=<?php echo $product['product_id']; ?>">Edit</a></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </section>
     <?php include '../footer.php'; ?> 
+</body>
+</html>

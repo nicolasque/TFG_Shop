@@ -33,7 +33,7 @@
                 echo "<td>";
                 echo "<form method='POST' action='my_products.php'>";
                 echo "<input type='hidden' name='product_id' value='$product_id'>";
-                echo "<input type='submit' value='Delete'>";
+                echo "<input type='submit' class='button ' value='Delete'>";
                 echo "</form>";
                 echo "</td>";
                 echo "</tr>";
@@ -67,6 +67,6 @@
     
 
 </body>
-<?php include '../footer.php'; ?> 
 
 </html>
+<!-- <?php include '../footer.php'; ?>  -->

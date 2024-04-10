@@ -26,16 +26,33 @@ function ft_get_product($product_id)
 function ft_daw_product_edit($product_id)
 {
     $product = ft_get_product($product_id);
+    echo "<div class='section'>";
+    echo "<div class='container'>";
+    echo "<div class='columns is-centered'>";
+    echo "<div class='column is-half'>";
     echo "<form action='edit_product.php' method='post'>";
     echo "<input type='hidden' name='product_id' value='{$product['product_id']}'>";
-    echo "<label for='product_name'>Product Name:</label><br>";
-    echo "<input type='text' name='product_name' value='{$product['product_name']}'><br>";
-    echo "<label for='description'>Description:</label><br>";
-    echo "<textarea name='description' rows='4' cols='50'>{$product['description']}</textarea><br>";
-    echo "<label for='price'>Price:</label><br>";
-    echo "<input type='text' name='price' value='{$product['price']}'><br>";
-    echo "<input type='submit' value='Edit'>";
+    echo "<div class='field'>";
+    echo "<label class='label' for='product_name'>Product Name:</label>";
+    echo "<div class='control'>";
+    echo "<input class='input' type='text' name='product_name' value='{$product['product_name']}'>";
+    echo "</div></div>";
+    echo "<div class='field'>";
+    echo "<label class='label' for='description'>Description:</label>";
+    echo "<div class='control'>";
+    echo "<textarea class='textarea' name='description' rows='4'>{$product['description']}</textarea>";
+    echo "</div></div>";
+    echo "<div class='field'>";
+    echo "<label class='label' for='price'>Price:</label>";
+    echo "<div class='control'>";
+    echo "<input class='input' type='text' name='price' value='{$product['price']}'>";
+    echo "</div></div>";
+    echo "<div class='field'>";
+    echo "<div class='control'>";
+    echo "<input class='button is-link' type='submit' value='Edit'>";
+    echo "</div></div>";
     echo "</form>";
+    echo "</div></div></div></div>";
 }
 
 function ft_edit_product($product_id, $product_name, $description, $price)
