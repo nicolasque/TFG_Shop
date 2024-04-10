@@ -61,3 +61,4 @@ function ft_send_message()
                 });
     });
 }
+

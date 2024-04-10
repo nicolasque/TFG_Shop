@@ -50,8 +50,8 @@ function ft_print_photos($row)
 {
     $photos = ft_get_photos($row['photo']);
 
-    echo "<div class='image-gallery' id='product-gallery-{$row['product_id']}'>";
-    echo "<img class='gallery-image' src='/tfg_shop/images/products/{$row['photo']}/{$photos[0]}' width='100px'>";
+    echo "<div class='' id='product-gallery-{$row['product_id']}'>";
+    echo "<img class='gallery-image ' src='/tfg_shop/images/products/{$row['photo']}/{$photos[0]}' width='100px'>";
     echo "</div>";
 }
 
@@ -69,7 +69,7 @@ function ft_print_table_product_info($product)
     echo "<td style='padding: 10px;'>" . $product['price'] . "€</td>";
     echo "<td style='padding: 0px; border: 0px;'width:100%; height:100%;>";
     $photos = ft_get_photos($product['photo']);
-    echo "<div class='image-gallery' id='product-{$product['product_id']}' style='padding: 0px; border: 0px;'width:100%; height:100%;>";
+    echo "<div class='image is-48x48' id='product-{$product['product_id']}' style='padding: 0px; border: 0px;'width:100%; height:100%;>";
     if (count($photos) > 0)
     {
         echo "<img src='/tfg_shop/images/products/{$product['photo']}/{$photos[0]}' width='20px'>";
@@ -155,15 +155,40 @@ function ft_get_chat_messages($chat_id)
     return $messages;
 }
 
+function ft_aling_mesajes($user_id)
+{
+    if ($user_id == $_COOKIE['user_id'])
+    {
+        return "is-pulled-right";
+    }
+    else
+    {
+        return "is-pulled-left";
+    }
+}
+
+function ft_give_style_mesaje($user_id)
+{
+    if ($user_id == $_COOKIE['user_id'])
+    {
+        return "has-background-light has-text-dark is-pulled-right";
+    }
+    else
+    {
+        return "has-background-dark has-text-light is-pulled-left";
+    }
+}
+
 function ft_print_chat_messages($messages)
 {
     foreach ($messages as $message)
     {
-        echo "<div style='width: 100%; height: 40px; border: 1px solid black; margin-top: 10px; padding: 10px;'>";
-        echo "<p style='margin: 0px;'>" . $message['message'] . "</p>";
+        echo "<div  class=". ft_give_style_mesaje($message['user_id']) ." style='width: 100%; height: 40px; border: 1px solid black; margin-top: 10px; padding: 10px;'>";
+        echo "<p class='". ft_give_style_mesaje($message['user_id'])." user_mesaje_". $message['user_id'] ."' style='margin: 0px;'>" . $message['message'] . "</p>";
         echo "</div>";
     }
 }
+
 
 
 ?>
@@ -179,15 +204,17 @@ function ft_print_chat_messages($messages)
     <script src="/tfg_shop/js/jquery.js"></script>
     <title>Document</title>
 
+
 </head>
 <body>
     <?php
         ft_print_table_product_info($product);
         ft_verify_chat($product);
     ?>
+<div class="columns is-vcentered is-centered" style="height: 80vh;">
 
-<div id="chat-container" style="width: 100%; height: 400px; border: 1px solid black; margin-top: 20px; padding: 10px;">
-        <div id="chat-box" style="width: 100%; height: 80%; border: 1px solid black; overflow-y: scroll;">
+<div id="chat-container container is-fluid columns is-vcentered is-centered" style="width: 80%; height: 100%; border: 1px solid green; margin-top: 20px; padding: 10px;">
+        <div id="chat-box " class="column is-half is-vcentered is-centered" style="width: 600px; height: 80%; border: 1px solid green; overflow-y: scroll;">
             <!-- Aquí se mostrarán los mensajes del chat -->
             <?php
                 $chat_id = ft_get_chat_id($product);
@@ -200,12 +227,12 @@ function ft_print_chat_messages($messages)
                 ft_print_chat_messages($messages);
             ?>
         </div>
-        <div id="message-input" style="width: 100%; height: 20%; margin-top: 10px;">
+        <div id="message-input" class="" style="width: 600px; height: 10%; margin-top: 10px;">
             <textarea id="message-text" style="width: 80%; height: 100%;"></textarea>
-            <button id="send-button" style="width: 20%; height: 100%;">Send</button>
+            <button id="send-button" class="button is-primary" style="width: 20%; height: 100%;">Send</button>
         </div>
     </div>
-
+</div>
 
 </body>
 </html>
