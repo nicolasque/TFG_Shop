@@ -14,14 +14,11 @@ function ft_get_product_info()
     $stmt->execute();
     $result = $stmt->get_result();
 
-    if ($result->num_rows > 0)
-    {
+    if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
         $connexion->close();
         return $row;
-    }
-    else
-    {
+    } else {
         $connexion->close();
         return false;
     }
@@ -35,10 +32,8 @@ function ft_get_photos($photo_folder)
     $folder_path = $_SERVER['DOCUMENT_ROOT'] . "/tfg_shop/images/products/" . $photo_folder;
     if (file_exists($folder_path)) {
         $files = scandir($folder_path);
-        foreach ($files as $file)
-        {
-            if ($file != '.' && $file != '..')
-            {
+        foreach ($files as $file) {
+            if ($file != '.' && $file != '..') {
                 $photos[] = $file;
             }
         }
@@ -56,30 +51,34 @@ function ft_print_photos($row)
 }
 
 
+
 function ft_print_table_product_info($product)
 {
-    echo "<table class='table table-bordered' style='width:100%; height:40px; border: 1px solid black;'>";
-    echo "<tr style='text-align: left;'>";
-    echo "<th style='padding: 10px;'>Product Name</th>";
-    echo "<th style='padding: 10px;'>Price</th>";
-    echo "<th style='padding: 10px;'>Photo</th>";
+    echo "<table class='table is-fullwidth is-striped'>";
+    echo "<thead>";
+    echo "<tr>";
+    echo "<th>Product Name</th>";
+    echo "<th>Price</th>";
+    echo "<th>Photo</th>";
     echo "</tr>";
-    echo "<tr style='vertical-align: middle;'>";
-    echo "<td style='padding: 10px;'>" . $product['product_name'] . "</td>";
-    echo "<td style='padding: 10px;'>" . $product['price'] . "€</td>";
-    echo "<td style='padding: 0px; border: 0px;'width:100%; height:100%;>";
+    echo "</thead>";
+    echo "<tbody>";
+    echo "<tr>";
+    echo "<td>" . $product['product_name'] . "</td>";
+    echo "<td>" . $product['price'] . "€</td>";
+    echo "<td>";
     $photos = ft_get_photos($product['photo']);
-    echo "<div class='image is-48x48' id='product-{$product['product_id']}' style='padding: 0px; border: 0px;'width:100%; height:100%;>";
-    if (count($photos) > 0)
-    {
-        echo "<img src='/tfg_shop/images/products/{$product['photo']}/{$photos[0]}' width='20px'>";
+    echo "<figure class='image is-48x48'>";
+    if (count($photos) > 0) {
+        echo "<img src='/tfg_shop/images/products/{$product['photo']}/{$photos[0]}'>";
     }
-    echo "</div>";
+    echo "</figure>";
     echo "</td>";
     echo "</tr>";
+    echo "</tbody>";
     echo "</table>";
-
 }
+
 
 function ft_new_chat($product)
 {
@@ -94,12 +93,9 @@ function ft_new_chat($product)
 
 function ft_is_user_product($product)
 {
-    if ($product['user_id'] == $_COOKIE['user_id'])
-    {
+    if ($product['user_id'] == $_COOKIE['user_id']) {
         return true;
-    }
-    else
-    {
+    } else {
         return false;
     }
 }
@@ -113,8 +109,7 @@ function ft_verify_chat($product)
     $stmt->bind_param("ii", $product_id, $_COOKIE['user_id']);
     $stmt->execute();
     $result = $stmt->get_result();
-    if ($result->num_rows == 0 && !ft_is_user_product($product))
-    {
+    if ($result->num_rows == 0 && !ft_is_user_product($product)) {
         ft_new_chat($product);
     }
     $connexion->close();
@@ -144,10 +139,8 @@ function ft_get_chat_messages($chat_id)
     $stmt->execute();
     $result = $stmt->get_result();
     $messages = [];
-    if ($result->num_rows > 0)
-    {
-        while ($row = $result->fetch_assoc())
-        {
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
             $messages[] = $row;
         }
     }
@@ -157,39 +150,31 @@ function ft_get_chat_messages($chat_id)
 
 function ft_aling_mesajes($user_id)
 {
-    if ($user_id == $_COOKIE['user_id'])
-    {
+    if ($user_id == $_COOKIE['user_id']) {
         return "is-pulled-right";
-    }
-    else
-    {
+    } else {
         return "is-pulled-left";
     }
 }
-
 function ft_give_style_mesaje($user_id)
 {
-    if ($user_id == $_COOKIE['user_id'])
-    {
-        return "has-background-light has-text-dark is-pulled-right";
-    }
-    else
-    {
-        return "has-background-dark has-text-light is-pulled-left";
+    if ($user_id == $_COOKIE['user_id']) {
+        return "has-text-right has-background-info-light has-text-black";
+    } else {
+        return "has-text-left has-background-light has-text-black";
     }
 }
 
 function ft_print_chat_messages($messages)
 {
-    foreach ($messages as $message)
-    {
-        echo "<div  class=". ft_give_style_mesaje($message['user_id']) ." style='width: 100%; height: 40px; border: 1px solid black; margin-top: 10px; padding: 10px;'>";
-        echo "<p class='". ft_give_style_mesaje($message['user_id'])." user_mesaje_". $message['user_id'] ."' style='margin: 0px;'>" . $message['message'] . "</p>";
+    foreach ($messages as $message) {
+        $messageClass = ft_give_style_mesaje($message['user_id']);
+
+        echo "<div class='box notification  $messageClass'> ";
+        echo "<p class='is-size-4 user_mesaje_" . $message['user_id'] . "'>" . $message['message'] . "</p>";
         echo "</div>";
     }
 }
-
-
 
 ?>
 
@@ -197,6 +182,7 @@ function ft_print_chat_messages($messages)
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -204,35 +190,46 @@ function ft_print_chat_messages($messages)
     <script src="/tfg_shop/js/jquery.js"></script>
     <title>Document</title>
 
-
 </head>
+
 <body>
-    <?php
-        ft_print_table_product_info($product);
-        ft_verify_chat($product);
-    ?>
-<div class="columns is-vcentered is-centered" style="height: 80vh;">
+    <div id="page_container " class="container is-fluid is-vcentered is-centered">
 
-<div id="chat-container container is-fluid columns is-vcentered is-centered" style="width: 80%; height: 100%; border: 1px solid green; margin-top: 20px; padding: 10px;">
-        <div id="chat-box " class="column is-half is-vcentered is-centered" style="width: 600px; height: 80%; border: 1px solid green; overflow-y: scroll;">
-            <!-- Aquí se mostrarán los mensajes del chat -->
-            <?php
-                $chat_id = ft_get_chat_id($product);
-                echo $chat_id;
-                echo "<p style='display: none;' id='chat_id'>" . $chat_id . "</p>";
-                echo "<p style='display: none;' id='user_id_buyer'>" . $_COOKIE['user_id'] . "</p>";
-                // echo "<p style='display: none;' id='user_id_seller'>" . $product['user_id'] . "</p>";
+        <div class="columns is-vcentered is-centered">
+            <div class="column is-vcentered is-centered">
+                <h1 class="title is-1">Product Info</h1>
+                <div class="box">
+                    <?php
+                    ft_print_table_product_info($product);
+                    ft_verify_chat($product);
+                    ?>
+                </div>
+            </div>
+        </div>
+        <div class="columns is-vcentered is-centered"  >
+            <div id="chat-container" class="container is-fluid is-vcentered is-centered" style="scroll-behavior: smooth; height: 600px; width: 70%;">
+                <div id="chat-box" class="column is-vcentered is-centered box" style="overflow-y: auto; max-height: 500px;">
+                    <!-- Aquí se mostrarán los mensajes del chat -->
+                    <?php
+                    $chat_id = ft_get_chat_id($product);
+                    echo $chat_id;
+                    echo "<p style='display: none;' id='chat_id'>" . $chat_id . "</p>";
+                    echo "<p style='display: none;' id='user_id_buyer'>" . $_COOKIE['user_id'] . "</p>";
+                    // echo "<p style='display: none;' id='user_id_seller'>" . $product['user_id'] . "</p>";
 
-                $messages = ft_get_chat_messages($chat_id);
-                ft_print_chat_messages($messages);
-            ?>
+                    $messages = ft_get_chat_messages($chat_id);
+                    ft_print_chat_messages($messages);
+                    ?>
+                </div>
+                <div id="message-input" class="column is-vcentered is-centered">
+                    <textarea id="message-text" style="width: 100%; height: 10%;"></textarea>
+                    <button id="send-button" class="button is-primary">Send</button>
+                </div>
+            </div>
         </div>
-        <div id="message-input" class="" style="width: 600px; height: 10%; margin-top: 10px;">
-            <textarea id="message-text" style="width: 80%; height: 100%;"></textarea>
-            <button id="send-button" class="button is-primary" style="width: 20%; height: 100%;">Send</button>
-        </div>
-    </div>
-</div>
 
 </body>
+
+</html>
+
 </html>

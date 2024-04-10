@@ -39,19 +39,18 @@ function	ft_is_admin()
 ?>
 
 
-<div class="container is-fluid">
+<div class="container is-fluid" style="min-width: 1200px; ">
 	<!-- <div class="notification is-primary"> -->
 
 
 
-	<nav class="navbar" role="navigation" aria-label="main navigation">
-		<div class="navbar-brand">
+	<nav class="navbar " role="navigation" aria-label="main navigation" style="min-width: 1200px; ">
+		<div class="navbar-brand" style="min-width: 1200px;">
 			<a class="navbar-item" href="/tfg_shop/php/index.php">
 				<img src="/tfg_shop/images/page/ena2.png" width="60" height="190">
 			</a>
 
-
-			<div id="navbar" class="navbar-menu">
+			<div id="navbar " class="navbar-menu">
 				<div class="navbar-start">
 					<a class="navbar-item" href="/tfg_shop/php/index.php">Home</a>
 

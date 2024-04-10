@@ -151,11 +151,32 @@ function ft_print_chats($chats)
     </style>
 </head>
 <body>
-    <div class="chats">
-        <?php
-        $chats = ft_get_my_chats($_COOKIE['user_id']);
-        ft_print_chats($chats);
-        ?>
+<div class="container chats">  
+         <?php
+         $chats = ft_get_my_chats($_COOKIE['user_id']);
+         if (count($chats) > 0)
+         {
+             echo "<div class='columns is-multiline'>"; // Creates multi-column layout
+             foreach ($chats as $chat)
+             {
+                 echo "<div class='column is-one-third'>"; // Limit each chat to 1/3 width
+                 echo "<div class='box chat'>"; // Box for styling
+                 echo "<a href='chat_product.php?product_id=" . $chat['product_id'] . "'>";
+                 $product_name = ft_get_produc_info($chat['product_id']);
+                 echo "<h3>" . $product_name['product_name'] . "</h3>";
+                 ft_print_photo($chat['product_id']);
+                 echo "</a>";
+                 echo "<h3>" . ft_get_other_perosn_name($chat['user_id_buyer'], $chat['user_id_seller']) . "</h3>";
+                 echo "</div>"; // Close chat box
+                 echo "</div>"; // Close column
+             }
+             echo "</div>"; // Close columns
+         }
+         else
+         {
+             echo "<p>You have no messages.</p>";
+         }
+         ?>
     </div>
 </body>
 </html>

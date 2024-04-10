@@ -1,21 +1,12 @@
 
 
-window.onload = function() {
+window.onload = function()
+{
     
-    // var message = {
-    //     "chat_id": document.getElementById('chat_id').textContent,
-    //     "user_id_buyer": document.getElementById('user_id_buyer').textContent,
-    //     "user_id_seller": document.getElementById('user_id_seller').textContent,
-    //     // "message": messageText
-    // };
-    // console.log(message);
     ft_send_message();
+    var chatBox = document.getElementById('chat-box');
+    chatBox.scrollTop = chatBox.scrollHeight;
 
-    // document.addEventListener('DOMContentLoaded', (event) =>
-    // {
-    //     let chatBox = document.getElementById('chat-box');
-    //     chatBox.scrollTop = chatBox.scrollHeight;
-    // });
 };
 
 
