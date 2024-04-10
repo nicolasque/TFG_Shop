@@ -87,7 +87,7 @@ else
     $user_info = ft_get_user_info($user_id);
 }
 ?>
-
+<!-- 
 <form method="post">
     <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
     Username: <input type="text" name="username" value="<?php echo $user_info['username']; ?>"><br>
@@ -95,4 +95,45 @@ else
     Email: <input type="email" name="email" value="<?php echo $user_info['email']; ?>"><br>
     Admin: <input type="checkbox" name="admin" <?php if ($user_info['admin'] == 1) echo "checked"; ?>><br>
     <input type="submit" value="Update User">
-</form>
+</form> -->
+
+<div class="section">
+    <div class="container">
+        <div class="columns is-centered">
+            <div class="column is-half">
+                <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                    <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
+                    <div class="field">
+                        <label class="label">Username</label>
+                        <div class="control">
+                            <input class="input" type="text" name="username" value="<?php echo $user_info['username']; ?>">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Password</label>
+                        <div class="control">
+                            <input class="input" type="password" name="password" value="<?php echo $user_info['password']; ?>">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Email</label>
+                        <div class="control">
+                            <input class="input" type="text" name="email" value="<?php echo $user_info['email']; ?>">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Admin</label>
+                        <div class="control">
+                            <input class="checkbox" type="checkbox" name="admin" <?php echo $user_info['admin'] ? 'checked' : ''; ?>>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <input class="button is-link" type="submit" value="Update">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

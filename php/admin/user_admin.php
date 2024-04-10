@@ -51,26 +51,34 @@ $users = ft_fetch_users(ft_create_conexion()); // Replace this with your actual 
     </style>
 </head>
 <body>
-    <h1>User Admin</h1>
-    <table>
-        <tr>
-            <th>Username</th>
-            <th>Name</th>
-            <th>Surname</th>
-            <th>Is Admin</th>
-            <th>Email</th>
-            <th>Actions</th>
-        </tr>
-        <?php foreach ($users as $user): ?>
-            <tr>
-                <td><?php echo $user['username']; ?></td>
-                <td><?php echo $user['name']; ?></td>
-                <td><?php echo $user['surname']; ?></td>
-                <td><?php echo $user['admin'] ? 'Yes' : 'No'; ?></td>
-                <td><?php echo $user['email']; ?></td>
-                <td><a href="edit_user.php?user_id=<?php echo $user['user_id']; ?>">Edit</a></td>
-            </tr>
-        <?php endforeach; ?>
-    </table>
+    <section class="section">
+        <div class="container">
+            <h1 class="title">User Admin</h1>
+            <table class="table is-fullwidth is-striped">
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Name</th>
+                        <th>Surname</th>
+                        <th>Is Admin</th>
+                        <th>Email</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($users as $user): ?>
+                        <tr>
+                            <td><?php echo $user['username']; ?></td>
+                            <td><?php echo $user['name']; ?></td>
+                            <td><?php echo $user['surname']; ?></td>
+                            <td><?php echo $user['admin'] ? 'Yes' : 'No'; ?></td>
+                            <td><?php echo $user['email']; ?></td>
+                            <td><a class="button is-small is-link" href="edit_user.php?user_id=<?php echo $user['user_id']; ?>">Edit</a></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </section>
 </body>
 </html>

@@ -30,11 +30,47 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
-<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+<!-- <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
     Username: <input type="text" name="username" value="<?php echo $user_info['username']; ?>"><br>
     Password: <input type="password" name="password" value="<?php echo $user_info['password']; ?>"><br>
     Email: <input type="text" name="email" value="<?php echo $user_info['email']; ?>"><br>
     <input type="submit" value="Update">
-</form>
+</form> -->
+
+
+<div class="section">
+    <div class="container">
+        <div class="columns is-centered">
+            <div class="column is-half">
+                <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                    <div class="field">
+                        <label class="label">Username</label>
+                        <div class="control">
+                            <input class="input" type="text" name="username" value="<?php echo $user_info['username']; ?>">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Password</label>
+                        <div class="control">
+                            <input class="input" type="password" name="password" value="<?php echo $user_info['password']; ?>">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Email</label>
+                        <div class="control">
+                            <input class="input" type="text" name="email" value="<?php echo $user_info['email']; ?>">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <input class="button is-link" type="submit" value="Update">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 <?php include '../footer.php'; ?> 
 
