@@ -45,7 +45,8 @@
                 </div>
                 <div class="field">
                     <p class="control has-icons-left">
-                        <input type="password" class="input" name="password" id="password" placeholder="Password" required><br>
+                        <input type="password" class="input" name="password" id="password" placeholder="Password"
+                            required><br>
                         <span class="icon is-small is-left">
                             <i class="fas fa-lock"></i>
                         </span>
@@ -62,6 +63,6 @@
 
 
 </body>
-<?php include 'footer.php'; ?> 
+<?php include 'footer.php'; ?>
 
 </html>

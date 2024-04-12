@@ -7,7 +7,7 @@ function ft_scroll_images()
 {
     $('.next').click(function()
     {
-        var $currentGallery = $(this).parent('.image-gallery');
+        var $currentGallery = $(this).parent('.image');
         var $currentImage = $currentGallery.find('.gallery-image:visible');
         var $nextImage = $currentImage.next('.gallery-image');
         //DEBUG
@@ -26,7 +26,7 @@ function ft_scroll_images()
 
     $('.prev').click(function()
     {
-        var $currentGallery = $(this).parent('.image-gallery');
+        var $currentGallery = $(this).parent('.image');
         var $currentImage = $currentGallery.find('.gallery-image:visible');
         var $prevImage = $currentImage.prev('.gallery-image');
         if ($prevImage.length)

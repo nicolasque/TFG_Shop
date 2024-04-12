@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Welcome to Your Website</title>
   <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
+
 <body>
   <header>
     <?php include 'navbar.php'; ?>
@@ -28,22 +30,23 @@
     </section>
 
     <?php
-    if(isset($_COOKIE["user_id"]) && isset($_COOKIE["username"]) && isset($_COOKIE["name"]) && isset($_COOKIE["surname"]) && isset($_COOKIE["email"]))
+    if (isset($_COOKIE["user_id"]) && isset($_COOKIE["username"]) && isset($_COOKIE["name"]) && isset($_COOKIE["surname"]) && isset($_COOKIE["email"]))
     {
-        echo "Cookies are set!<br>";
-        echo "user_id: " . $_COOKIE["user_id"] . "<br>";
-        echo "username: " . $_COOKIE["username"] . "<br>";
-        echo "name: " . $_COOKIE["name"] . "<br>";
-        echo "surname: " . $_COOKIE["surname"] . "<br>";
-        echo "email: " . $_COOKIE["email"] . "<br>";
+      echo "Cookies are set!<br>";
+      echo "user_id: " . $_COOKIE["user_id"] . "<br>";
+      echo "username: " . $_COOKIE["username"] . "<br>";
+      echo "name: " . $_COOKIE["name"] . "<br>";
+      echo "surname: " . $_COOKIE["surname"] . "<br>";
+      echo "email: " . $_COOKIE["email"] . "<br>";
     }
     else
     {
-        echo "Cookies are not set!";
+      echo "Cookies are not set!";
 
     } ?>
 
   </main>
 </body>
-<?php include 'footer.php'; ?> 
+<?php include 'footer.php'; ?>
+
 </html>

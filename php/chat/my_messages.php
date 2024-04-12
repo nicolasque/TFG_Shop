@@ -1,4 +1,4 @@
-<?php 
+<?php
 include '../navbar.php';
 include '../create_conexion.php';
 
@@ -20,7 +20,7 @@ function ft_get_user_info($user_id)
     else
     {
         $connexion->close();
-        return false;
+        return FALSE;
     }
 }
 
@@ -75,7 +75,8 @@ function ft_get_photos($photo_folder)
 {
     $photos = [];
     $folder_path = $_SERVER['DOCUMENT_ROOT'] . "/tfg_shop/images/products/" . $photo_folder;
-    if (file_exists($folder_path)) {
+    if (file_exists($folder_path))
+    {
         $files = scandir($folder_path);
         foreach ($files as $file)
         {
@@ -94,7 +95,8 @@ function ft_print_photo($product_id)
 
     $photos = ft_get_photos($product['photo']);
     echo "<div class='image-gallery' id='product-{$product['product_id']}'>";
-    if (count($photos) > 0) {
+    if (count($photos) > 0)
+    {
         echo "<img src='/tfg_shop/images/products/{$product['photo']}/{$photos[0]}' width='100px'>";
     }
     echo "</div>";
@@ -120,21 +122,20 @@ function ft_print_chats($chats)
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>My messages</title>
     <!-- <link rel="stylesheet" href="../css/my_messages.css"> -->
     <style>
-        .chats
-        {
+        .chats {
             display: flex;
             flex-direction: column;
             align-items: center;
             margin-top: 50px;
         }
 
-        .chat
-        {
+        .chat {
             width: 80%;
             height: 100px;
             border: 1px solid black;
@@ -144,39 +145,40 @@ function ft_print_chats($chats)
             align-items: center;
         }
 
-        .chat h3
-        {
+        .chat h3 {
             margin: 0px;
         }
     </style>
 </head>
+
 <body>
-<div class="container chats">  
-         <?php
-         $chats = ft_get_my_chats($_COOKIE['user_id']);
-         if (count($chats) > 0)
-         {
-             echo "<div class='columns is-multiline'>"; // Creates multi-column layout
-             foreach ($chats as $chat)
-             {
-                 echo "<div class='column is-one-third'>"; // Limit each chat to 1/3 width
-                 echo "<div class='box chat'>"; // Box for styling
-                 echo "<a href='chat_product.php?product_id=" . $chat['product_id'] . "'>";
-                 $product_name = ft_get_produc_info($chat['product_id']);
-                 echo "<h3>" . $product_name['product_name'] . "</h3>";
-                 ft_print_photo($chat['product_id']);
-                 echo "</a>";
-                 echo "<h3>" . ft_get_other_perosn_name($chat['user_id_buyer'], $chat['user_id_seller']) . "</h3>";
-                 echo "</div>"; // Close chat box
-                 echo "</div>"; // Close column
-             }
-             echo "</div>"; // Close columns
-         }
-         else
-         {
-             echo "<p>You have no messages.</p>";
-         }
-         ?>
+    <div class="container chats">
+        <?php
+        $chats = ft_get_my_chats($_COOKIE['user_id']);
+        if (count($chats) > 0)
+        {
+            echo "<div class='columns is-multiline'>"; // Creates multi-column layout
+            foreach ($chats as $chat)
+            {
+                echo "<div class='column is-one-third'>"; // Limit each chat to 1/3 width
+                echo "<div class='box chat'>"; // Box for styling
+                echo "<a href='chat_product.php?product_id=" . $chat['product_id'] . "'>";
+                $product_name = ft_get_produc_info($chat['product_id']);
+                echo "<h3>" . $product_name['product_name'] . "</h3>";
+                ft_print_photo($chat['product_id']);
+                echo "</a>";
+                echo "<h3>" . ft_get_other_perosn_name($chat['user_id_buyer'], $chat['user_id_seller']) . "</h3>";
+                echo "</div>"; // Close chat box
+                echo "</div>"; // Close column
+            }
+            echo "</div>"; // Close columns
+        }
+        else
+        {
+            echo "<p>You have no messages.</p>";
+        }
+        ?>
     </div>
 </body>
+
 </html>

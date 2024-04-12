@@ -21,7 +21,7 @@ function ft_get_product_info($product_id)
     else
     {
         $connexion->close();
-        return false;
+        return FALSE;
     }
 }
 
@@ -42,7 +42,8 @@ function ft_get_photos($photo_folder)
 {
     $photos = [];
     $folder_path = $_SERVER['DOCUMENT_ROOT'] . "/tfg_shop/images/products/" . $photo_folder;
-    if (file_exists($folder_path)) {
+    if (file_exists($folder_path))
+    {
         $files = scandir($folder_path);
         foreach ($files as $file)
         {
@@ -61,12 +62,13 @@ function ft_print_photos($row)
     if (count($photos) > 1)
     {
         echo "<div class='image-gallery' id='product-gallery-{$row['product_id']}'>";
-        foreach ($photos as $index => $photo) {
+        foreach ($photos as $index => $photo)
+        {
             $display = $index == 0 ? 'block' : 'none';
             echo "<img class='gallery-image' style='display: {$display};' src='/tfg_shop/images/products/{$row['photo']}/{$photo}' width='100px'>";
         }
-        echo "<button class='prev button is-ghost'>Prev</button>";
-        echo "<button class='next button is-ghost'>Next</button>";
+        echo "<button class='prev button is-link is-outlined' style='position: absolute; top: 50%; left: 0;'><-</button>";
+        echo "<button class='next button is-link is-outlined' style='position: absolute; top: 50%; right: 0;'>-></button>";
         echo "</div>";
     }
     else
@@ -77,33 +79,37 @@ function ft_print_photos($row)
     }
 }
 
+
 function ft_print_product()
 {
     $product_id = $_GET['product_id'];
     $product_info = ft_get_product_info($product_id);
     if ($product_info)
     {
-        // $photos = ft_get_photos($product_info['photo']);
-        echo "<div class='product'>";
-        echo "<div class='product_info'>";
-        echo "<h1>" . $product_info['product_name'] . "</h1>";
-        echo "<h3>Seller: " . ft_get_seller_name($product_info['user_id']) . "</h3>";
-        echo "<p>Precio" . $product_info['price'] . "€</p>";
-        echo "<p><h2>Descripcion: </h2>" . $product_info['description'] . "</p>";
-        echo "<br>";
+        echo "<div class='box'>";
+        echo "<div class='media'>";
+        echo "<div class='media-left'>";
+        ft_print_photos($product_info);
+        echo "</div>";
+        echo "<div class='media-content'>";
+        echo "<p class='title is-4'>" . $product_info['product_name'] . "</p>";
+        echo "<p class='subtitle is-6'>Seller: " . ft_get_seller_name($product_info['user_id']) . "</p>";
+        echo "<p>Price: " . $product_info['price'] . "€</p>";
+        echo "<p>Description: " . $product_info['description'] . "</p>";
         if ($product_info['city'] != "")
         {
-            echo "<p><h2>Ciudad: </h2>" . $product_info['city'] . "</p>";
+            echo "<p>City: " . $product_info['city'] . "</p>";
         }
         echo "</div>";
-        ft_print_photos($product_info);
+        echo "</div>";
         echo "</div>";
     }
     else
     {
-        echo "<h1>Product not found</h1>";
+        echo "<h1 class='title'>Product not found</h1>";
     }
 }
+
 
 
 
@@ -122,21 +128,21 @@ function ft_is_not_my_product($product_id)
         if (!isset($_COOKIE['user_id']))
         {
             echo "<a href='/tfg_shop/php/login.php'>LogIn to start chating</a>";
-            return true;
+            return TRUE;
         }
         if ($row['user_id'] != $_COOKIE['user_id'])
         {
             echo "<a class='button is-primary' href='/tfg_shop/php/chat/chat_product.php?product_id=" . $_GET['product_id'] . "'>Chat</a>";
-            return true;
+            return TRUE;
         }
         else
         {
-            return false;
+            return FALSE;
         }
     }
     else
     {
-        return false;
+        return FALSE;
     }
 }
 
@@ -145,6 +151,7 @@ function ft_is_not_my_product($product_id)
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -152,11 +159,11 @@ function ft_is_not_my_product($product_id)
     <script src="../../js/jquery.js"></script>
     <script src="../../js/js_products_page.js"></script>
     <style>
-            .image-gallery {
+        .image-gallery {
             width: 150px;
             height: 150px;
             position: relative;
-        }  
+        }
 
         .gallery-image {
             position: absolute;
@@ -171,12 +178,14 @@ function ft_is_not_my_product($product_id)
     </style>
 
 </head>
+
 <body>
-    <?php 
-        ft_print_product(); 
-        ft_is_not_my_product($_GET['product_id']);
+    <?php
+    ft_print_product();
+    ft_is_not_my_product($_GET['product_id']);
     ?>
 
-    
+
 </body>
+
 </html>

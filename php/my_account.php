@@ -60,7 +60,8 @@ function ft_get_photos($photo_folder)
 {
     $photos = [];
     $folder_path = $_SERVER['DOCUMENT_ROOT'] . "/tfg_shop/images/products/" . $photo_folder;
-    if (file_exists($folder_path)) {
+    if (file_exists($folder_path))
+    {
         $files = scandir($folder_path);
         foreach ($files as $file)
         {
@@ -75,20 +76,21 @@ function ft_get_photos($photo_folder)
 
 
 
- $user_info = ft_get_user_info($user_id);
+$user_info = ft_get_user_info($user_id);
 ?>
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title>My Account</title>
-  <style>
-    /* Add your CSS styles here */
-  </style>
+    <title>My Account</title>
+    <style>
+        /* Add your CSS styles here */
+    </style>
 </head>
 
 <body>
-<h1>Welcome, <?php echo $user_info['username']?>!</h1>
-    
+    <h1>Welcome, <?php echo $user_info['username'] ?>!</h1>
+
     <ul>
         <li><a href="/tfg_shop/php/user_acount/edit_my_profile.php">Actualizar datos de perfil</a></li>
         <br>

@@ -38,8 +38,9 @@ function ft_update_user_info($user_id, $username, $password, $email, $admin)
     $connexion = ft_create_conexion();
     $sql = "UPDATE user SET username = ?, password = ?, email = ? , admin = ? WHERE user_id = ?";
     $stmt = $connexion->prepare($sql);
-    $stmt->bind_param("ssssi", $username, $password, $email, $admin , $user_id);
+    $stmt->bind_param("ssssi", $username, $password, $email, $admin, $user_id);
     $stmt->execute();
+    $connexion->close();
     if ($stmt->affected_rows > 0)
     {
         return (true);
@@ -48,7 +49,6 @@ function ft_update_user_info($user_id, $username, $password, $email, $admin)
     {
         return (false);
     }
-    $connexion->close();
 }
 
 // Get user info
@@ -79,7 +79,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
         echo "Error updating user";
     }
-    
 }
 else
 {
@@ -93,7 +92,8 @@ else
     Username: <input type="text" name="username" value="<?php echo $user_info['username']; ?>"><br>
     Password: <input type="password" name="password" value="<?php echo $user_info['password']; ?>"><br>
     Email: <input type="email" name="email" value="<?php echo $user_info['email']; ?>"><br>
-    Admin: <input type="checkbox" name="admin" <?php if ($user_info['admin'] == 1) echo "checked"; ?>><br>
+    Admin: <input type="checkbox" name="admin" <?php if ($user_info['admin'] == 1)
+        echo "checked"; ?>><br>
     <input type="submit" value="Update User">
 </form> -->
 
@@ -106,13 +106,15 @@ else
                     <div class="field">
                         <label class="label">Username</label>
                         <div class="control">
-                            <input class="input" type="text" name="username" value="<?php echo $user_info['username']; ?>">
+                            <input class="input" type="text" name="username"
+                                value="<?php echo $user_info['username']; ?>">
                         </div>
                     </div>
                     <div class="field">
                         <label class="label">Password</label>
                         <div class="control">
-                            <input class="input" type="password" name="password" value="<?php echo $user_info['password']; ?>">
+                            <input class="input" type="password" name="password"
+                                value="<?php echo $user_info['password']; ?>">
                         </div>
                     </div>
                     <div class="field">

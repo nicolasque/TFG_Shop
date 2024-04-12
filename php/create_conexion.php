@@ -1,17 +1,18 @@
-<?php 
+<?php
 
-function ft_create_conexion() {
+function ft_create_conexion()
+{
     //Informacion de conexion a la base de datos
-    $host  = "localhost";
+    $host = "localhost";
     $user = "root";
     $pass = "";
     $baseDatos = "web_compraventa";
 
     //crear la conexion
     $connexion = new mysqli($host, $user, $pass, $baseDatos);
-    if($connexion->connect_errno)
+    if ($connexion->connect_errno)
     {
-        echo "Fallo conectando a la MySQL:  )" . $connexion->connect_errno . ") ". $connexion->connect_error;
+        echo "Fallo conectando a la MySQL:  )" . $connexion->connect_errno . ") " . $connexion->connect_error;
     }
     else
     {

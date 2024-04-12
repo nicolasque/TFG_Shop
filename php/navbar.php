@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="../css/navbar.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
 
 
@@ -8,7 +9,8 @@ function ft_display_loged()
 	echo "<a class='navbar-item' href='/tfg_shop/php/my_account.php'>My Account</a>";
 	echo "<a class='navbar-item' href='/tfg_shop/php/add_product.php'>Add product</a>";
 	echo "<a class='navbar-item' href='/tfg_shop/php/chat/my_messages.php'>Messages</a>";
-	if (ft_is_admin() == true) {
+	if (ft_is_admin() == true)
+	{
 		echo "<a class='navbar-item button is-infor is-small ' href='/tfg_shop/php/admin/admin_header.php'>Admin Page</a>";
 	}
 	echo "<a class='button is-danger is-small is-inverted' href='/tfg_shop/php/functions/logout.php'>Logout</a>";
@@ -28,7 +30,7 @@ function ft_if_user_is_logged()
 		return (false);
 }
 
-function	ft_is_admin()
+function ft_is_admin()
 {
 	if (isset($_COOKIE["admin"]) && $_COOKIE["admin"] == 1)
 		return (true);
