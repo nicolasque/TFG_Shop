@@ -1,4 +1,4 @@
-<?php 
+<?php
 include '../my_account.php';
 
 function ft_get_product($product_id)
@@ -19,7 +19,7 @@ function ft_get_product($product_id)
     else
     {
         $connexion->close();
-        return false;
+        return FALSE;
     }
 }
 
@@ -79,6 +79,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -88,16 +89,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
             border-collapse: collapse;
             width: 100%;
         }
-        th, td {
+
+        th,
+        td {
             border: 1px solid black;
             padding: 8px;
             text-align: left;
         }
     </style>
 </head>
+
 <body>
     <?php ft_daw_product_edit($_GET['product_id']); ?>
 
 </body>
 
-<?php include '../footer.php'; ?> 
+<?php include '../footer.php'; ?>

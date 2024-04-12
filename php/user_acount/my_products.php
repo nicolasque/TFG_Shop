@@ -12,7 +12,7 @@ function ft_get_photo_folder($product_id)
     $stmt->execute();
     $result = $stmt->get_result();
     $row = $result->fetch_assoc();
-    $photo_folder = $row ? $row['photo'] : null;
+    $photo_folder = $row ? $row['photo'] : NULL;
     $connexion->close();
     return $photo_folder;
 }
@@ -21,12 +21,16 @@ function ft_delete_photos($photo_folder)
 {
 
     $folder_path = $_SERVER['DOCUMENT_ROOT'] . "/tfg_shop/images/products/" . $photo_folder;
-    if (file_exists($folder_path)) {
+    if (file_exists($folder_path))
+    {
         $files = scandir($folder_path);
-        foreach ($files as $file) {
-            if ($file != '.' && $file != '..') {
+        foreach ($files as $file)
+        {
+            if ($file != '.' && $file != '..')
+            {
                 $file_path = $folder_path . '/' . $file;
-                if (is_file($file_path)) {
+                if (is_file($file_path))
+                {
                     unlink($file_path);
                 }
             }
@@ -92,7 +96,8 @@ function ft_print_photo($photo_folder)
 {
     $photos = ft_get_photos($photo_folder);
     echo "<div class='image-gallery' id='product-{$photo_folder}'>";
-    if (!empty($photos)) {
+    if (!empty($photos))
+    {
         echo "<img src='/tfg_shop/images/products/{$photo_folder}/{$photos[0]}' width='100px'>";
     }
     echo "</div>";
@@ -105,6 +110,7 @@ $user_products = ft_get_user_products($user_id);
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>My Products</title>
     <style>
@@ -112,20 +118,23 @@ $user_products = ft_get_user_products($user_id);
             border-collapse: collapse;
             width: 100%;
         }
-        th, td {
+
+        th,
+        td {
             border: 1px solid black;
             padding: 8px;
             text-align: left;
         }
     </style>
     <?php
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['product_id']) && is_numeric($_POST['product_id']))
-        {
-            ft_delete_product($_POST['product_id']);
-            header('Location: /tfg_shop/php/user_acount/my_products.php');
-        }
-?>
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['product_id']) && is_numeric($_POST['product_id']))
+    {
+        ft_delete_product($_POST['product_id']);
+        header('Location: /tfg_shop/php/user_acount/my_products.php');
+    }
+    ?>
 </head>
+
 <body>
     <section class="section">
         <div class="container">
@@ -148,8 +157,11 @@ $user_products = ft_get_user_products($user_id);
                             <td><?php echo $product['product_name']; ?></td>
                             <td><?php echo $product['description']; ?></td>
                             <td><?php echo $product['price']; ?></td>
-                            <td><a class="button is-small is-link" href="edit_product.php?product_id=<?php echo $product['product_id']; ?>">Edit</a></td>
-                            <td><a class="button is-small is-danger" href="delete_product.php?product_id=<?php echo $product['product_id']; ?>">Delete</a></td>
+                            <td><a class="button is-small is-link"
+                                    href="edit_product.php?product_id=<?php echo $product['product_id']; ?>">Edit</a></td>
+                            <td><a class="button is-small is-danger"
+                                    href="delete_product.php?product_id=<?php echo $product['product_id']; ?>">Delete</a>
+                            </td>
 
                         </tr>
                     <?php endforeach; ?>
@@ -157,6 +169,7 @@ $user_products = ft_get_user_products($user_id);
             </table>
         </div>
     </section>
-    <?php include '../footer.php'; ?> 
+    <?php include '../footer.php'; ?>
 </body>
+
 </html>
