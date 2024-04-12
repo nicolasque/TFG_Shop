@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="../css/navbar.css">
+<link rel="stylesheet" href="/tfg_shop/css/navbar.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
 
 
@@ -6,9 +6,9 @@
 
 function ft_display_loged()
 {
-	echo "<a class='navbar-item' href='/tfg_shop/php/my_account.php'>My Account</a>";
-	echo "<a class='navbar-item' href='/tfg_shop/php/add_product.php'>Add product</a>";
-	echo "<a class='navbar-item' href='/tfg_shop/php/chat/my_messages.php'>Messages</a>";
+	echo "<a class='navbar-item' href='/tfg_shop/php/my_account.php'>Mi cuenta</a>";
+	echo "<a class='navbar-item' href='/tfg_shop/php/add_product.php'>Añadir producto</a>";
+	echo "<a class='navbar-item' href='/tfg_shop/php/chat/my_messages.php'>Mensajes</a>";
 	if (ft_is_admin() == true)
 	{
 		echo "<a class='navbar-item button is-infor is-small ' href='/tfg_shop/php/admin/admin_header.php'>Admin Page</a>";
@@ -19,7 +19,7 @@ function ft_display_loged()
 function ft_display_not_loged()
 {
 	echo "<a class='button is-light  ' href='/tfg_shop/php/login.php'>Login</a>";
-	echo "<a class='button is-primary' href='/tfg_shop/php/create_user.php'>Create user</a>";
+	echo "<a class='button is-primary' href='/tfg_shop/php/create_user.php'>Crear usuario</a>";
 }
 
 function ft_if_user_is_logged()
@@ -54,9 +54,9 @@ function ft_is_admin()
 
 			<div id="navbar " class="navbar-menu">
 				<div class="navbar-start">
-					<a class="navbar-item" href="/tfg_shop/php/index.php">Home</a>
+					<a class="navbar-item" href="/tfg_shop/php/index.php">Inicio</a>
 
-					<a class="navbar-item" href="/tfg_shop/php/all_products_page.php">Products</a>
+					<a class="navbar-item" href="/tfg_shop/php/all_products_page.php">Productos</a>
 
 
 					<?php

@@ -62,35 +62,6 @@ function ft_delete_product($product_id)
     ft_delete_photos(ft_get_photo_folder($product_id));
 }
 
-function ft_print_products()
-{
-    $products = ft_get_products();
-    echo "<table id='col'>";
-    echo "<tr>";
-    echo "<th>Product Name</th>";
-    echo "<th>Description</th>";
-    echo "<th>Price</th>";
-    echo "<th>Photos</th>";
-    echo "</tr>";
-    foreach ($products as $product)
-    {
-        echo "<tr>";
-        echo "<td>" . $product['product_name'] . "</td>";
-        echo "<td>" . $product['description'] . "</td>";
-        echo "<td>" . $product['price'] . "€</td>";
-        echo "<td>";
-        $photos = ft_get_photos($product['photo']);
-        echo "<div class='image-gallery' id='product-{$product['product_id']}'>";
-        foreach ($photos as $photo)
-        {
-            echo "<img src='/tfg_shop/images/products/{$product['photo']}/{$photo}' width='100px'>";
-        }
-        echo "</div>";
-        echo "</td>";
-        echo "</tr>";
-    }
-    echo "</table>";
-}
 
 function ft_print_photo($photo_folder)
 {
