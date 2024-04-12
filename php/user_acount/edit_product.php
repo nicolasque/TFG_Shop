@@ -97,8 +97,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 </head>
 <body>
     <?php ft_daw_product_edit($_GET['product_id']); ?>
-    <br>
-    
 
 </body>
 

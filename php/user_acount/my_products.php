@@ -137,7 +137,8 @@ $user_products = ft_get_user_products($user_id);
                         <th>Product Name</th>
                         <th>Description</th>
                         <th>Price</th>
-                        <th>Actions</th>
+                        <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -148,6 +149,8 @@ $user_products = ft_get_user_products($user_id);
                             <td><?php echo $product['description']; ?></td>
                             <td><?php echo $product['price']; ?></td>
                             <td><a class="button is-small is-link" href="edit_product.php?product_id=<?php echo $product['product_id']; ?>">Edit</a></td>
+                            <td><a class="button is-small is-danger" href="delete_product.php?product_id=<?php echo $product['product_id']; ?>">Delete</a></td>
+
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
