@@ -57,6 +57,17 @@ function ft_get_other_perosn_name($user_id_buyer, $user_id_seller)
     }
 }
 
+function ft_is_my_product($user_id_buyer)
+{
+    if ($user_id_buyer == $_COOKIE['user_id'])
+    {
+        return "has-background-dark"; 
+    }
+    else
+    {
+        return "has-background-primary-dark";
+    }
+}
 
 function ft_get_produc_info($product_id)
 {
@@ -118,6 +129,8 @@ function ft_print_chats($chats)
     }
 }
 
+
+
 ?>
 
 <!DOCTYPE html>
@@ -133,24 +146,19 @@ function ft_print_chats($chats)
             flex-direction: column;
             align-items: center;
             margin-top: 50px;
-        }
 
+        }
         .chat {
-            width: 80%;
-            height: 100px;
-            border: 1px solid black;
-            margin-top: 10px;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-        }
-
-        .chat h3 {
-            margin: 0px;
+            margin: 10px;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
-
 <body>
     <div class="container chats">
         <?php
@@ -160,16 +168,17 @@ function ft_print_chats($chats)
             echo "<div class='columns is-multiline'>"; // Creates multi-column layout
             foreach ($chats as $chat)
             {
-                echo "<div class='column is-one-third'>"; // Limit each chat to 1/3 width
-                echo "<div class='box chat'>"; // Box for styling
+                $product_class = ft_is_my_product($chat['user_id_buyer']);
+                echo "<div class='box chat $product_class p-5 has-shadow is-flex is-align-items-center is-justify-content-space-between is-flex-direction-column'>"; // Box for styling
                 echo "<a href='chat_product.php?product_id=" . $chat['product_id'] . "'>";
+                echo "<div class=' p-3 mb-3'>";
                 $product_name = ft_get_produc_info($chat['product_id']);
-                echo "<h3>" . $product_name['product_name'] . "</h3>";
+                echo "<h3 class='has-text-primary'>" . $product_name['product_name'] . "</h3>";
+                echo "</div>";
                 ft_print_photo($chat['product_id']);
                 echo "</a>";
-                echo "<h3>" . ft_get_other_perosn_name($chat['user_id_buyer'], $chat['user_id_seller']) . "</h3>";
+                echo "<h3 class='mt-3'>" . ft_get_other_perosn_name($chat['user_id_buyer'], $chat['user_id_seller']) . "</h3>";
                 echo "</div>"; // Close chat box
-                echo "</div>"; // Close column
             }
             echo "</div>"; // Close columns
         }

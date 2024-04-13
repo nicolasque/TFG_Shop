@@ -65,7 +65,7 @@ function ft_print_photos($row)
         foreach ($photos as $index => $photo)
         {
             $display = $index == 0 ? 'block' : 'none';
-            echo "<img class='gallery-image' style='display: {$display};' src='/tfg_shop/images/products/{$row['photo']}/{$photo}' width='100px'>";
+            echo "<img class='image' style='display: {$display};' src='/tfg_shop/images/products/{$row['photo']}/{$photo}' width='100px'>";
         }
         echo "<button class='prev button is-link is-outlined' style='position: absolute; top: 50%; left: 0;'><-</button>";
         echo "<button class='next button is-link is-outlined' style='position: absolute; top: 50%; right: 0;'>-></button>";
@@ -132,7 +132,7 @@ function ft_is_not_my_product($product_id)
         }
         if ($row['user_id'] != $_COOKIE['user_id'])
         {
-            echo "<a class='button is-primary' href='/tfg_shop/php/chat/chat_product.php?product_id=" . $_GET['product_id'] . "'>Chat</a>";
+            echo "<a class='button is-primary' href='/tfg_shop/php/chat/chat_product.php?product_id=" . $_GET['product_id'] . "'>Ir al chat</a>";
             return TRUE;
         }
         else

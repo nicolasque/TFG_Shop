@@ -38,7 +38,7 @@ function ft_get_photos($photo_folder)
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Website Name - Products</title>
+    <title>Productos</title>
     <script src="../js/jquery.js"></script>
     <script src="../js/js_products_page.js"></script>
 
@@ -84,7 +84,7 @@ function ft_get_photos($photo_folder)
     ?>
     <main class="section">
         <div class="container">
-            <h1 class="title">Products</h1>
+            <h1 class="title">Productos: </h1>
             <div class="columns is-multiline">
                 <?php while ($row = $products->fetch_assoc())
                 { ?>
