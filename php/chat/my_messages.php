@@ -61,11 +61,11 @@ function ft_is_my_product($user_id_buyer)
 {
     if ($user_id_buyer == $_COOKIE['user_id'])
     {
-        return "has-background-dark"; 
+        return "has-background-info-light	"; 
     }
     else
     {
-        return "has-background-primary-dark";
+        return "has-background-success-light	";
     }
 }
 
