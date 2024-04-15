@@ -3,6 +3,7 @@
 
 <head>
     <title>Create User</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
     <script src="../js/jquery.js"></script>
     <script src="../js/add_user_ft.js"></script>
 </head>
@@ -13,33 +14,67 @@
     include 'create_conexion.php';
     ?>
 
-    <h1>Create User</h1>
-    <form method="POST" id="add_user_form" action="">
+    <section class="section">
+        <div class="container">
+            <h1 class="title">Create User</h1>
+            <form method="POST" id="add_user_form" action="">
 
-        <label for="username">Username:</label>
-        <input type="text" name="username" id="username" required><br>
+                <div class="field">
+                    <label class="label" for="username">Username:</label>
+                    <div class="control">
+                        <input class="input" type="text" name="username" id="username" required>
+                    </div>
+                </div>
 
-        <label for="name">Name:</label>
-        <input type="text" name="name" id="name" required><br>
+                <div class="field">
+                    <label class="label" for="name">Name:</label>
+                    <div class="control">
+                        <input class="input" type="text" name="name" id="name" required>
+                    </div>
+                </div>
 
-        <label for="surname">Surname:</label>
-        <input type="text" name="surname" id="surname" required><br>
+                <div class="field">
+                    <label class="label" for="surname">Surname:</label>
+                    <div class="control">
+                        <input class="input" type="text" name="surname" id="surname" required>
+                    </div>
+                </div>
 
-        <label for="email">Email:</label>
-        <input type="email" name="email" id="email" required><br>
+                <div class="field">
+                    <label class="label" for="email">Email:</label>
+                    <div class="control">
+                        <input class="input" type="email" name="email" id="email" required>
+                    </div>
+                </div>
 
-        <label for="password">Password:</label>
-        <input type="password" name="password" id="password" required><br>
+                <div class="field">
+                    <label class="label" for="password">Password:</label>
+                    <div class="control">
+                        <input class="input" type="password" name="password" id="password" required>
+                    </div>
+                </div>
 
-        <label for="password">Confirm Password:</label>
-        <input type="password" name="confirm_password" id="confirm_password" required><br>
+                <div class="field">
+                    <label class="label" for="confirm_password">Confirm Password:</label>
+                    <div class="control">
+                        <input class="input" type="password" name="confirm_password" id="confirm_password" required>
+                    </div>
+                </div>
 
-        <input type="submit" value="Create User" al>
+                <div class="field">
+                    <div class="control">
+                        <input class="button is-link" type="submit" value="Create User">
+                    </div>
+                </div>
 
-    </form>
-    <div id="message"></div>
-    <!-- Esto es para hacer comprobaciones  -->
+            </form>
+            <div id="message"></div>
+            <!-- Esto es para hacer comprobaciones  -->
+        </div>
+    </section>
+
+    <?php include 'footer.php'; ?>
+
 </body>
-<?php include 'footer.php'; ?>
 
 </html>

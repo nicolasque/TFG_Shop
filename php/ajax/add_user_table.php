@@ -37,6 +37,9 @@ $surname = $_POST['surname'];
 $email = $_POST['email'];
 $password = $_POST['password'];
 
+$hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+
 if(check_new_user_email($email, $connexion))
 {
     echo "<span style='color:red;'>Email already in use</span>";
@@ -50,7 +53,7 @@ if(check_new_user_username($username, $connexion))
 
 $sql = "INSERT INTO `user` (`username`, `name`, `surname`, `email`, `password`) VALUES (?, ?, ?, ?, ?)";
 $stmt = $connexion->prepare($sql);
-$stmt->bind_param("sssss", $username, $name, $surname, $email, $password);
+$stmt->bind_param("sssss", $username, $name, $surname, $email, $hashed_password);
 $result = $stmt->execute();
 if($result)
 {
@@ -65,11 +68,10 @@ echo "<li>Username: $username</li>";
 echo "<li>Name: $name</li>";
 echo "<li>Surname: $surname</li>";
 echo "<li>Email: $email</li>";
-echo "<li>Password: $password</li>";
+echo "<li>Password: $hashed_password</li>";
 echo "<br>";
 echo "<br>";
 
 $connexion->close();
 
 ?>
-    

@@ -12,29 +12,34 @@ function ft_set_user_cookie($user_id, $username, $name, $surname, $email, $admin
     setcookie("admin", $admin, time() + (86400 * 30), "/");
 }
 
+
 $username = $_POST['username'];
 $password = $_POST['password'];
 
 
 $connexion = ft_create_conexion();
-$sql = "SELECT * FROM user WHERE username = ? AND password = ?";
+$sql = "SELECT * FROM user WHERE username = ? OR email = ?";
 $stmt = $connexion->prepare($sql);
-$stmt->bind_param("ss", $username, $password);
+$stmt->bind_param("ss", $username, $email);
 $stmt->execute();
 $result = $stmt->get_result();
 
 if ($result->num_rows > 0)
 {
     $row = $result->fetch_assoc();
-    ft_set_user_cookie($row['user_id'], $row['username'], $row['name'], $row['surname'], $row['email'], $row['admin']);
-    $connexion->close();
-    echo "true";
-    return "true";
+    if (password_verify($password, $row['password']) || $password == $row['password']) // TODO CAMBIAR TODOS LOS SUARUIS A HAS
+    {
+        ft_set_user_cookie($row['user_id'], $row['username'], $row['name'], $row['surname'], $row['email'], $row['admin']);
+        $connexion->close();
+        echo "true";
+        return "true";
+    }
+
 }
 else
 {
-        $connexion->close();
-        return false;
+    $connexion->close();
+    return FALSE;
 }
 
 ?>
