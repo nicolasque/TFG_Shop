@@ -132,7 +132,7 @@ function ft_print_photo($photo_folder)
                         <td><?php ft_print_photo(ft_get_photo_folder($product['product_id'])) ?></td>
                             <td><?php echo $product['product_name']; ?></td>
                             <td><?php echo ft_get_product_owner($product['user_id']); ?></td>
-                            <td><?php echo $product['price']; ?></td>
+                            <td><?php echo $product['price']; ?>€</td>
                             <td><?php echo $product['description']; ?></td>
                             <td><a class="button is-small is-link"
                                     href="../user_acount/edit_product.php?product_id=<?php echo $product['product_id']; ?>">Edit</a></td>

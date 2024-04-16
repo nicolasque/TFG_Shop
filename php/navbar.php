@@ -7,7 +7,7 @@
 function ft_display_loged()
 {
 	echo "<a class='navbar-item' href='/tfg_shop/php/my_account.php'>Mi cuenta</a>";
-	echo "<a class='navbar-item' href='/tfg_shop/php/add_product.php'>Añadir producto</a>";
+	echo "<a class='navbar-item' href='/tfg_shop/php/product/add_product.php'>Añadir producto</a>";
 	echo "<a class='navbar-item' href='/tfg_shop/php/chat/my_messages.php'>Mensajes</a>";
 	if (ft_is_admin() == true)
 	{
@@ -56,7 +56,7 @@ function ft_is_admin()
 				<div class="navbar-start">
 					<a class="navbar-item" href="/tfg_shop/php/index.php">Inicio</a>
 
-					<a class="navbar-item" href="/tfg_shop/php/all_products_page.php">Productos</a>
+					<a class="navbar-item" href="/tfg_shop/php/product/all_products_page.php">Productos</a>
 
 
 					<?php

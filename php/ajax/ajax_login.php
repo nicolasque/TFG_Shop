@@ -41,5 +41,3 @@ else
     $connexion->close();
     return FALSE;
 }
-
-?>

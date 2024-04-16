@@ -127,7 +127,7 @@ $user_products = ft_get_user_products($user_id);
                             <td><?php ft_print_photo(ft_get_photo_folder($product['product_id'])) ?></td>
                             <td><?php echo $product['product_name']; ?></td>
                             <td><?php echo $product['description']; ?></td>
-                            <td><?php echo $product['price']; ?></td>
+                            <td><?php echo $product['price']; ?>€</td>
                             <td><a class="button is-small is-link"
                                     href="edit_product.php?product_id=<?php echo $product['product_id']; ?>">Edit</a></td>
                             <td><a class="button is-small is-danger"

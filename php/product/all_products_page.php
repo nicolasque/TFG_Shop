@@ -1,6 +1,6 @@
 <?php
-include 'create_conexion.php';
-include 'navbar.php';
+include '../create_conexion.php';
+include '../navbar.php';
 
 function ft_get_products()
 {
@@ -39,8 +39,8 @@ function ft_get_photos($photo_folder)
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Productos</title>
-    <script src="../js/jquery.js"></script>
-    <script src="../js/js_products_page.js"></script>
+    <script src="../../js/jquery.js"></script>
+    <script src="../../js/js_products_page.js"></script>
 
     <!-- <script src="../js/script.js"></script> -->
 
@@ -80,7 +80,7 @@ function ft_get_photos($photo_folder)
 
 <body>
     <?php
-    $products = ft_get_products();
+    $products = (object)ft_get_products();
     ?>
     <main class="section">
         <div class="container">
@@ -117,7 +117,7 @@ function ft_get_photos($photo_folder)
                                 <div class="media">
                                     <div class="media-content">
                                         <p class="title is-4"><a
-                                                href="product/product.php?product_id=<?php echo $row['product_id']; ?>"><?php echo $row['product_name']; ?></a>
+                                                href="/tfg_shop/php/product/product.php?product_id=<?php echo $row['product_id']; ?>"><?php echo $row['product_name']; ?></a>
                                         </p>
                                         <p class="subtitle is-6"><?php echo $row['user_name']; ?></p>
                                     </div>
@@ -125,7 +125,7 @@ function ft_get_photos($photo_folder)
                                 <div class="content">
                                     <?php echo $row['description']; ?>
                                     <br>
-                                    <time datetime="2016-1-1"><?php echo $row['price']; ?>€</time>
+                                    <time class="content is-medium has-text-primary"><?php echo $row['price']; ?>€</time>
                                 </div>
                             </div>
                         </div>
@@ -139,6 +139,6 @@ function ft_get_photos($photo_folder)
 
 
 </body>
-<?php include 'footer.php'; ?>
+<?php include '../footer.php'; ?>
 
 </html>

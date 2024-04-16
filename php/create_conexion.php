@@ -23,4 +23,4 @@ function ft_create_conexion()
     return $connexion;
 }
 
-?>
+
