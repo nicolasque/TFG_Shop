@@ -61,11 +61,11 @@ function ft_print_photos($row)
     $photos = ft_get_photos($row['photo']);
     if (count($photos) > 1)
     {
-        echo "<div class='image-gallery' id='product-gallery-{$row['product_id']}'>";
+        echo "<div class='image image-gallery ' id='product-gallery-{$row['product_id']}'>";
         foreach ($photos as $index => $photo)
         {
             $display = $index == 0 ? 'block' : 'none';
-            echo "<img class='image' style='display: {$display};' src='/tfg_shop/images/products/{$row['photo']}/{$photo}' width='100px'>";
+            echo "<img class='gallery-image is-512x512' style='display: {$display};' src='/tfg_shop/images/products/{$row['photo']}/{$photo}' width='100px'>";
         }
         echo "<button class='prev button is-link is-outlined' style='position: absolute; top: 50%; left: 0;'><-</button>";
         echo "<button class='next button is-link is-outlined' style='position: absolute; top: 50%; right: 0;'>-></button>";

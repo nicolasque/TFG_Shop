@@ -11,7 +11,7 @@ function ft_scroll_images()
         var $currentImage = $currentGallery.find('.gallery-image:visible');
         var $nextImage = $currentImage.next('.gallery-image');
         //DEBUG
-        console.log("HELLL");
+        console.log("HELLLO");
         if ($nextImage.length)
         {
             $currentImage.hide();

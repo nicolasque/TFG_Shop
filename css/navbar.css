@@ -10,7 +10,8 @@
   }
   
   .navbar-container {
-    max-width: 1200px; /* Ancho máximo */
+    /* max-width: 1200px; Ancho máximo */
+    /* min-width: 1320px; Ancho mínimo */
     margin: 0 auto; /* Centrar */
     display: flex; /* Posicionamiento flexible */
     justify-content: space-between; /* Distribución de elementos */
