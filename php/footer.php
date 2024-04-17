@@ -49,9 +49,9 @@
                     <div class="footer-header">
                         <h3>Siguenos</h3>
                         <ul class="link-list">
-                        <li><a href="#"><img class="image is-24x24" src="/tfg_shop/images/social/instagram.png" alt="Instagram"></a></li>
-                        <li><a href="#"><img class="image is-24x24" src="/tfg_shop/images/social/linkedin1.png" alt="Linkedin"></a></li>
-                        <li><a href="#"><img class="image is-24x24" src="/tfg_shop/images/social/GitHub.png" alt="GitHub"></a></li>
+                        <li><a href="https://www.instagram.com"><img class="image is-24x24" src="/tfg_shop/images/social/instagram.png" alt="Instagram"></a></li>
+                        <li><a href="https://www.linkedin.com/in/nicolas-quecedo-b6bb261a2/"><img class="image is-24x24" src="/tfg_shop/images/social/linkedin1.png" alt="Linkedin"></a></li>
+                        <li><a href="https://github.com/nicolasque"><img class="image is-24x24" src="/tfg_shop/images/social/GitHub.png" alt="GitHub"></a></li>
                     </ul>
                     </div>
                 </div>

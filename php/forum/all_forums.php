@@ -1,9 +1,5 @@
 <?php
 include "forum_functions.php";
-
-
-
-
 ?>
 
 
