@@ -72,7 +72,7 @@ function ft_print_messages($messages)
 {
     foreach ($messages as $message)
     {
-        $color = sprintf('#%06X', $message['user_id'] * 123456); // Multiplica por un número para obtener colores diferentes
+        $color = sprintf('#%06X', $message['user_id'] * 123456 % 0x888888 + 0x444444);
 
         echo "<div class='box'>";
         echo "<p class='subtitle is-5'>" . $message['message'] . "</p>";
