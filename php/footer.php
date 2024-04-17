@@ -50,9 +50,8 @@
                         <h3>Siguenos</h3>
                         <ul class="link-list">
                         <li><a href="#"><img class="image is-24x24" src="/tfg_shop/images/social/instagram.png" alt="Instagram"></a></li>
-                        <li><a href="#"><img class="image is-24x24" src="/tfg_shop/images/social/linkedin.png" alt="Linkedin"></a></li>
+                        <li><a href="#"><img class="image is-24x24" src="/tfg_shop/images/social/linkedin1.png" alt="Linkedin"></a></li>
                         <li><a href="#"><img class="image is-24x24" src="/tfg_shop/images/social/GitHub.png" alt="GitHub"></a></li>
-
                     </ul>
                     </div>
                 </div>
