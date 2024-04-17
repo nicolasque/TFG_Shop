@@ -80,6 +80,7 @@ function ft_print_messages($messages)
     }
 }
 
+
 function ft_send_message($forum_id, $content)
 {
     $connexion = ft_create_conexion();
@@ -110,6 +111,42 @@ if (isset($_POST['content']))
     }
 }
 
+function ft_add_user_count($forum_id, $user_count)
+{
+    $connexion = ft_create_conexion();
+    $sql = "UPDATE forum SET number_users = ? WHERE forum_id = ?";
+    $stmt = $connexion->prepare($sql);
+    $stmt->bind_param("ii", $user_count, $forum_id);
+    $stmt->execute();
+    $connexion->close();
+}
+
+
+
+
+function ft_chount_active_user($forum_id)
+{
+    $connexion = ft_create_conexion();
+    $sql = "SELECT COUNT(DISTINCT user_id) AS user_count FROM forum_post WHERE forum_id = ?";
+    $stmt = $connexion->prepare($sql);
+    $stmt->bind_param("i", $forum_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    if ($result->num_rows > 0)
+    {
+        $row = $result->fetch_assoc();
+        $connexion->close();
+        ft_add_user_count($forum_id, $row['user_count']);
+        return $row['user_count'];
+    }
+    else
+    {
+        $connexion->close();
+        return FALSE;
+    }
+}
+
+
 
 ?>
 
@@ -132,7 +169,6 @@ if (isset($_POST['content']))
             <?php ft_print_messages($messages); ?>
 
             <div class="container">
-                <h2 class="subtitle">New Post</h2>
                 <form action="" method="POST">
                     <!-- Form to write a new post -->
                     <div class="field">
@@ -151,6 +187,7 @@ if (isset($_POST['content']))
             </div>
         </div>
     </section>
+    <?php ft_chount_active_user($_GET['forum_id']); ?>
 </body>
 
 </html>
