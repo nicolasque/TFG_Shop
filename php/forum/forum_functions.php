@@ -105,7 +105,7 @@ function ft_send_message($forum_id, $content)
 function ft_add_user_count($forum_id, $user_count)
 {
     $connexion = ft_create_conexion();
-    $sql = "UPDATE forum SET number_users = ? WHERE forum_id = ?";
+    $sql = "UPDATE forum SET active_users = ? WHERE forum_id = ?";
     $stmt = $connexion->prepare($sql);
     $stmt->bind_param("ii", $user_count, $forum_id);
     $stmt->execute();
@@ -215,7 +215,7 @@ function ft_print_forums($forums)
         echo "<h2 class='subtitle is-primary is-2 has-text-primary'>" . $forum['forum_name'] . "</h2>";
         echo "<p><h3 class='has-text-primary' >Topic: ". $forum['topic'] ."</h3></p>";
         echo "<p>" . $forum['description'] . "</p>";
-        echo "<p><span class='tag is-primary'>Active Users: ". $forum['number_users'] ."</span></p>";
+        echo "<p><span class='tag is-primary'>Active Users: ". $forum['active_users'] ."</span></p>";
         echo "</a>";
         echo "</div>";
         echo "</div>";

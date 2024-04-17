@@ -15,7 +15,7 @@ include "forum_functions.php";
     <?php include '../navbar.php'; ?>
     <section class="section">
         <div class="container">
-            <a href="create_forum.php" class="button is-primary">Create Forum</a>
+            <a href="create_forum.php?forum_id=0" class="button is-primary">Create Forum</a>
             <h1 class="title">Forum Information</h1>
             
             <div class="columns">
