@@ -1,3 +1,44 @@
+<?php
+include "../create_conexion.php";
+
+function ft_get_forums()
+{
+    $connexion = ft_create_conexion();
+    $sql = "SELECT * FROM forum";
+    $result = $connexion->query($sql);
+    $forums = [];
+    if ($result->num_rows > 0)
+    {
+        while ($row = $result->fetch_assoc())
+        {
+            $forums[] = $row;
+        }
+    }
+    $connexion->close();
+    return $forums;
+}
+
+function ft_print_forums($forums)
+{
+    foreach ($forums as $forum)
+    {
+        echo "<div class='column'>";
+        echo "<div class='box'>";
+        echo "<a class='' href='forum_site.php?forum_id=" . $forum['forum_id'] . "'>";
+        echo "<h2 class='subtitle is-primary is-2 has-text-primary'>" . $forum['forum_name'] . "</h2>";
+        echo "<p><h3 class='has-text-primary' >Topic: ". $forum['topic'] ."</h3></p>";
+        echo "<p>" . $forum['description'] . "</p>";
+        echo "<p><span class='tag is-primary'>Active Users: ". $forum['number_users'] ."</span></p>";
+        echo "</a>";
+        echo "</div>";
+        echo "</div>";
+    }
+}
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,29 +55,10 @@
             <h1 class="title">Forum Information</h1>
             
             <div class="columns">
-                <div class="column">
-                    <div class="box">
-                        <h2 class="subtitle">Forum 1</h2>
-                        <p>Description of Forum 1</p>
-                        <p>Active Users: 10</p>
-                    </div>
-                </div>
-                
-                <div class="column">
-                    <div class="box">
-                        <h2 class="subtitle">Forum 2</h2>
-                        <p>Description of Forum 2</p>
-                        <p>Active Users: 5</p>
-                    </div>
-                </div>
-                
-                <div class="column">
-                    <div class="box">
-                        <h2 class="subtitle">Forum 3</h2>
-                        <p>Description of Forum 3</p>
-                        <p>Active Users: 8</p>
-                    </div>
-                </div>
+                <?php
+                $forums = ft_get_forums();
+                ft_print_forums($forums);
+                ?>
             </div>
             
         </div>
