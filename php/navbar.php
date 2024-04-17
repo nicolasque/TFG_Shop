@@ -9,6 +9,7 @@ function ft_display_loged()
 	echo "<a class='navbar-item' href='/tfg_shop/php/my_account.php'>Mi cuenta</a>";
 	echo "<a class='navbar-item' href='/tfg_shop/php/product/add_product.php'>Añadir producto</a>";
 	echo "<a class='navbar-item' href='/tfg_shop/php/chat/my_messages.php'>Mensajes</a>";
+	echo "<a class='navbar-item' href='/tfg_shop/php/forum/all_forums.php'>Forums</a>";
 	if (ft_is_admin() == true)
 	{
 		echo "<a class='navbar-item button is-infor is-small ' href='/tfg_shop/php/admin/admin_header.php'>Admin Page</a>";
