@@ -93,7 +93,7 @@ function ft_print_photo($photo_folder)
 <html>
 
 <head>
-    <title>User Admin</title>
+    <title>Administrador de productos</title>
     <style>
         table {
             border-collapse: collapse;
@@ -112,7 +112,7 @@ function ft_print_photo($photo_folder)
 <body>
     <section class="section">
         <div class="container">
-            <h1 class="title">User Admin</h1>
+            <h1 class="title">Administrador de productos</h1>
             <table class="table is-fullwidth is-striped">
                 <thead>
                     <tr>

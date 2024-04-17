@@ -9,7 +9,7 @@ include '../navbar.php';
 <html>
 
 <head>
-    <title>Admin Page</title>
+    <title>Pagina de administrador</title>
     <?php
     if (!isset($user_id) && !ft_is_admin())
     {
@@ -22,12 +22,14 @@ include '../navbar.php';
 </head>
 
 <body>
-    <h1>Welcome, Admin!</h1>
+    <h1>Bienvenido, Admin!</h1>
 
     <ul>
-        <li><a href="user_admin.php">User Administration</a></li>
-        <li><a href="product_admin.php">Product Administration</a></li>
-        <li><a href="message_admin.php">Message Administration</a></li>
+        <li><a href="user_admin.php">Administracion de usuarios</a></li>
+        <br>
+        <li><a href="product_admin.php">Administracion de productos</a></li>
+        <br>
+        <li><a href="user_messages.php">Mensajes al administrador</a></li>
         <!-- Add more buttons for other admin functionalities -->
     </ul>
 </body>

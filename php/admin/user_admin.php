@@ -37,7 +37,7 @@ $users = ft_fetch_users(ft_create_conexion()); // Replace this with your actual 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>User Admin</title>
+    <title>Administrador de usuarios</title>
     <style>
         table {
             border-collapse: collapse;
@@ -53,7 +53,7 @@ $users = ft_fetch_users(ft_create_conexion()); // Replace this with your actual 
 <body>
     <section class="section">
         <div class="container">
-            <h1 class="title">User Admin</h1>
+            <h1 class="title">Administrador de usuarios</h1>
             <table class="table is-fullwidth is-striped">
                 <thead>
                     <tr>
