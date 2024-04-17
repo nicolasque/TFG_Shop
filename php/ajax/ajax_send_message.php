@@ -1,12 +1,12 @@
-<?php 
+<?php
 include '../create_conexion.php';
 
-function ft_send_message($chat_id ,$sender_id, $message)
+function ft_send_message($chat_id, $sender_id, $message)
 {
     $connexion = ft_create_conexion();
     $sql = "INSERT INTO messages (chat_id, user_id, message) VALUES (?, ?, ?)";
     $stmt = $connexion->prepare($sql);
-    $stmt->bind_param("iis", $chat_id ,$sender_id, $message);
+    $stmt->bind_param("iis", $chat_id, $sender_id, $message);
     $stmt->execute();
     if ($stmt->error)
     {

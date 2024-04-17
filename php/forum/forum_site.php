@@ -47,9 +47,9 @@ if (isset($_POST['content']))
                             <button class="button is-primary" type="submit">Submit</button>
                         </div>
                     </div>
-                    </div>
-                </form>
             </div>
+            </form>
+        </div>
         </div>
     </section>
     <?php ft_chount_active_user($_GET['forum_id']); ?>

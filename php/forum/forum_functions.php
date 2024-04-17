@@ -1,4 +1,4 @@
-<?php 
+<?php
 include '../create_conexion.php';
 
 
@@ -183,7 +183,7 @@ function ft_create_forum()
 {
     if (ft_chec_valid_forum(ft_get_forums()) == FALSE)
     {
-        return ;
+        return;
     }
     $connexion = ft_create_conexion();
     $sql = "INSERT INTO forum (forum_name, topic, description) VALUES (?, ?, ?)";
@@ -213,9 +213,9 @@ function ft_print_forums($forums)
         echo "<div class='box'>";
         echo "<a class='' href='forum_site.php?forum_id=" . $forum['forum_id'] . "'>";
         echo "<h2 class='subtitle is-primary is-2 has-text-primary'>" . $forum['forum_name'] . "</h2>";
-        echo "<p><h3 class='has-text-primary' >Topic: ". $forum['topic'] ."</h3></p>";
+        echo "<p><h3 class='has-text-primary' >Topic: " . $forum['topic'] . "</h3></p>";
         echo "<p>" . $forum['description'] . "</p>";
-        echo "<p><span class='tag is-primary'>Active Users: ". $forum['active_users'] ."</span></p>";
+        echo "<p><span class='tag is-primary'>Active Users: " . $forum['active_users'] . "</span></p>";
         echo "</a>";
         echo "</div>";
         echo "</div>";
