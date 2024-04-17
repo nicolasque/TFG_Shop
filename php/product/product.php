@@ -100,6 +100,9 @@ function ft_print_product()
         {
             echo "<p>City: " . $product_info['city'] . "</p>";
         }
+        
+        echo "<p><span class='tag is-primary'>Veces que se ha visto: " . $product_info['times_seen'] . "</span></p>";
+
         echo "</div>";
         echo "</div>";
         echo "</div>";
@@ -111,7 +114,15 @@ function ft_print_product()
 }
 
 
-
+function ft_update_times_seen($product_id)
+{
+    $connexion = ft_create_conexion();
+    $sql = "UPDATE product SET times_seen = times_seen + 1 WHERE product_id = ?";
+    $stmt = $connexion->prepare($sql);
+    $stmt->bind_param("i", $product_id);
+    $stmt->execute();
+    $connexion->close();
+}
 
 function ft_is_not_my_product($product_id)
 {
@@ -183,6 +194,7 @@ function ft_is_not_my_product($product_id)
     <?php
     ft_print_product();
     ft_is_not_my_product($_GET['product_id']);
+    ft_update_times_seen($_GET['product_id']);
     ?>
 
 

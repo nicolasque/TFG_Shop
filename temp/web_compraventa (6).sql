@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 17, 2024 at 06:49 PM
+-- Generation Time: Apr 17, 2024 at 07:36 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -196,6 +196,7 @@ CREATE TABLE `product` (
   `photo` text DEFAULT NULL,
   `description` text DEFAULT NULL,
   `city` varchar(30) DEFAULT NULL,
+  `times_seen` int(11) NOT NULL DEFAULT 0,
   `user_name` varchar(50) NOT NULL,
   `upload_date` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -204,22 +205,21 @@ CREATE TABLE `product` (
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`product_id`, `product_name`, `price`, `user_id`, `photo`, `description`, `city`, `user_name`, `upload_date`) VALUES
-(20, 'pruea pdf', 43, 3, '6602bf330dfd7', 'Esto ahora es un png cambio desde admin', NULL, 'quequecedo@gmail.com', '2024-03-26'),
-(21, 'vendo opel corsa', 5432, 3, '66045b9be625d', 'vendo un opelcorsa todo guapo, casi sin uso era de mi abuelo y no lo usaba demasido, pero le encantaba derrapar en las rotodndas los domingos por la tarde cuando llovia ', NULL, 'quequecedo@gmail.com', '2024-03-27'),
-(22, 'Prueba de textarea', 123, 3, '660467f3bac9f', 'haber que pasa cuando pasao un atextarea por aqui', NULL, 'quequecedo@gmail.com', '2024-03-27'),
-(23, 'tigre', 12, 3, '660472af4ef1e', 'es un puto trigre ahora estoy intentando cambiarlo desde la pagina de vcambiar', NULL, 'quequecedo@gmail.com', '2024-03-27'),
-(24, 'tren con peroo', 876, 1, '6604764499629', 'subo un tren un perro y un tigre creo', NULL, 'nicolasque1', '2024-03-27'),
-(26, 'soy quequece', 12345, 3, '660d8aa1599e4', 'estos es para generar buelt en la pagina', NULL, 'quequecedo@gmail.com', '2024-04-03'),
-(29, 'prodyucto de pacheco', 4345, 9, '660d8c0682b8e', 'pachecho sube este producto', NULL, 'pacheco', '2024-04-03'),
-(30, 'producto de user 42', 45, 10, '660d8d484b2da', 'esto es un producto de use r42', NULL, 'user42', '2024-04-03'),
-(31, 'otro podructo de user 42', 56, 10, '660d8d5b05371', 'segundo producto', NULL, 'user42', '2024-04-03'),
-(32, 'producto de ncolas', 654, 8, '660d8d93d7d79', 'que pase he ue pasa\r\n', NULL, 'ncolas', '2024-04-03'),
-(33, 'segundo producto de ncolas', 654, 8, '660d8da6a8665', 'si ses el segudno', NULL, 'ncolas', '2024-04-03'),
-(34, 'Try city', 543, 3, '6616ba23ab5c5', 'Es para ver si funcona esto de la ciudad', 'Bilbao', 'quequecedo@gmail.com', '2024-04-10'),
-(35, 'Pueba, comentarios quitados', 7654, 3, '661945ba079f5', 'Es para ver si se ha roto la pagina', 'Bilbao', 'quequecedo@gmail.com', '2024-04-12'),
-(36, 'Copa del rei', 13, 3, '661e494885b22', 'Esta es la copa del rei , esta un poco usada ero todavia se puede usar', 'Bilbao', 'quequecedo@gmail.com', '2024-04-16'),
-(42, 'quint apruba', 6543, 3, '661e5bb54f1cc', 'Ahora creo que si he puesto bien la ruta relativa, parece que con la ruta absoluta no me funciona bien', 'Salamanca', 'quequecedo@gmail.com', '2024-04-16');
+INSERT INTO `product` (`product_id`, `product_name`, `price`, `user_id`, `photo`, `description`, `city`, `times_seen`, `user_name`, `upload_date`) VALUES
+(21, 'vendo opel corsa', 5432, 3, '66045b9be625d', 'vendo un opelcorsa todo guapo, casi sin uso era de mi abuelo y no lo usaba demasido, pero le encantaba derrapar en las rotodndas los domingos por la tarde cuando llovia ', NULL, 2, 'quequecedo@gmail.com', '2024-03-27'),
+(22, 'Prueba de textarea', 123, 3, '660467f3bac9f', 'haber que pasa cuando pasao un atextarea por aqui', NULL, 0, 'quequecedo@gmail.com', '2024-03-27'),
+(23, 'tigre', 12, 3, '660472af4ef1e', 'es un puto trigre ahora estoy intentando cambiarlo desde la pagina de vcambiar', NULL, 0, 'quequecedo@gmail.com', '2024-03-27'),
+(24, 'tren con peroo', 876, 1, '6604764499629', 'subo un tren un perro y un tigre creo', NULL, 5, 'nicolasque1', '2024-03-27'),
+(26, 'soy quequece', 12345, 3, '660d8aa1599e4', 'estos es para generar buelt en la pagina', NULL, 0, 'quequecedo@gmail.com', '2024-04-03'),
+(29, 'prodyucto de pacheco', 4345, 9, '660d8c0682b8e', 'pachecho sube este producto', NULL, 0, 'pacheco', '2024-04-03'),
+(30, 'producto de user 42', 45, 10, '660d8d484b2da', 'esto es un producto de use r42', NULL, 0, 'user42', '2024-04-03'),
+(31, 'otro podructo de user 42', 56, 10, '660d8d5b05371', 'segundo producto', NULL, 0, 'user42', '2024-04-03'),
+(32, 'producto de ncolas', 654, 8, '660d8d93d7d79', 'que pase he ue pasa\r\n', NULL, 0, 'ncolas', '2024-04-03'),
+(33, 'segundo producto de ncolas', 654, 8, '660d8da6a8665', 'si ses el segudno', NULL, 0, 'ncolas', '2024-04-03'),
+(34, 'Try city', 543, 3, '6616ba23ab5c5', 'Es para ver si funcona esto de la ciudad', 'Bilbao', 0, 'quequecedo@gmail.com', '2024-04-10'),
+(35, 'Pueba, comentarios quitados', 7654, 3, '661945ba079f5', 'Es para ver si se ha roto la pagina', 'Bilbao', 0, 'quequecedo@gmail.com', '2024-04-12'),
+(36, 'Copa del rei', 13, 3, '661e494885b22', 'Esta es la copa del rei , esta un poco usada ero todavia se puede usar', 'Bilbao', 0, 'quequecedo@gmail.com', '2024-04-16'),
+(42, 'quint apruba', 6543, 3, '661e5bb54f1cc', 'Ahora creo que si he puesto bien la ruta relativa, parece que con la ruta absoluta no me funciona bien', 'Salamanca', 0, 'quequecedo@gmail.com', '2024-04-16');
 
 -- --------------------------------------------------------
 
