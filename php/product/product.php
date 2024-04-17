@@ -94,15 +94,14 @@ function ft_print_product()
         echo "<div class='media-content'>";
         echo "<p class='title is-4'>" . $product_info['product_name'] . "</p>";
         echo "<p class='subtitle is-6'>Seller: " . ft_get_seller_name($product_info['user_id']) . "</p>";
-        echo "<p>Price: " . $product_info['price'] . "€</p>";
+        echo "<p class='content is-medium has-text-primary' >Price: " . $product_info['price'] . "€</p>";
         echo "<p>Description: " . $product_info['description'] . "</p>";
         if ($product_info['city'] != "")
         {
             echo "<p>City: " . $product_info['city'] . "</p>";
         }
-        
+        echo "<br>";
         echo "<p><span class='tag is-primary'>Veces que se ha visto: " . $product_info['times_seen'] . "</span></p>";
-
         echo "</div>";
         echo "</div>";
         echo "</div>";
