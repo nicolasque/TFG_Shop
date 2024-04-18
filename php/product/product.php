@@ -56,16 +56,17 @@ function ft_get_photos($photo_folder)
     return $photos;
 }
 
+
 function ft_print_photos($row)
 {
     $photos = ft_get_photos($row['photo']);
     if (count($photos) > 1)
     {
-        echo "<div class='image image-gallery ' id='product-gallery-{$row['product_id']}'>";
+        echo "<div class='image image-gallery box is-512x512' id='product-gallery-{$row['product_id']}'>";
         foreach ($photos as $index => $photo)
         {
             $display = $index == 0 ? 'block' : 'none';
-            echo "<img class='gallery-image is-512x512' style='display: {$display};' src='/tfg_shop/images/products/{$row['photo']}/{$photo}' width='100px'>";
+            echo "<img class='gallery-image is-512x512' style='display: {$display};' src='/tfg_shop/images/products/{$row['photo']}/{$photo}' class='image is-512x512'>";
         }
         echo "<button class='prev button is-link is-outlined' style='position: absolute; top: 50%; left: 0;'><-</button>";
         echo "<button class='next button is-link is-outlined' style='position: absolute; top: 50%; right: 0;'>-></button>";
@@ -73,12 +74,55 @@ function ft_print_photos($row)
     }
     else
     {
-        echo "<div class='image-gallery' id='product-gallery-{$row['product_id']}'>";
-        echo "<img class='gallery-image' src='/tfg_shop/images/products/{$row['photo']}/{$photos[0]}' width='100px'>";
+        echo "<div class='image-gallery box' id='product-gallery-{$row['product_id']}'>";
+        echo "<img class='gallery-image' src='/tfg_shop/images/products/{$row['photo']}/{$photos[0]}' class='image is-512x512'>";
         echo "</div>";
     }
 }
 
+
+function ft_get_likes($product_id)
+{
+    $connexion = ft_create_conexion();
+    $sql = "SELECT * FROM product_like WHERE product_id = ?";
+    $stmt = $connexion->prepare($sql);
+    $stmt->bind_param("i", $product_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $likes = [];
+    while ($row = $result->fetch_assoc())
+    {
+        $likes[] = $row;
+    }
+    $connexion->close();
+    return $likes;
+}
+
+function ft_print_likes($likes)
+{
+    $i = 0;
+    $user_like = FALSE;
+    foreach ($likes as $like)
+    {
+        $i++;
+        if ($like['user_id'] == $_COOKIE['user_id'])
+            $user_like = TRUE;
+    }
+    echo "<span class='tag is-primary'>Likes: $i</span>";
+    if ($user_like)
+    {
+        echo "<button class='button' id='dislike-button' onclick='ft_remove_like({$_COOKIE['user_id']}, {$_GET['product_id']})'>";
+        echo "<image src='/tfg_shop/images/page/like/heart_red.png' class='image is-32x32'></image>";
+        echo "</button>";
+        // echo "<button class='button is-danger is-outlined' id='like-button' data-product-id='{$_GET['product_id']}'></button>";
+    }
+    else
+    {
+        echo "<button class='button' id='like-button' onclick='ft_add_like({$_COOKIE['user_id']}, {$_GET['product_id']})'>";
+        echo "<image src='/tfg_shop/images/page/like/heart_black.png' class='image is-32x32'></image>";
+        echo "</button>";
+    }
+}
 
 function ft_print_product()
 {
@@ -102,6 +146,8 @@ function ft_print_product()
         }
         echo "<br>";
         echo "<p><span class='tag is-primary'>Veces que se ha visto: " . $product_info['times_seen'] . "</span></p>";
+        echo "<br>";
+        ft_print_likes(ft_get_likes($product_id));
         echo "</div>";
         echo "</div>";
         echo "</div>";
@@ -146,15 +192,12 @@ function ft_is_not_my_product($product_id)
             return TRUE;
         }
         else
-        {
             return FALSE;
-        }
     }
     else
-    {
         return FALSE;
-    }
 }
+
 
 ?>
 
@@ -198,5 +241,4 @@ function ft_is_not_my_product($product_id)
 
 
 </body>
-
 </html>
