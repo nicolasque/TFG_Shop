@@ -85,18 +85,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 	{
 		$success = ft_add_product($product_name, $price, $user_id, $photos, $description, $city, $user_name, date("Y-m-d H:i:s"));
 		if ($success)
-		{
-			echo "Product added successfully!";
-		}
+			echo "<script>alert('Producto añadido.');</script>";
 		else
-		{
-			echo "Error adding product. Please try again.";
-		}
+			echo "<script>alert('Error al subir producto.');</script>";
 	}
 	else
-	{
-		echo "Error uploading photos.";
-	}
+		echo "<script>alert('Error al subir fotos.');</script>";
 }
 
 ?>
