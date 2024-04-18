@@ -1,27 +1,7 @@
 <?php
 include '../my_account.php';
 
-function ft_get_product($product_id)
-{
-    $connexion = ft_create_conexion();
-    $sql = "SELECT * FROM product WHERE product_id = ?";
-    $stmt = $connexion->prepare($sql);
-    $stmt->bind_param("i", $product_id);
-    $stmt->execute();
-    $result = $stmt->get_result();
 
-    if ($result->num_rows > 0)
-    {
-        $row = $result->fetch_assoc();
-        $connexion->close();
-        return $row;
-    }
-    else
-    {
-        $connexion->close();
-        return FALSE;
-    }
-}
 
 function ft_daw_product_edit($product_id)
 {

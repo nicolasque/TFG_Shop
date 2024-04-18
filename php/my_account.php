@@ -32,7 +32,27 @@ function ft_get_user_products($user_id)
     return $products;
 }
 
+function ft_get_product($product_id)
+{
+    $connexion = ft_create_conexion();
+    $sql = "SELECT * FROM product WHERE product_id = ?";
+    $stmt = $connexion->prepare($sql);
+    $stmt->bind_param("i", $product_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
+    if ($result->num_rows > 0)
+    {
+        $row = $result->fetch_assoc();
+        $connexion->close();
+        return $row;
+    }
+    else
+    {
+        $connexion->close();
+        return FALSE;
+    }
+}
 
 function ft_get_user_info($user_id)
 {
@@ -96,7 +116,10 @@ $user_info = ft_get_user_info($user_id);
         <br>
         <li><a href="/tfg_shop/php/user_acount/my_products.php">Actualizar mis productos</a></li>
         <br>
-        <li><a href="message_admin.php">Administrar mensajes</a></li>
+        <!-- <li><a href="message_admin.php">Administrar mensajes</a></li> -->
+        <!-- <br> -->
+        <li><a href="/tfg_shop/php/user_acount/products_user_like.php">Productos que te gustan</a></li>
+
         <!-- Add more buttons for other admin functionalities -->
     </ul>
 
