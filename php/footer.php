@@ -3,7 +3,7 @@
         <div class="columns">
             <div class="column">
                 <div class="footer-logo">
-                    <img src="/tfg_shop/images/page/ena2.png">
+                    <img src="/tfg_shop/images/page/logo.png">
                 </div>
             </div>
             <div class="column">

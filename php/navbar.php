@@ -10,7 +10,7 @@ function ft_display_loged()
 	echo "<a class='navbar-item' href='/tfg_shop/php/product/add_product.php'>Añadir producto</a>";
 	echo "<a class='navbar-item' href='/tfg_shop/php/chat/my_messages.php'>Mensajes</a>";
 	echo "<a class='navbar-item' href='/tfg_shop/php/forum/all_forums.php?forum_id=null'>Forums</a>";
-	if (ft_is_admin() == true)
+	if (ft_is_admin() == TRUE)
 	{
 		echo "<a class='navbar-item button is-infor is-small ' href='/tfg_shop/php/admin/admin_header.php'>Admin Page</a>";
 	}
@@ -26,17 +26,17 @@ function ft_display_not_loged()
 function ft_if_user_is_logged()
 {
 	if (isset($_COOKIE["user_id"]) && isset($_COOKIE["username"]) && isset($_COOKIE["name"]) && isset($_COOKIE["surname"]) && isset($_COOKIE["email"]))
-		return (true);
+		return (TRUE);
 	else
-		return (false);
+		return (FALSE);
 }
 
 function ft_is_admin()
 {
 	if (isset($_COOKIE["admin"]) && $_COOKIE["admin"] == 1)
-		return (true);
+		return (TRUE);
 	else
-		return (false);
+		return (FALSE);
 }
 
 ?>
@@ -56,12 +56,9 @@ function ft_is_admin()
 			<div id="navbar " class="navbar-menu">
 				<div class="navbar-start">
 					<a class="navbar-item" href="/tfg_shop/php/index.php">Inicio</a>
-
 					<a class="navbar-item" href="/tfg_shop/php/product/all_products_page.php">Productos</a>
-
-
 					<?php
-					if (ft_if_user_is_logged() == true)
+					if (ft_if_user_is_logged() == TRUE)
 						ft_display_loged();
 					?>
 
@@ -70,7 +67,7 @@ function ft_is_admin()
 					<div class="navbar-item">
 						<div class="buttons">
 							<?php
-							if (ft_if_user_is_logged() == false)
+							if (ft_if_user_is_logged() == FALSE)
 								ft_display_not_loged();
 							?>
 						</div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 17, 2024 at 07:36 PM
+-- Generation Time: Apr 18, 2024 at 06:54 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -100,7 +100,7 @@ CREATE TABLE `forum` (
 INSERT INTO `forum` (`forum_id`, `forum_name`, `topic`, `description`, `active_users`, `date_of_creation`) VALUES
 (1, 'pruba1', 'Pruebas', 'Este es un foro de prueba', 4, '2024-04-17'),
 (2, 'prueba1', 'prubas', 'Este es un foro para ver si funcionan las restriccones', 3, '2024-04-17'),
-(3, 'prueba2', 'Pruebas', 'Esta e suna segunda pruba de que todo funcione', 1, '2024-04-17');
+(3, 'prueba2', 'Pruebas', 'Esta e suna segunda pruba de que todo funcione', 2, '2024-04-17');
 
 -- --------------------------------------------------------
 
@@ -131,7 +131,8 @@ INSERT INTO `forum_post` (`forum_mesage_id`, `forum_id`, `user_id`, `message`, `
 (8, 1, 8, 'holaa\r\n', 0),
 (9, 2, 8, 'holaaa\r\n', 0),
 (10, 1, 15, 'Funciona esto ?', 0),
-(11, 2, 15, 'Parece que si', 0);
+(11, 2, 15, 'Parece que si', 0),
+(12, 3, 3, 'hola', 0);
 
 -- --------------------------------------------------------
 
@@ -206,20 +207,45 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`product_id`, `product_name`, `price`, `user_id`, `photo`, `description`, `city`, `times_seen`, `user_name`, `upload_date`) VALUES
-(21, 'vendo opel corsa', 5432, 3, '66045b9be625d', 'vendo un opelcorsa todo guapo, casi sin uso era de mi abuelo y no lo usaba demasido, pero le encantaba derrapar en las rotodndas los domingos por la tarde cuando llovia ', NULL, 2, 'quequecedo@gmail.com', '2024-03-27'),
-(22, 'Prueba de textarea', 123, 3, '660467f3bac9f', 'haber que pasa cuando pasao un atextarea por aqui', NULL, 0, 'quequecedo@gmail.com', '2024-03-27'),
-(23, 'tigre', 12, 3, '660472af4ef1e', 'es un puto trigre ahora estoy intentando cambiarlo desde la pagina de vcambiar', NULL, 0, 'quequecedo@gmail.com', '2024-03-27'),
+(21, 'vendo opel corsa', 5432, 3, '66045b9be625d', 'vendo un opelcorsa todo guapo, casi sin uso era de mi abuelo y no lo usaba demasido, pero le encantaba derrapar en las rotodndas los domingos por la tarde cuando llovia ', NULL, 6, 'quequecedo@gmail.com', '2024-03-27'),
+(22, 'Prueba de textarea', 123, 3, '660467f3bac9f', 'haber que pasa cuando pasao un atextarea por aqui', NULL, 60, 'quequecedo@gmail.com', '2024-03-27'),
+(23, 'tigre', 12, 3, '660472af4ef1e', 'es un puto trigre ahora estoy intentando cambiarlo desde la pagina de vcambiar', NULL, 20, 'quequecedo@gmail.com', '2024-03-27'),
 (24, 'tren con peroo', 876, 1, '6604764499629', 'subo un tren un perro y un tigre creo', NULL, 5, 'nicolasque1', '2024-03-27'),
 (26, 'soy quequece', 12345, 3, '660d8aa1599e4', 'estos es para generar buelt en la pagina', NULL, 0, 'quequecedo@gmail.com', '2024-04-03'),
 (29, 'prodyucto de pacheco', 4345, 9, '660d8c0682b8e', 'pachecho sube este producto', NULL, 0, 'pacheco', '2024-04-03'),
 (30, 'producto de user 42', 45, 10, '660d8d484b2da', 'esto es un producto de use r42', NULL, 0, 'user42', '2024-04-03'),
-(31, 'otro podructo de user 42', 56, 10, '660d8d5b05371', 'segundo producto', NULL, 0, 'user42', '2024-04-03'),
-(32, 'producto de ncolas', 654, 8, '660d8d93d7d79', 'que pase he ue pasa\r\n', NULL, 0, 'ncolas', '2024-04-03'),
-(33, 'segundo producto de ncolas', 654, 8, '660d8da6a8665', 'si ses el segudno', NULL, 0, 'ncolas', '2024-04-03'),
-(34, 'Try city', 543, 3, '6616ba23ab5c5', 'Es para ver si funcona esto de la ciudad', 'Bilbao', 0, 'quequecedo@gmail.com', '2024-04-10'),
+(31, 'otro podructo de user 42', 56, 10, '660d8d5b05371', 'segundo producto', NULL, 7, 'user42', '2024-04-03'),
+(32, 'producto de ncolas', 654, 8, '660d8d93d7d79', 'que pase he ue pasa\r\n', NULL, 52, 'ncolas', '2024-04-03'),
+(33, 'segundo producto de ncolas', 654, 8, '660d8da6a8665', 'si ses el segudno', NULL, 23, 'ncolas', '2024-04-03'),
+(34, 'Try city', 543, 3, '6616ba23ab5c5', 'Es para ver si funcona esto de la ciudad', 'Bilbao', 1, 'quequecedo@gmail.com', '2024-04-10'),
 (35, 'Pueba, comentarios quitados', 7654, 3, '661945ba079f5', 'Es para ver si se ha roto la pagina', 'Bilbao', 0, 'quequecedo@gmail.com', '2024-04-12'),
 (36, 'Copa del rei', 13, 3, '661e494885b22', 'Esta es la copa del rei , esta un poco usada ero todavia se puede usar', 'Bilbao', 0, 'quequecedo@gmail.com', '2024-04-16'),
-(42, 'quint apruba', 6543, 3, '661e5bb54f1cc', 'Ahora creo que si he puesto bien la ruta relativa, parece que con la ruta absoluta no me funciona bien', 'Salamanca', 0, 'quequecedo@gmail.com', '2024-04-16');
+(42, 'quint apruba', 6543, 3, '661e5bb54f1cc', 'Ahora creo que si he puesto bien la ruta relativa, parece que con la ruta absoluta no me funciona bien', 'Salamanca', 0, 'quequecedo@gmail.com', '2024-04-16'),
+(43, 'Diagrama ', 50, 3, '66211f1c98247', 'Esto es una prueba para ver que pasa cuando subes un anuncion', 'Carcason', 0, 'quequecedo@gmail.com', '2024-04-18'),
+(44, 'prueba con js activado', 12, 3, '66211f7d88f00', 'Es una prueba para ver si funciiona todo con el js de alert', 'Valencia', 0, 'quequecedo@gmail.com', '2024-04-18'),
+(45, 'prueba con js activado', 12, 3, '66211fc4bd503', 'Es una prueba para ver si funciiona todo con el js de alert', 'Valencia', 2, 'quequecedo@gmail.com', '2024-04-18');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product_like`
+--
+
+CREATE TABLE `product_like` (
+  `user_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `product_like`
+--
+
+INSERT INTO `product_like` (`user_id`, `product_id`) VALUES
+(3, 32),
+(3, 21),
+(3, 31),
+(3, 22),
+(3, 23);
 
 -- --------------------------------------------------------
 
@@ -246,7 +272,7 @@ INSERT INTO `user` (`user_id`, `username`, `name`, `surname`, `email`, `password
 (1, 'nicolasque1', 'nico', 'quece', 'nicoquece@gmail.com', '12341', 1, '2024-04-08'),
 (3, 'quequecedo@gmail.com', 'nicolas', 'quecedo', 'quequecedo@gmail.com', '12341', 1, '2024-04-08'),
 (5, '954404', 'nicolas', 'quecedo gaminde', 'quequedo@gmail.com', 'Familia-12341', 0, '2024-04-08'),
-(6, '9544040', 'nicolas', 'quecedo', 'quequecedo@ail.com', '42_Urduliz', 1, '2024-04-08'),
+(6, '9544040', 'nicolas', 'quecedo', 'quequecedo@ail.com', '$2y$10$fSekjOq.cXc90BDPf9GDfewgUwnFWbiGxnw2ujsi3851lJTt3Alxa', 1, '2024-04-08'),
 (7, 'quequeedo@gmail.com', 'nicolas', 'quecedo', 'queqcedo@gmail.com', 'Urduliz-42', 0, '2024-04-08'),
 (8, 'ncolas', 'nquece', 'Famili', 'queque@es.commm', '42*Urduliz', 0, '2024-04-08'),
 (9, 'pacheco', 'juan', 'Pacheco', '1234@gmail.com', 'Familia-12341', 0, '2024-04-08'),
@@ -305,6 +331,13 @@ ALTER TABLE `product`
   ADD KEY `FK_product_user` (`user_id`);
 
 --
+-- Indexes for table `product_like`
+--
+ALTER TABLE `product_like`
+  ADD KEY `FK_user_like` (`user_id`),
+  ADD KEY `FK_product_like` (`product_id`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -338,7 +371,7 @@ ALTER TABLE `forum`
 -- AUTO_INCREMENT for table `forum_post`
 --
 ALTER TABLE `forum_post`
-  MODIFY `forum_mesage_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `forum_mesage_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `messages`
@@ -350,7 +383,7 @@ ALTER TABLE `messages`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `product_id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `user`
@@ -391,6 +424,13 @@ ALTER TABLE `messages`
 --
 ALTER TABLE `product`
   ADD CONSTRAINT `FK_product_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
+
+--
+-- Constraints for table `product_like`
+--
+ALTER TABLE `product_like`
+  ADD CONSTRAINT `FK_product_like` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`),
+  ADD CONSTRAINT `FK_user_like` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

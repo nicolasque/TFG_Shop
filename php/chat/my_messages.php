@@ -61,11 +61,11 @@ function ft_is_my_product($user_id_buyer)
 {
     if ($user_id_buyer == $_COOKIE['user_id'])
     {
-        return "has-background-info-light	"; 
+        return TRUE;
     }
     else
     {
-        return "has-background-success-light	";
+        return FALSE;
     }
 }
 
@@ -148,6 +148,7 @@ function ft_print_chats($chats)
             margin-top: 50px;
 
         }
+
         .chat {
             display: flex;
             flex-direction: column;
@@ -157,30 +158,39 @@ function ft_print_chats($chats)
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+
+        .my-message {
+            background-color: #008080;
+            /* Color de fondo para los mensajes enviados por el usuario */
+        }
+
+        .other-message {
+            background-color: #808080;
+            /* Color de fondo para los mensajes recibidos por el usuario */
+        }
     </style>
 </head>
+
 <body>
-    <div class="container chats">
+    <div class="container is-max-desktop chats">
         <?php
         $chats = ft_get_my_chats($_COOKIE['user_id']);
         if (count($chats) > 0)
         {
-            echo "<div class='columns is-multiline'>"; // Creates multi-column layout
+            echo "<div class='panel'>"; // Creates panel layout
             foreach ($chats as $chat)
             {
                 $product_class = ft_is_my_product($chat['user_id_buyer']);
-                echo "<div class='box chat $product_class p-5 has-shadow is-flex is-align-items-center is-justify-content-space-between is-flex-direction-column'>"; // Box for styling
-                echo "<a href='chat_product.php?product_id=" . $chat['product_id'] . "'>";
-                echo "<div class=' p-3 mb-3'>";
-                $product_name = ft_get_produc_info($chat['product_id']);
-                echo "<h3 class='has-text-primary'>" . $product_name['product_name'] . "</h3>";
-                echo "</div>";
-                ft_print_photo($chat['product_id']);
-                echo "</a>";
-                echo "<h3 class='mt-3'>" . ft_get_other_perosn_name($chat['user_id_buyer'], $chat['user_id_seller']) . "</h3>";
-                echo "</div>"; // Close chat box
+                $message_class = $product_class ? 'my-message' : 'other-message'; // Determina la clase del mensaje en función de si el usuario es el remitente o el receptor
+                echo "<a class='panel-block " . $message_class . "' href='chat_product.php?product_id=" . $chat['product_id'] . "'>"; // Panel block for each chat
+                echo "<div class='columns is-multiline'>"; // Creates multi-column layout
+                echo "<div class='column is-12'><h3 class='has-text-primary'>" . ft_get_produc_info($chat['product_id'])['product_name'] . "</h3></div>"; // Product name
+                ft_print_photo($chat['product_id']); // Product photo
+                echo "<div class='column is-12'><h3>" . ft_get_other_perosn_name($chat['user_id_buyer'], $chat['user_id_seller']) . "</h3></div>"; // Other person's name
+                echo "</div>"; // Close columns
+                echo "</a>"; // Close panel block
             }
-            echo "</div>"; // Close columns
+            echo "</div>"; // Close panel
         }
         else
         {

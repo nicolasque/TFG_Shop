@@ -44,8 +44,12 @@ function ft_get_mesages($forum_id)
     return $messages;
 }
 
-$forum_info = ft_get_forum_info($_GET['forum_id']);
-$messages = ft_get_mesages($_GET['forum_id']);
+if (isset($_GET['forum_id']))
+{
+    $forum_info = ft_get_forum_info($_GET['forum_id']);
+    $messages = ft_get_mesages($_GET['forum_id']);
+}
+
 
 function ft_get_username_by_id($user_id)
 {
@@ -207,17 +211,17 @@ function ft_create_forum()
 
 function ft_print_forums($forums)
 {
+    echo "<div class='panel isx-max-desktop'>";
     foreach ($forums as $forum)
     {
-        echo "<div class='column'>";
-        echo "<div class='box'>";
-        echo "<a class='' href='forum_site.php?forum_id=" . $forum['forum_id'] . "'>";
-        echo "<h2 class='subtitle is-primary is-2 has-text-primary'>" . $forum['forum_name'] . "</h2>";
-        echo "<p><h3 class='has-text-primary' >Topic: " . $forum['topic'] . "</h3></p>";
-        echo "<p>" . $forum['description'] . "</p>";
-        echo "<p><span class='tag is-primary'>Active Users: " . $forum['active_users'] . "</span></p>";
+        echo "<a class='panel-block' href='forum_site.php?forum_id=" . $forum['forum_id'] . "'>";
+        echo "<div class='columns is-multiline'>";
+        echo "<div class='column is-12'><h2 class='subtitle is-primary is-2 has-text-primary'>" . $forum['forum_name'] . "</h2></div>";
+        echo "<div class='column is-12'><p><h3 class='has-text-primary'>Topic: " . $forum['topic'] . "</h3></p></div>";
+        echo "<div class='column is-12'><p>" . $forum['description'] . "</p></div>";
+        echo "<div class='column is-12'><p><span class='tag is-primary'>Active Users: " . $forum['active_users'] . "</span></p></div>";
+        echo "</div>";
         echo "</a>";
-        echo "</div>";
-        echo "</div>";
     }
+    echo "</div>";
 }
