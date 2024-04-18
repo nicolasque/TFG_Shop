@@ -142,18 +142,26 @@ function ft_print_chats($chats)
     <!-- <link rel="stylesheet" href="../css/my_messages.css"> -->
     <style>
         .chats {
-            display: flex;
+            /* display: flex; */
             flex-direction: column;
             align-items: center;
-            margin-top: 50px;
+            margin-right: 10%;
+            margin-left: 10%;
+            margin-bottom: 70px;
+            margin-top: 70px;
 
         }
 
+        .panel-block {
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+
         .chat {
-            display: flex;
+            /* display: flex; */
             flex-direction: column;
             align-items: center;
-            margin: 10px;
+            margin: 30px;
             padding: 10px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -165,14 +173,14 @@ function ft_print_chats($chats)
         }
 
         .other-message {
-            background-color: #808080;
+            background-color: #008060;
             /* Color de fondo para los mensajes recibidos por el usuario */
         }
     </style>
 </head>
 
 <body>
-    <div class="container is-max-desktop chats">
+    <div class="is-fluid chats">
         <?php
         $chats = ft_get_my_chats($_COOKIE['user_id']);
         if (count($chats) > 0)

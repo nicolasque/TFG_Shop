@@ -50,7 +50,7 @@ function ft_is_admin()
 	<nav class="navbar " role="navigation" aria-label="main navigation" style="min-width: 1200px; ">
 		<div class="navbar-brand" style="min-width: 1200px;">
 			<a class="navbar-item" href="/tfg_shop/php/index.php">
-				<img src="/tfg_shop/images/page/ena2.png" width="60" height="190">
+				<img src="/tfg_shop/images/page/logo.png" width="60" height="190">
 			</a>
 
 			<div id="navbar " class="navbar-menu">
