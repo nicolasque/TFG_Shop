@@ -23,6 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     $old_password = $_POST['old_password'];
     $old_hashed_password = $_POST['old_hashed_password'];
     $new_password = $_POST['new_password'];
+    $re_new_password = $_POST['re_new_password'];
     $email = $_POST['email'];
 
     // Check if old password is correct
@@ -33,6 +34,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     }
     else
     {
+        if ($new_password != $re_new_password)
+        {
+            echo "Las contraseñas no coinciden";
+            return;
+        }
         $hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
         // Update user info
         ft_update_user_info($user_id, $username, $hashed_password, $email);
@@ -43,12 +49,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 }
 ?>
 
-<!-- <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-    Username: <input type="text" name="username" value="<?php echo $user_info['username']; ?>"><br>
-    Password: <input type="password" name="password" value="<?php echo $user_info['password']; ?>"><br>
-    Email: <input type="text" name="email" value="<?php echo $user_info['email']; ?>"><br>
-    <input type="submit" value="Update">
-</form> -->
 
 
 <div class="section">
@@ -74,6 +74,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
                             <label class="label">Nueva contraseña</label>
                             <div class="control">
                                 <input class="input" type="password" name="new_password" value="">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Repetir nueva contraseña</label>
+                            <div class="control">
+                                <input class="input" type="password" name="re_new_password" value="">
                             </div>
                         </div>
                         <div class="field">

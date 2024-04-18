@@ -51,6 +51,23 @@ function ft_update_user_info($user_id, $username, $password, $email, $admin)
     }
 }
 
+function ft_check_password($password, $re_password)
+{
+    if ($password == $re_password)
+    {
+        return true;
+    }
+    else
+    {
+        echo "<script type='text/javascript'>"
+            . "alert('Passwords do not match');"
+            . "window.location.href = 'edit_user.php?user_id=" . $_POST['user_id'] . "';"
+            . "</script>";
+        return false;
+    }
+}
+
+
 // Get user info
 $user_info = ft_get_user_info($user_id);
 
@@ -60,9 +77,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     $user_id = $_POST['user_id'];
     $username = $_POST['username'];
     $password = $_POST['password'];
+    $re_password = $_POST['re_password'];
     $email = $_POST['email'];
     $admin = isset($_POST['admin']) ? 1 : 0;
     // Update user info
+
+    if (!ft_check_password($password, $re_password))
+        return;
+    else
+        $password = password_hash($password, PASSWORD_DEFAULT);
+
     if (ft_update_user_info($user_id, $username, $password, $email, $admin))
     {
 
@@ -86,16 +110,7 @@ else
     $user_info = ft_get_user_info($user_id);
 }
 ?>
-<!-- 
-<form method="post">
-    <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
-    Username: <input type="text" name="username" value="<?php echo $user_info['username']; ?>"><br>
-    Password: <input type="password" name="password" value="<?php echo $user_info['password']; ?>"><br>
-    Email: <input type="email" name="email" value="<?php echo $user_info['email']; ?>"><br>
-    Admin: <input type="checkbox" name="admin" <?php if ($user_info['admin'] == 1)
-        echo "checked"; ?>><br>
-    <input type="submit" value="Update User">
-</form> -->
+
 
 <div class="section">
     <div class="container">
@@ -104,17 +119,24 @@ else
                 <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                     <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
                     <div class="field">
-                        <label class="label">Username</label>
+                        <label class="label">Nombre usuario</label>
                         <div class="control">
                             <input class="input" type="text" name="username"
                                 value="<?php echo $user_info['username']; ?>">
                         </div>
                     </div>
                     <div class="field">
-                        <label class="label">Password</label>
+                        <label class="label">Contraseña</label>
                         <div class="control">
                             <input class="input" type="password" name="password"
-                                value="<?php echo $user_info['password']; ?>">
+                                value="">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Repetir contraseña</label>
+                        <div class="control">
+                            <input class="input" type="password" name="re_password"
+                                value="">
                         </div>
                     </div>
                     <div class="field">
