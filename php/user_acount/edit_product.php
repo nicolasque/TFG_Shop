@@ -10,7 +10,7 @@ function ft_daw_product_edit($product_id)
     echo "<div class='container'>";
     echo "<div class='columns is-centered'>";
     echo "<div class='column is-half'>";
-    echo "<form action='edit_product.php' method='post'>";
+    echo "<form action='' method='post'>";
     echo "<input type='hidden' name='product_id' value='{$product['product_id']}'>";
     echo "<div class='field'>";
     echo "<label class='label' for='product_name'>Product Name:</label>";
@@ -43,7 +43,14 @@ function ft_edit_product($product_id, $product_name, $description, $price)
     $stmt->bind_param("ssdi", $product_name, $description, $price, $product_id);
     $stmt->execute();
     $connexion->close();
-    header('Location: ../my_account.php');
+
+    if ($stmt->affected_rows > 0)
+    {
+        echo "<script>alert('Producto actualizado')</script>";
+        // header("Location: my_products.php");
+    }
+    else
+        echo "<script>alert('Producto actualizado')</script>";
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST")

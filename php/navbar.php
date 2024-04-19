@@ -44,7 +44,6 @@ function ft_is_admin()
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/tfg_shop/css/navbar.css">
     <link rel="stylesheet" href="/tfg_shop/css/bulma.min.css">
     <title>Barra de Navegación</title>
 </head>
