@@ -7,26 +7,26 @@ function check_new_user_email($email, $connexion)
 {
     $sql = "SELECT * FROM user WHERE email = ?";
     $stmt = $connexion->prepare($sql);
-    $stmt->bind_param("s", $email );
+    $stmt->bind_param("s", $email);
     $stmt->execute();
     $result = $stmt->get_result();
     if ($result->num_rows > 0)
-        return true;
+        return TRUE;
     else
-        return false;
+        return FALSE;
 }
 
 function check_new_user_username($username, $connexion)
 {
     $sql = "SELECT * FROM user WHERE username = ?";
     $stmt = $connexion->prepare($sql);
-    $stmt->bind_param("s", $username );
+    $stmt->bind_param("s", $username);
     $stmt->execute();
     $result = $stmt->get_result();
     if ($result->num_rows > 0)
-        return true;
+        return TRUE;
     else
-        return false;
+        return FALSE;
 }
 
 $connexion = ft_create_conexion();
@@ -40,14 +40,14 @@ $password = $_POST['password'];
 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
 
-if(check_new_user_email($email, $connexion))
+if (check_new_user_email($email, $connexion))
 {
-    echo "<span style='color:red;'>Email already in use</span>";
+    echo "<span style='color:red;'>Ese email ya esta en uso</span>";
     return;
 }
-if(check_new_user_username($username, $connexion))
+if (check_new_user_username($username, $connexion))
 {
-    echo "<span style='color:red;'>Username already in use</span>";
+    echo "<span style='color:red;'>Ese usuario ya existe</span>";
     return;
 }
 
@@ -55,22 +55,28 @@ $sql = "INSERT INTO `user` (`username`, `name`, `surname`, `email`, `password`) 
 $stmt = $connexion->prepare($sql);
 $stmt->bind_param("sssss", $username, $name, $surname, $email, $hashed_password);
 $result = $stmt->execute();
-if($result)
+if ($result)
 {
-    echo "OK";
+    echo "<script>
+            alert('Usuario creado con exito');
+            setTimeout(function(){
+                window.location.href = '/tfg_shop/index.php';
+            }, 5);
+          </script>";
+    exit;
 }
 else
 {
     echo "Error: " . $sql . "<br>" . $connexion->error;
 }
 
-echo "<li>Username: $username</li>";
-echo "<li>Name: $name</li>";
-echo "<li>Surname: $surname</li>";
-echo "<li>Email: $email</li>";
-echo "<li>Password: $hashed_password</li>";
-echo "<br>";
-echo "<br>";
+// echo "<li>Username: $username</li>";
+// echo "<li>Name: $name</li>";
+// echo "<li>Surname: $surname</li>";
+// echo "<li>Email: $email</li>";
+// echo "<li>Password: $hashed_password</li>";
+// echo "<br>";
+// echo "<br>";
 
 $connexion->close();
 
