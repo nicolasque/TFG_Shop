@@ -1,6 +1,3 @@
-<link rel="stylesheet" href="/tfg_shop/css/navbar.css">
-<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css"> -->
-<link rel="stylesheet" href="/tfg_shop/css/bulma.min.css">
 
 <?php
 
@@ -42,41 +39,49 @@ function ft_is_admin()
 ?>
 
 
-<div class="container is-fluid" style="min-width: 1200px; ">
-	<!-- <div class="notification is-primary"> -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/tfg_shop/css/navbar.css">
+    <link rel="stylesheet" href="/tfg_shop/css/bulma.min.css">
+    <title>Barra de Navegación</title>
+</head>
+<body>
+<div class="container is-fluid">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/tfg_shop/php/index.php">
+                <img src="/tfg_shop/images/page/logo.png" width="60" height="60" alt="Logo">
+            </a>
 
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
 
+        <div id="navbar" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="/tfg_shop/php/index.php">Inicio</a>
+                <a class="navbar-item" href="/tfg_shop/php/product/all_products_page.php">Productos</a>
+                <?php if (ft_if_user_is_logged() == TRUE) ft_display_loged(); ?>
+            </div>
 
-	<nav class="navbar " role="navigation" aria-label="main navigation" style="min-width: 1200px; ">
-		<div class="navbar-brand" style="min-width: 1200px;">
-			<a class="navbar-item" href="/tfg_shop/php/index.php">
-				<img src="/tfg_shop/images/page/logo.png" width="60" height="190">
-			</a>
-
-			<div id="navbar " class="navbar-menu">
-				<div class="navbar-start">
-					<a class="navbar-item" href="/tfg_shop/php/index.php">Inicio</a>
-					<a class="navbar-item" href="/tfg_shop/php/product/all_products_page.php">Productos</a>
-					<?php
-					if (ft_if_user_is_logged() == TRUE)
-						ft_display_loged();
-					?>
-
-				</div>
-				<div class="navbar-end">
-					<div class="navbar-item">
-						<div class="buttons">
-							<?php
-							if (ft_if_user_is_logged() == FALSE)
-								ft_display_not_loged();
-							?>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</nav>
-
-
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <?php if (ft_if_user_is_logged() == FALSE) ft_display_not_loged(); ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
 </div>
-</div>
+</body>
+<script src="/tfg_shop/js/navbar.js"></script>
+
+</html>
