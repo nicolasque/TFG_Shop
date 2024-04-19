@@ -129,7 +129,7 @@ function ft_print_photo($photo_folder)
                     $products = ft_get_products();
                     foreach ($products as $product): ?>
                         <tr>
-                        <td><?php ft_print_photo(ft_get_photo_folder($product['product_id'])) ?></td>
+                        <td><?php ft_print_photo($product['photo']) ?></td>
                             <td><?php echo $product['product_name']; ?></td>
                             <td><?php echo ft_get_product_owner($product['user_id']); ?></td>
                             <td><?php echo $product['price']; ?>€</td>

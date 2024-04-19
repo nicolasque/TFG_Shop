@@ -53,6 +53,10 @@ function ft_delete_chat($product_id)
 function ft_delete_product($product_id)
 {
     $connexion = ft_create_conexion();
+    $sql = "DELETE FROM chat WHERE product_id = ?";
+    $stmt = $connexion->prepare($sql);
+    $stmt->bind_param("i", $product_id);
+    $stmt->execute();
     $sql = "DELETE FROM product WHERE product_id = ?";
     $stmt = $connexion->prepare($sql);
     $stmt->bind_param("i", $product_id);
