@@ -57,9 +57,9 @@ function ft_print_table_product_info($product)
     echo "<table class='table is-fullwidth is-striped'>";
     echo "<thead>";
     echo "<tr>";
-    echo "<th>Product Name</th>";
-    echo "<th>Price</th>";
-    echo "<th>Photo</th>";
+    echo "<th>Producto</th>";
+    echo "<th>Precio</th>";
+    echo "<th>Foto</th>";
     echo "</tr>";
     echo "</thead>";
     echo "<tbody>";
@@ -188,7 +188,7 @@ function ft_print_chat_messages($messages)
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="/tfg_shop/js/chat.js"></script>
     <script src="/tfg_shop/js/jquery.js"></script>
-    <title>Document</title>
+    <title>Chat</title>
 
 </head>
 
@@ -197,7 +197,7 @@ function ft_print_chat_messages($messages)
 
         <div class="columns is-vcentered is-centered">
             <div class="column is-vcentered is-centered">
-                <h1 class="title is-1">Product Info</h1>
+                <h1 class="title is-1">Producto: </h1>
                 <div class="box">
                     <?php
                     ft_print_table_product_info($product);
@@ -223,7 +223,7 @@ function ft_print_chat_messages($messages)
                 </div>
                 <div id="message-input" class="column is-vcentered is-centered">
                     <textarea id="message-text" style="width: 100%; height: 10%;"></textarea>
-                    <button id="send-button" class="button is-primary">Send</button>
+                    <button id="send-button" class="button is-primary">Enviar</button>
                 </div>
             </div>
         </div>
