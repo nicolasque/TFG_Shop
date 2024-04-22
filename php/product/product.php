@@ -100,6 +100,8 @@ function ft_get_likes($product_id)
 
 function ft_print_likes($likes)
 {
+    if (!isset($_COOKIE['user_id']))
+        return ;
     $i = 0;
     $user_like = FALSE;
     foreach ($likes as $like)
