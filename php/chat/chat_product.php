@@ -219,6 +219,7 @@ function ft_print_chat_messages($messages)
 
                     $messages = ft_get_chat_messages($chat_id);
                     ft_print_chat_messages($messages);
+                    
                     ?>
                 </div>
                 <div id="message-input" class="column is-vcentered is-centered">

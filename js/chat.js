@@ -7,6 +7,7 @@ window.onload = function()
     var chatBox = document.getElementById('chat-box');
     chatBox.scrollTop = chatBox.scrollHeight;
 
+
 };
 
 
