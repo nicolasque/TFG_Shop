@@ -108,22 +108,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 <body>
 	<div class="container" style="margin-top: 20px; height: 100hv;">
 		<div class="notification is-primary">
-			<h1 class="title is-2 is-spaced">Add Product</h1>
+			<h1 class="title is-2 is-spaced">Añadir producto</h1>
 			<div class="content columns is-vcentered is-centered"
 				style="border: 4px solid #fff; padding: 20px; border-radius: 5px;">
 				<form method="POST" action="" enctype="multipart/form-data">
-					<label for="product_name">Product Name:</label>
+					<label for="product_name">Nombre producto:</label>
 					<input type="text" name="product_name" required><br><br>
-					<label for="price">Price:</label>
+					<label for="price">Precio:</label>
 					<input type="text" name="price" required><br><br>
-					<label for="photos">Photos:</label>
+					<label for="photos">Fotos:</label>
 					<input type="file" name="photos[]" multiple required><br><br>
-					<label for="description">Description:</label>
+					<label for="description">Descripcion:</label>
 					<textarea name="description" rows="4" cols="50" required></textarea><br><br>
-					<label for="city">City:</label>
+					<label for="city">Ciudad:</label>
 					<input type="text" name="city" required><br><br>
 
-					<input class="button" type="submit" value="Add Product">
+					<input class="button" type="submit" value="Añadir producto">
 				</form>
 			</div>
 

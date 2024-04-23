@@ -113,14 +113,14 @@ $user_products = ft_get_user_products($user_id);
 <body>
     <section class="section">
         <div class="container">
-            <h1 class="title">My Products</h1>
+            <h1 class="title">Mis productos</h1>
             <table class="table is-fullwidth is-striped">
                 <thead>
                     <tr>
-                        <th>Product Image</th>
-                        <th>Product Name</th>
-                        <th>Description</th>
-                        <th>Price</th>
+                        <th>Foto</th>
+                        <th>Porducto:</th>
+                        <th>Descripcion</th>
+                        <th>Precio</th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -133,9 +133,9 @@ $user_products = ft_get_user_products($user_id);
                             <td><?php echo $product['description']; ?></td>
                             <td><?php echo $product['price']; ?>€</td>
                             <td><a class="button is-small is-link"
-                                    href="edit_product.php?product_id=<?php echo $product['product_id']; ?>">Edit</a></td>
+                                    href="edit_product.php?product_id=<?php echo $product['product_id']; ?>">Editar</a></td>
                             <td><a class="button is-small is-danger"
-                                    href="delete_product.php?product_id=<?php echo $product['product_id']; ?>">Delete</a>
+                                    href="delete_product.php?product_id=<?php echo $product['product_id']; ?>">Eliminar</a>
                             </td>
 
                         </tr>

@@ -13,7 +13,7 @@ function ft_daw_product_edit($product_id)
     echo "<form action='' method='post'>";
     echo "<input type='hidden' name='product_id' value='{$product['product_id']}'>";
     echo "<div class='field'>";
-    echo "<label class='label' for='product_name'>Product Name:</label>";
+    echo "<label class='label' for='product_name'>Nombre:</label>";
     echo "<div class='control'>";
     echo "<input class='input' type='text' name='product_name' value='{$product['product_name']}'>";
     echo "</div></div>";
