@@ -217,7 +217,7 @@ function ft_print_forums($forums)
         echo "<a class='panel-block' href='forum_site.php?forum_id=" . $forum['forum_id'] . "'>";
         echo "<div class='columns is-multiline'>";
         echo "<div class='column is-12'><h2 class='subtitle is-primary is-2 has-text-primary'>" . $forum['forum_name'] . "</h2></div>";
-        echo "<div class='column is-12'><p><h3 class='has-text-primary'>Topic: " . $forum['topic'] . "</h3></p></div>";
+        echo "<div class='column is-12'><p><h3 class='has-text-primary'>Tema: " . $forum['topic'] . "</h3></p></div>";
         echo "<div class='column is-12'><p>" . $forum['description'] . "</p></div>";
         echo "<div class='column is-12'><p><span class='tag is-primary'>Active Users: " . $forum['active_users'] . "</span></p></div>";
         echo "</div>";

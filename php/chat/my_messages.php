@@ -192,7 +192,7 @@ function ft_print_chats($chats)
                 $message_class = $product_class ? 'my-message' : 'other-message'; // Determina la clase del mensaje en función de si el usuario es el remitente o el receptor
                 echo "<a class='panel-block " . $message_class . "' href='chat_product.php?product_id=" . $chat['product_id'] . "'>"; // Panel block for each chat
                 echo "<div class='columns is-multiline'>"; // Creates multi-column layout
-                echo "<div class='column is-12'><h3 class='has-text-primary'>" . ft_get_produc_info($chat['product_id'])['product_name'] . "</h3></div>"; // Product name
+                echo "<div class='column is-12'><h3 class='has-text-primary'> Producto: " . ft_get_produc_info($chat['product_id'])['product_name'] . "</h3></div>"; // Product name
                 ft_print_photo($chat['product_id']); // Product photo
                 echo "<div class='column is-12'><h3>" . ft_get_other_perosn_name($chat['user_id_buyer'], $chat['user_id_seller']) . "</h3></div>"; // Other person's name
                 echo "</div>"; // Close columns
