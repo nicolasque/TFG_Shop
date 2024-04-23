@@ -50,13 +50,13 @@ function ft_print_admin_messages($messages)
 
     <section class="section">
         <div class="container">
-            <h1 class="title">User Messages</h1>
+            <h1 class="title">Mensjes de los usuarios</h1>
             <table class="table is-fullwidth is-striped">
                 <thead>
                     <tr>
-                        <th class="has-text-centered">Name</th>
+                        <th class="has-text-centered">Nombre</th>
                         <th class="has-text-centered">Email</th>
-                        <th class="has-text-centered">Message</th>
+                        <th class="has-text-centered">Mensaje</th>
                     </tr>
                 </thead>
                 <tbody>

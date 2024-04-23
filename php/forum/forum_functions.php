@@ -80,7 +80,7 @@ function ft_print_messages($messages)
 
         echo "<div class='box'>";
         echo "<p class='subtitle is-5'>" . $message['message'] . "</p>";
-        echo "<p class='subtitle is-6' style='color: " . $color . "'>Posted by: " . ft_get_username_by_id($message['user_id']) . "</p>";
+        echo "<p class='subtitle is-6' style='color: " . $color . "'>Envado por: " . ft_get_username_by_id($message['user_id']) . "</p>";
         echo "</div>";
     }
 }

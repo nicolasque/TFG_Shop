@@ -116,12 +116,12 @@ function ft_print_photo($photo_folder)
             <table class="table is-fullwidth is-striped">
                 <thead>
                     <tr>
-                        <th>Photos</th>
-                        <th>Product</th>
-                        <th>Username</th>
-                        <th>Price</th>
-                        <th>Description</th>
-                        <th>Actions</th>
+                        <th>Fotos</th>
+                        <th>Producto</th>
+                        <th>Nombre usuario</th>
+                        <th>Precio</th>
+                        <th>Descripcion</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
