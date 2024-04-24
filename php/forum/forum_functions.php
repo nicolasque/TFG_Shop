@@ -186,9 +186,7 @@ function ft_chec_valid_forum($forums)
 function ft_create_forum()
 {
     if (ft_chec_valid_forum(ft_get_forums()) == FALSE)
-    {
         return;
-    }
     $connexion = ft_create_conexion();
     $sql = "INSERT INTO forum (forum_name, topic, description) VALUES (?, ?, ?)";
     $stmt = $connexion->prepare($sql);
