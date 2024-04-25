@@ -61,11 +61,12 @@ function ft_send_message()
 
 function ft_get_chat_messages()
 {
+    console.log($('#chat_id').text());
         $.ajax({
             url: '/tfg_shop/php/ajax/ajax_get_messages.php', // Ruta al archivo PHP que ejecuta ft_get_chat_messages
             type: 'POST',
             data: {
-                chat_id: $('#chat_id').text() // Pasa el ID del chat al archivo PHP
+                "chat_id": document.getElementById('chat_id').textContent,
             },
             success: function(data) {
                 console.log(data);

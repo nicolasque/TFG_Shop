@@ -130,10 +130,11 @@ function ft_verify_chat($product)
 function ft_get_chat_id($product)
 {
     $product_id = $_GET['product_id'];
+    $othe_user_id= $_GET['other_person_id'];
     $connexion = ft_create_conexion();
-    $sql = "SELECT chat_id FROM chat WHERE product_id = ? && (user_id_buyer = ? || user_id_seller = ?)";
+    $sql = "SELECT chat_id FROM chat WHERE product_id = ? && ((user_id_buyer = ? && user_id_seller = ?) || (user_id_buyer = ? && user_id_seller = ?))";
     $stmt = $connexion->prepare($sql);
-    $stmt->bind_param("iii", $product_id, $_COOKIE['user_id'], $_COOKIE['user_id']);
+    $stmt->bind_param("iiiii", $product_id, $_COOKIE['user_id'], $othe_user_id, $othe_user_id, $_COOKIE['user_id']);
     $stmt->execute();
     $result = $stmt->get_result();
     $row = $result->fetch_assoc();
@@ -141,6 +142,18 @@ function ft_get_chat_id($product)
     return $row['chat_id'];
 }
 
+
+
+// function ft_print_chat_messages($messages)
+// {
+//     foreach ($messages as $message) {
+//         $messageClass = ft_give_style_mesaje($message['user_id']);
+
+//         echo "<div class='box notification  $messageClass'> ";
+//         echo "<p class='is-size-4 user_mesaje_" . $message['user_id'] . "'>" . $message['message'] . "</p>";
+//         echo "</div>";
+//     }
+// }
 
 ?>
 
@@ -158,6 +171,19 @@ function ft_get_chat_id($product)
 
 </head>
 
+<?php
+ft_verify_chat($product);
+$chat_id = ft_get_chat_id($product);
+// echo $chat_id;
+echo "<p style='display: none;' id='chat_id'>" . $chat_id . "</p>";
+echo "<p style='display: none;' id='user_id_buyer'>" . $_COOKIE['user_id'] . "</p>";
+// echo "<p style='display: none;' id='user_id_seller'>" . $product['user_id'] . "</p>";
+
+// $messages = ft_get_chat_messages($chat_id);
+// ft_print_chat_messages($messages);
+
+?>
+
 <body>
     <div id="page_container " class="container is-fluid is-vcentered is-centered">
 
@@ -167,10 +193,7 @@ function ft_get_chat_id($product)
                 <div class="box">
                     <?php
                     ft_print_table_product_info($product);
-                    ft_verify_chat($product);
-                    $chat_id = ft_get_chat_id($product);
-                    echo "<p style='display: none;' id='chat_id'>" . $chat_id . "</p>";
-                    echo "<p style='display: none;' id='user_id_buyer'>" . $_COOKIE['user_id'] . "</p>";
+
                     ?>
                 </div>
             </div>
