@@ -95,13 +95,9 @@ function ft_send_message($forum_id, $content)
     $stmt->execute();
     $connexion->close();
     if ($stmt->affected_rows > 0)
-    {
         return TRUE;
-    }
     else
-    {
         return FALSE;
-    }
 }
 
 

@@ -1,11 +1,15 @@
 
-
 window.onload = function()
 {
     
     ft_send_message();
     var chatBox = document.getElementById('chat-box');
     chatBox.scrollTop = chatBox.scrollHeight;
+
+    ft_get_chat_messages();
+    setInterval(function() {
+        ft_get_chat_messages();
+    }, 1000);
 
 
 };
@@ -54,3 +58,20 @@ function ft_send_message()
     });
 }
 
+
+function ft_get_chat_messages()
+{
+        $.ajax({
+            url: '/tfg_shop/php/ajax/ajax_get_messages.php', // Ruta al archivo PHP que ejecuta ft_get_chat_messages
+            type: 'POST',
+            data: {
+                chat_id: $('#chat_id').text() // Pasa el ID del chat al archivo PHP
+            },
+            success: function(data) {
+                console.log(data);
+                $('#chat-box').html(data); // Actualiza el contenido del chat con los nuevos mensajes
+                var chatBox = document.getElementById('chat-box');
+                chatBox.scrollTop = chatBox.scrollHeight; // Desplaza el chat hasta el final
+            }
+        });
+}
