@@ -102,7 +102,7 @@ function ft_print_products_like($liked_produc_id)
         ft_print_photo($photo_folder);
         echo "</td>";
         echo "<td>" . "<a href='../product/product.php?product_id=" .
-            $product_info['product_id']. "'>" .
+            $product_info['product_id'] . "'>" .
             "{$product_info['product_name']}</td>"
             . "</a>";
         echo "<td>{$product_info['description']}</td>";
@@ -152,10 +152,10 @@ $user_products = ft_get_user_products($user_id);
             <table class="table is-fullwidth is-striped">
                 <thead>
                     <tr>
-                        <th>Product Image</th>
-                        <th>Product Name</th>
-                        <th>Description</th>
-                        <th>Price</th>
+                        <th>Foto</th>
+                        <th>Porducto:</th>
+                        <th>Descripcion</th>
+                        <th>Precio</th>
 
                     </tr>
                 </thead>

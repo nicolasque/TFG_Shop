@@ -14,13 +14,16 @@ function ft_get_product_info()
     $stmt->execute();
     $result = $stmt->get_result();
 
-    if ($result->num_rows > 0) {
+    if ($result->num_rows > 0)
+    {
         $row = $result->fetch_assoc();
         $connexion->close();
         return $row;
-    } else {
+    }
+    else
+    {
         $connexion->close();
-        return false;
+        return FALSE;
     }
 }
 
@@ -30,10 +33,13 @@ function ft_get_photos($photo_folder)
 {
     $photos = [];
     $folder_path = $_SERVER['DOCUMENT_ROOT'] . "/tfg_shop/images/products/" . $photo_folder;
-    if (file_exists($folder_path)) {
+    if (file_exists($folder_path))
+    {
         $files = scandir($folder_path);
-        foreach ($files as $file) {
-            if ($file != '.' && $file != '..') {
+        foreach ($files as $file)
+        {
+            if ($file != '.' && $file != '..')
+            {
                 $photos[] = $file;
             }
         }
@@ -57,9 +63,9 @@ function ft_print_table_product_info($product)
     echo "<table class='table is-fullwidth is-striped'>";
     echo "<thead>";
     echo "<tr>";
-    echo "<th>Product Name</th>";
-    echo "<th>Price</th>";
-    echo "<th>Photo</th>";
+    echo "<th>Producto</th>";
+    echo "<th>Precio</th>";
+    echo "<th>Foto</th>";
     echo "</tr>";
     echo "</thead>";
     echo "<tbody>";
@@ -69,7 +75,8 @@ function ft_print_table_product_info($product)
     echo "<td>";
     $photos = ft_get_photos($product['photo']);
     echo "<figure class='image is-48x48'>";
-    if (count($photos) > 0) {
+    if (count($photos) > 0)
+    {
         echo "<img src='/tfg_shop/images/products/{$product['photo']}/{$photos[0]}'>";
     }
     echo "</figure>";
@@ -93,10 +100,13 @@ function ft_new_chat($product)
 
 function ft_is_user_product($product)
 {
-    if ($product['user_id'] == $_COOKIE['user_id']) {
-        return true;
-    } else {
-        return false;
+    if ($product['user_id'] == $_COOKIE['user_id'])
+    {
+        return TRUE;
+    }
+    else
+    {
+        return FALSE;
     }
 }
 
@@ -109,7 +119,8 @@ function ft_verify_chat($product)
     $stmt->bind_param("ii", $product_id, $_COOKIE['user_id']);
     $stmt->execute();
     $result = $stmt->get_result();
-    if ($result->num_rows == 0 && !ft_is_user_product($product)) {
+    if ($result->num_rows == 0 && !ft_is_user_product($product))
+    {
         ft_new_chat($product);
     }
     $connexion->close();
@@ -119,10 +130,11 @@ function ft_verify_chat($product)
 function ft_get_chat_id($product)
 {
     $product_id = $_GET['product_id'];
+    $othe_user_id= $_GET['other_person_id'];
     $connexion = ft_create_conexion();
-    $sql = "SELECT chat_id FROM chat WHERE product_id = ? && (user_id_buyer = ? || user_id_seller = ?)";
+    $sql = "SELECT chat_id FROM chat WHERE product_id = ? && ((user_id_buyer = ? && user_id_seller = ?) || (user_id_buyer = ? && user_id_seller = ?))";
     $stmt = $connexion->prepare($sql);
-    $stmt->bind_param("iii", $product_id,  $_COOKIE['user_id'], $_COOKIE['user_id']);
+    $stmt->bind_param("iiiii", $product_id, $_COOKIE['user_id'], $othe_user_id, $othe_user_id, $_COOKIE['user_id']);
     $stmt->execute();
     $result = $stmt->get_result();
     $row = $result->fetch_assoc();
@@ -130,51 +142,18 @@ function ft_get_chat_id($product)
     return $row['chat_id'];
 }
 
-function ft_get_chat_messages($chat_id)
-{
-    $connexion = ft_create_conexion();
-    $sql = "SELECT * FROM messages WHERE chat_id = ?";
-    $stmt = $connexion->prepare($sql);
-    $stmt->bind_param("i", $chat_id);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $messages = [];
-    if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            $messages[] = $row;
-        }
-    }
-    $connexion->close();
-    return $messages;
-}
 
-function ft_aling_mesajes($user_id)
-{
-    if ($user_id == $_COOKIE['user_id']) {
-        return "is-pulled-right";
-    } else {
-        return "is-pulled-left";
-    }
-}
-function ft_give_style_mesaje($user_id)
-{
-    if ($user_id == $_COOKIE['user_id']) {
-        return "has-text-right has-background-info-light has-text-black";
-    } else {
-        return "has-text-left has-background-light has-text-black";
-    }
-}
 
-function ft_print_chat_messages($messages)
-{
-    foreach ($messages as $message) {
-        $messageClass = ft_give_style_mesaje($message['user_id']);
+// function ft_print_chat_messages($messages)
+// {
+//     foreach ($messages as $message) {
+//         $messageClass = ft_give_style_mesaje($message['user_id']);
 
-        echo "<div class='box notification  $messageClass'> ";
-        echo "<p class='is-size-4 user_mesaje_" . $message['user_id'] . "'>" . $message['message'] . "</p>";
-        echo "</div>";
-    }
-}
+//         echo "<div class='box notification  $messageClass'> ";
+//         echo "<p class='is-size-4 user_mesaje_" . $message['user_id'] . "'>" . $message['message'] . "</p>";
+//         echo "</div>";
+//     }
+// }
 
 ?>
 
@@ -188,42 +167,47 @@ function ft_print_chat_messages($messages)
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="/tfg_shop/js/chat.js"></script>
     <script src="/tfg_shop/js/jquery.js"></script>
-    <title>Document</title>
+    <title>Chat</title>
 
 </head>
+
+<?php
+ft_verify_chat($product);
+$chat_id = ft_get_chat_id($product);
+// echo $chat_id;
+echo "<p style='display: none;' id='chat_id'>" . $chat_id . "</p>";
+echo "<p style='display: none;' id='user_id_buyer'>" . $_COOKIE['user_id'] . "</p>";
+// echo "<p style='display: none;' id='user_id_seller'>" . $product['user_id'] . "</p>";
+
+// $messages = ft_get_chat_messages($chat_id);
+// ft_print_chat_messages($messages);
+
+?>
 
 <body>
     <div id="page_container " class="container is-fluid is-vcentered is-centered">
 
         <div class="columns is-vcentered is-centered">
             <div class="column is-vcentered is-centered">
-                <h1 class="title is-1">Product Info</h1>
+                <h1 class="title is-1">Producto: </h1>
                 <div class="box">
                     <?php
                     ft_print_table_product_info($product);
-                    ft_verify_chat($product);
+
                     ?>
                 </div>
             </div>
         </div>
-        <div class="columns is-vcentered is-centered"  >
-            <div id="chat-container" class="container is-fluid is-vcentered is-centered" style="scroll-behavior: smooth; height: 600px; width: 70%;">
-                <div id="chat-box" class="column is-vcentered is-centered box" style="overflow-y: auto; max-height: 500px;">
+        <div class="columns is-vcentered is-centered">
+            <div id="chat-container" class="container is-fluid is-vcentered is-centered"
+                style="scroll-behavior: smooth; height: 600px; width: 70%;">
+                <div id="chat-box" class="column is-vcentered is-centered box"
+                    style="overflow-y: auto; max-height: 500px;">
                     <!-- Aquí se mostrarán los mensajes del chat -->
-                    <?php
-                    $chat_id = ft_get_chat_id($product);
-                    echo $chat_id;
-                    echo "<p style='display: none;' id='chat_id'>" . $chat_id . "</p>";
-                    echo "<p style='display: none;' id='user_id_buyer'>" . $_COOKIE['user_id'] . "</p>";
-                    // echo "<p style='display: none;' id='user_id_seller'>" . $product['user_id'] . "</p>";
-
-                    $messages = ft_get_chat_messages($chat_id);
-                    ft_print_chat_messages($messages);
-                    ?>
                 </div>
                 <div id="message-input" class="column is-vcentered is-centered">
                     <textarea id="message-text" style="width: 100%; height: 10%;"></textarea>
-                    <button id="send-button" class="button is-primary">Send</button>
+                    <button id="send-button" class="button is-primary">Enviar</button>
                 </div>
             </div>
         </div>

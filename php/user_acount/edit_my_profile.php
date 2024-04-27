@@ -91,7 +91,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
                         </div>
                         <div class="field">
                             <div class="control">
-                                <input class="button is-link" type="submit" value="Update">
+                                <input class="button is-link" type="submit" value="Actualizar">
                             </div>
                         </div>
                 </form>

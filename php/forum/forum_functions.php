@@ -80,7 +80,7 @@ function ft_print_messages($messages)
 
         echo "<div class='box'>";
         echo "<p class='subtitle is-5'>" . $message['message'] . "</p>";
-        echo "<p class='subtitle is-6' style='color: " . $color . "'>Posted by: " . ft_get_username_by_id($message['user_id']) . "</p>";
+        echo "<p class='subtitle is-6' style='color: " . $color . "'>Envado por: " . ft_get_username_by_id($message['user_id']) . "</p>";
         echo "</div>";
     }
 }
@@ -95,13 +95,9 @@ function ft_send_message($forum_id, $content)
     $stmt->execute();
     $connexion->close();
     if ($stmt->affected_rows > 0)
-    {
         return TRUE;
-    }
     else
-    {
         return FALSE;
-    }
 }
 
 
@@ -186,9 +182,7 @@ function ft_chec_valid_forum($forums)
 function ft_create_forum()
 {
     if (ft_chec_valid_forum(ft_get_forums()) == FALSE)
-    {
         return;
-    }
     $connexion = ft_create_conexion();
     $sql = "INSERT INTO forum (forum_name, topic, description) VALUES (?, ?, ?)";
     $stmt = $connexion->prepare($sql);
@@ -217,7 +211,7 @@ function ft_print_forums($forums)
         echo "<a class='panel-block' href='forum_site.php?forum_id=" . $forum['forum_id'] . "'>";
         echo "<div class='columns is-multiline'>";
         echo "<div class='column is-12'><h2 class='subtitle is-primary is-2 has-text-primary'>" . $forum['forum_name'] . "</h2></div>";
-        echo "<div class='column is-12'><p><h3 class='has-text-primary'>Topic: " . $forum['topic'] . "</h3></p></div>";
+        echo "<div class='column is-12'><p><h3 class='has-text-primary'>Tema: " . $forum['topic'] . "</h3></p></div>";
         echo "<div class='column is-12'><p>" . $forum['description'] . "</p></div>";
         echo "<div class='column is-12'><p><span class='tag is-primary'>Active Users: " . $forum['active_users'] . "</span></p></div>";
         echo "</div>";

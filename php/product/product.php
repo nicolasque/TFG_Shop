@@ -38,6 +38,7 @@ function ft_get_seller_name($seller_id)
     return $row['username'];
 }
 
+
 function ft_get_photos($photo_folder)
 {
     $photos = [];
@@ -101,10 +102,7 @@ function ft_get_likes($product_id)
 function ft_print_likes($likes)
 {
     if (!isset($_COOKIE['user_id']))
-    {
-        echo "<a href='/tfg_shop/php/login.php'>LogIn to like</a>";
-        return;
-    }
+        return ;
     $i = 0;
     $user_like = FALSE;
     foreach ($likes as $like)
@@ -193,7 +191,8 @@ function ft_is_not_my_product($product_id)
         }
         if ($row['user_id'] != $_COOKIE['user_id'])
         {
-            echo "<a class='button is-primary' href='/tfg_shop/php/chat/chat_product.php?product_id=" . $_GET['product_id'] . "'>Ir al chat</a>";
+
+            echo "<a class='button is-primary' href='/tfg_shop/php/chat/chat_product.php?product_id=" . $_GET['product_id'] . "&other_person_id=" . $row['user_id'] . "'>Ir a chat </a>";
             return TRUE;
         }
         else

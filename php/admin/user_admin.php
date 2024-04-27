@@ -57,12 +57,12 @@ $users = ft_fetch_users(ft_create_conexion()); // Replace this with your actual 
             <table class="table is-fullwidth is-striped">
                 <thead>
                     <tr>
-                        <th>Username</th>
-                        <th>Name</th>
-                        <th>Surname</th>
-                        <th>Is Admin</th>
+                        <th>Nombre usuario</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Admin</th>
                         <th>Email</th>
-                        <th>Actions</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>

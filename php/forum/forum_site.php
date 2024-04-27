@@ -44,7 +44,7 @@ if (isset($_POST['content']))
                     </div>
                     <div class="field">
                         <div class="control">
-                            <button class="button is-primary" type="submit">Submit</button>
+                            <button class="button is-primary" type="submit">Enviar</button>
                         </div>
                     </div>
             </div>

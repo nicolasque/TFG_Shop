@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Create User</title>
+    <title>Crear usuario</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
     <script src="../js/jquery.js"></script>
     <script src="../js/add_user_ft.js"></script>
@@ -16,7 +16,7 @@
 
     <section class="section">
         <div class="container">
-            <h1 class="title">Create User</h1>
+            <h1 class="title">Crear usuario</h1>
             <form method="POST" id="add_user_form" action="">
 
                 <div class="field">
@@ -27,14 +27,14 @@
                 </div>
 
                 <div class="field">
-                    <label class="label" for="name">Name:</label>
+                    <label class="label" for="name">Nombre:</label>
                     <div class="control">
                         <input class="input" type="text" name="name" id="name" required>
                     </div>
                 </div>
 
                 <div class="field">
-                    <label class="label" for="surname">Surname:</label>
+                    <label class="label" for="surname">Apellido:</label>
                     <div class="control">
                         <input class="input" type="text" name="surname" id="surname" required>
                     </div>
@@ -48,14 +48,14 @@
                 </div>
 
                 <div class="field">
-                    <label class="label" for="password">Password:</label>
+                    <label class="label" for="password">Contraseña:</label>
                     <div class="control">
                         <input class="input" type="password" name="password" id="password" required>
                     </div>
                 </div>
 
                 <div class="field">
-                    <label class="label" for="confirm_password">Confirm Password:</label>
+                    <label class="label" for="confirm_password">Repetir contraseña:</label>
                     <div class="control">
                         <input class="input" type="password" name="confirm_password" id="confirm_password" required>
                     </div>
@@ -63,7 +63,7 @@
 
                 <div class="field">
                     <div class="control">
-                        <input class="button is-link" type="submit" value="Create User">
+                        <input class="button is-link" type="submit" value="Crear Usuario">
                     </div>
                 </div>
 
