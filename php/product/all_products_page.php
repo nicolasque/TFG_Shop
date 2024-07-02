@@ -119,7 +119,12 @@ function ft_get_photos($photo_folder)
                                         <p class="title is-4"><a
                                                 href="/tfg_shop/php/product/product.php?product_id=<?php echo $row['product_id']; ?>"><?php echo $row['product_name']; ?></a>
                                         </p>
-                                        <p class="subtitle is-6"><?php echo $row['user_name']; ?></p>
+                                        <p class="subtitle is-6">
+                                            <?php echo $row['user_name'];
+                                            echo $row ['hello'];
+                                            // echo "<h2>$row['heloo']</h2>";
+                                            ?>
+                                        </p>
                                     </div>
                                 </div>
                                 <div class="content">
